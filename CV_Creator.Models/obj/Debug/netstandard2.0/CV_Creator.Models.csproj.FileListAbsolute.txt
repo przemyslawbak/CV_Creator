@@ -1,0 +1,9 @@
+C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Models\bin\Debug\netstandard2.0\CV_Creator.Models.deps.json
+C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Models\bin\Debug\netstandard2.0\CV_Creator.Models.dll
+C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Models\bin\Debug\netstandard2.0\CV_Creator.Models.pdb
+C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Models\obj\Debug\netstandard2.0\CV_Creator.Models.csprojAssemblyReference.cache
+C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Models\obj\Debug\netstandard2.0\CV_Creator.Models.csproj.CoreCompileInputs.cache
+C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Models\obj\Debug\netstandard2.0\CV_Creator.Models.AssemblyInfoInputs.cache
+C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Models\obj\Debug\netstandard2.0\CV_Creator.Models.AssemblyInfo.cs
+C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Models\obj\Debug\netstandard2.0\CV_Creator.Models.dll
+C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Models\obj\Debug\netstandard2.0\CV_Creator.Models.pdb
