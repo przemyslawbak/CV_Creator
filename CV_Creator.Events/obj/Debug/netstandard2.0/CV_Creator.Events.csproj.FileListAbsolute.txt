@@ -1,9 +1,0 @@
-C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Events\bin\Debug\netstandard2.0\CV_Creator.Events.deps.json
-C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Events\bin\Debug\netstandard2.0\CV_Creator.Events.dll
-C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Events\bin\Debug\netstandard2.0\CV_Creator.Events.pdb
-C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Events\obj\Debug\netstandard2.0\CV_Creator.Events.csprojAssemblyReference.cache
-C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Events\obj\Debug\netstandard2.0\CV_Creator.Events.csproj.CoreCompileInputs.cache
-C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Events\obj\Debug\netstandard2.0\CV_Creator.Events.AssemblyInfoInputs.cache
-C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Events\obj\Debug\netstandard2.0\CV_Creator.Events.AssemblyInfo.cs
-C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Events\obj\Debug\netstandard2.0\CV_Creator.Events.dll
-C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Events\obj\Debug\netstandard2.0\CV_Creator.Events.pdb
