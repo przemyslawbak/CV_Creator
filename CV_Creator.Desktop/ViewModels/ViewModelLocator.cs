@@ -11,14 +11,6 @@ namespace CV_Creator.Desktop.ViewModels
             _container = Startup.BootStrap();
         }
 
-        public MainViewModel MainViewModel
-        {
-            get
-            {
-                return _container.Resolve<MainViewModel>();
-            }
-        }
-
         public OffshoreControlViewModel OffshoreControlViewModel
         {
             get

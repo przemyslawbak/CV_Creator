@@ -3,11 +3,42 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CV_Creator.Desktop.Views"
+        xmlns:controls="clr-namespace:CV_Creator.Desktop.Views.Controls"
+        xmlns:conv="clr-namespace:CV_Creator.Desktop.Converters"
         mc:Ignorable="d"
-        DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CV Creator"
+        MinHeight="400" MinWidth="500" Height="400" Width="500">
+    <Window.Resources>
+        <conv:TabSizeConverter x:Key="tabSizeConverter" />
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Width">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource tabSizeConverter}">
+                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TabControl}}" />
+                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TabControl}}" Path="ActualWidth" />
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-
+        <TabControl>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Height="25">
+                        <TextBlock Text="IT Resume" Foreground="Black" FontSize="18"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <controls:ItControl/>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Height="25">
+                        <TextBlock Text="Offshore Resume" Foreground="Black" FontSize="18"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <controls:OffshoreControl/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

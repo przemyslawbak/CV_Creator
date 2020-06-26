@@ -12,7 +12,6 @@ namespace CV_Creator
             var builder = new ContainerBuilder();
 
             builder.RegisterType<MainWindow>().AsSelf();
-            builder.RegisterType<MainViewModel>().AsSelf().SingleInstance();
 
             builder.RegisterType<ItControl>().AsSelf();
             builder.RegisterType<ItControlViewModel>().AsSelf().SingleInstance();

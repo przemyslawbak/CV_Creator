@@ -1,7 +1,7 @@
 ﻿<Application x:Class="CV_Creator.Desktop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="Views/InputView.xaml"
+             StartupUri="Views/MainWindow.xaml"
              xmlns:vm="clr-namespace:CV_Creator.Desktop.ViewModels">
     <Application.Resources>
         <vm:ViewModelLocator x:Key="ViewModelLocator"/>
