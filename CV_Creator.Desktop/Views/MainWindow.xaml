@@ -7,7 +7,7 @@
         xmlns:conv="clr-namespace:CV_Creator.Desktop.Converters"
         mc:Ignorable="d"
         Title="CV Creator"
-        MinHeight="400" MinWidth="500" Height="400" Width="500">
+        MinHeight="400" MinWidth="500" Height="400" Width="500" MaxHeight="450" MaxWidth="650">
     <Window.Resources>
         <conv:TabSizeConverter x:Key="tabSizeConverter" />
         <Style TargetType="{x:Type TabItem}">
@@ -29,7 +29,7 @@
                         <TextBlock Text="IT Resume" Foreground="Black" FontSize="18"/>
                     </StackPanel>
                 </TabItem.Header>
-                <controls:ItControl/>
+                <controls:ItUserControl/>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -37,7 +37,7 @@
                         <TextBlock Text="Offshore Resume" Foreground="Black" FontSize="18"/>
                     </StackPanel>
                 </TabItem.Header>
-                <controls:OffshoreControl/>
+                <controls:OffshoreUserControl/>
             </TabItem>
         </TabControl>
     </Grid>

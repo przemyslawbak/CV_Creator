@@ -78,11 +78,11 @@
     <Compile Include="ViewModels\OffshoreControlViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
-    <Compile Include="Views\Controls\ItControl.xaml.cs">
-      <DependentUpon>ItControl.xaml</DependentUpon>
+    <Compile Include="Views\Controls\ItUserControl.xaml.cs">
+      <DependentUpon>ItUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Controls\OffshoreControl.xaml.cs">
-      <DependentUpon>OffshoreControl.xaml</DependentUpon>
+    <Compile Include="Views\Controls\OffshoreUserControl.xaml.cs">
+      <DependentUpon>OffshoreUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -117,11 +117,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\Controls\ItControl.xaml">
+    <Page Include="Views\Controls\ItUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Controls\OffshoreControl.xaml">
+    <Page Include="Views\Controls\OffshoreUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

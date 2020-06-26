@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CV_Creator.Desktop.Views.Controls
 {
     /// <summary>
-    /// Interaction logic for OffshoreControl.xaml
+    /// Interaction logic for ItControl.xaml
     /// </summary>
-    public partial class OffshoreControl : UserControl
+    public partial class ItUserControl : UserControl
     {
-        public OffshoreControl()
+        public ItUserControl()
         {
             InitializeComponent();
         }

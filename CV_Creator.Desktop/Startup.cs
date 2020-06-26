@@ -13,10 +13,10 @@ namespace CV_Creator
 
             builder.RegisterType<MainWindow>().AsSelf();
 
-            builder.RegisterType<ItControl>().AsSelf();
+            builder.RegisterType<ItUserControl>().AsSelf();
             builder.RegisterType<ItControlViewModel>().AsSelf().SingleInstance();
 
-            builder.RegisterType<OffshoreControl>().AsSelf();
+            builder.RegisterType<OffshoreUserControl>().AsSelf();
             builder.RegisterType<OffshoreControlViewModel>().AsSelf().SingleInstance();
 
             return builder.Build();
