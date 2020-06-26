@@ -73,10 +73,19 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\InputViewModel.cs" />
+    <Compile Include="ViewModels\ItControlViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\OffshoreControlViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
-    <Compile Include="Views\InputView.xaml.cs">
-      <DependentUpon>InputView.xaml</DependentUpon>
+    <Compile Include="Views\Controls\ItControl.xaml.cs">
+      <DependentUpon>ItControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\OffshoreControl.xaml.cs">
+      <DependentUpon>OffshoreControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -108,7 +117,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\InputView.xaml">
+    <Page Include="Views\Controls\ItControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\OffshoreControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

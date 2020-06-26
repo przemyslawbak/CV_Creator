@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using CV_Creator.Desktop.ViewModels;
-using CV_Creator.Views;
+using CV_Creator.Desktop.Views;
+using CV_Creator.Desktop.Views.Controls;
 
 namespace CV_Creator
 {
@@ -10,8 +11,14 @@ namespace CV_Creator
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<InputView>().AsSelf();
-            builder.RegisterType<InputViewModel>().AsSelf().SingleInstance();
+            builder.RegisterType<MainWindow>().AsSelf();
+            builder.RegisterType<MainViewModel>().AsSelf().SingleInstance();
+
+            builder.RegisterType<ItControl>().AsSelf();
+            builder.RegisterType<ItControlViewModel>().AsSelf().SingleInstance();
+
+            builder.RegisterType<OffshoreControl>().AsSelf();
+            builder.RegisterType<OffshoreControlViewModel>().AsSelf().SingleInstance();
 
             return builder.Build();
         }

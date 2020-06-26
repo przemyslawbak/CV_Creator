@@ -1,8 +1,8 @@
 ﻿namespace CV_Creator.Desktop.ViewModels
 {
-    public class InputViewModel
+    public class MainViewModel
     {
-        public InputViewModel()
+        public MainViewModel()
         {
 
         }

@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CV_Creator.Views
+namespace CV_Creator.Desktop.Views.Controls
 {
     /// <summary>
-    /// Interaction logic for InputView.xaml
+    /// Interaction logic for ItControl.xaml
     /// </summary>
-    public partial class InputView : Window
+    public partial class ItControl : UserControl
     {
-        public InputView()
+        public ItControl()
         {
             InitializeComponent();
         }

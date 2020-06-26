@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using CV_Creator.Desktop.ViewModels;
 
 namespace CV_Creator.Desktop.ViewModels
 {
@@ -12,11 +11,27 @@ namespace CV_Creator.Desktop.ViewModels
             _container = Startup.BootStrap();
         }
 
-        public InputViewModel InputViewModel
+        public MainViewModel MainViewModel
         {
             get
             {
-                return _container.Resolve<InputViewModel>();
+                return _container.Resolve<MainViewModel>();
+            }
+        }
+
+        public OffshoreControlViewModel OffshoreControlViewModel
+        {
+            get
+            {
+                return _container.Resolve<OffshoreControlViewModel>();
+            }
+        }
+
+        public ItControlViewModel ItControlViewModel
+        {
+            get
+            {
+                return _container.Resolve<ItControlViewModel>();
             }
         }
     }
