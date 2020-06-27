@@ -30,24 +30,33 @@
         <TextBlock Text="Position applied:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" FontSize="14"
                    Grid.Row="2" Grid.Column="0"/>
         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20">
-            <RadioButton IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=1}" Content="Send"
+            <RadioButton IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=1, Mode=TwoWay}" Content="Save"
                      VerticalAlignment="Center" Margin="5" FontSize="14"
                    Grid.Row="3" Grid.Column="0"/>
-            <RadioButton IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=2}" Content="Save"
+            <RadioButton IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=2, Mode=TwoWay}" Content="Send"
                      VerticalAlignment="Center" Margin="5" FontSize="14"
                    Grid.Row="3" Grid.Column="0"/>
         </StackPanel>
 
-        <TextBlock Text="{Binding ProjectsSelected}"
+        <TextBox Text="{Binding ProjectsSelected, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20" FontSize="14"/>
+                   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14" IsReadOnly="True">
+            <TextBox.InputBindings>
+                <MouseBinding Command="{Binding OpenProjectsLoaderAsync}" MouseAction="LeftClick" />
+            </TextBox.InputBindings>
+        </TextBox>
         <TextBox Text="{Binding CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                    HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14"/>
         <TextBox Text="{Binding PositionApplied, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                    Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                    HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14"/>
-        <TextBox Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        <TextBox Text="{Binding EmailAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Visibility="{Binding IsSendingEmailVisible, Converter={StaticResource BoolToVis}}"
+                   Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14"/>
+        <TextBox Text="{Binding FilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Visibility="{Binding IsFIleSavingVisible, Converter={StaticResource BoolToVis}}"
                    Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                    HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14"/>
     </Grid>

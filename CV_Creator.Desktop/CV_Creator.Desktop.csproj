@@ -72,6 +72,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\AsyncCommand.cs" />
+    <Compile Include="Commands\AsyncCommandBase.cs" />
     <Compile Include="Converters\RadioBoolToIntConverter.cs" />
     <Compile Include="Converters\TabSizeConverter.cs" />
     <Compile Include="Startup.cs" />
