@@ -1,6 +1,6 @@
 ﻿namespace CV_Creator.Desktop.ViewModels
 {
-    public class OffshoreControlViewModel
+    public class OffshoreControlViewModel : ViewModelBase
     {
         public OffshoreControlViewModel()
         {

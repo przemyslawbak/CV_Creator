@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:CV_Creator.Desktop.Views.Controls"
+             xmlns:conv="clr-namespace:CV_Creator.Desktop.Converters"
              mc:Ignorable="d"
              DataContext="{Binding ItControlViewModel, Source={StaticResource ViewModelLocator}}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <conv:RadioBoolToIntConverter x:Key="radioBoolToIntConverter" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -24,9 +27,28 @@
                    Grid.Row="0" Grid.Column="0"/>
         <TextBlock Text="Company name:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" FontSize="14"
                    Grid.Row="1" Grid.Column="0"/>
-        <TextBlock Text="Position:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" FontSize="14"
+        <TextBlock Text="Position applied:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" FontSize="14"
                    Grid.Row="2" Grid.Column="0"/>
-        <TextBlock Text="Send / Save:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" FontSize="14"
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20">
+            <RadioButton IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=1}" Content="Send"
+                     VerticalAlignment="Center" Margin="5" FontSize="14"
                    Grid.Row="3" Grid.Column="0"/>
+            <RadioButton IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=2}" Content="Save"
+                     VerticalAlignment="Center" Margin="5" FontSize="14"
+                   Grid.Row="3" Grid.Column="0"/>
+        </StackPanel>
+
+        <TextBlock Text="{Binding ProjectsSelected}"
+                   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20" FontSize="14"/>
+        <TextBox Text="{Binding CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14"/>
+        <TextBox Text="{Binding PositionApplied, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14"/>
+        <TextBox Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14"/>
     </Grid>
 </UserControl>

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:CV_Creator.Desktop.Views.Controls"
+        xmlns:contr="clr-namespace:CV_Creator.Desktop.Views.Controls"
         xmlns:conv="clr-namespace:CV_Creator.Desktop.Converters"
         mc:Ignorable="d"
         Title="CV Creator"
@@ -29,7 +29,7 @@
                         <TextBlock Text="IT Resume" Foreground="Black" FontSize="18"/>
                     </StackPanel>
                 </TabItem.Header>
-                <controls:ItUserControl/>
+                <contr:ItUserControl/>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -37,7 +37,7 @@
                         <TextBlock Text="Offshore Resume" Foreground="Black" FontSize="18"/>
                     </StackPanel>
                 </TabItem.Header>
-                <controls:OffshoreUserControl/>
+                <contr:OffshoreUserControl/>
             </TabItem>
         </TabControl>
     </Grid>

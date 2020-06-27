@@ -1,5 +1,5 @@
 UserControl
-- Loaded projects / vessels
+- Loaded projects / vessels <textbox>
 - Choose projects / vessels <button>
 - Company name <textbox>
 - Position <textbox>
