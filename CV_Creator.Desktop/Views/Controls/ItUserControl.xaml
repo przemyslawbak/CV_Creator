@@ -23,41 +23,51 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Selected projects:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" FontSize="14"
+        <TextBlock Text="Selected projects:"
+                   Style="{StaticResource textBlockLabel}"
                    Grid.Row="0" Grid.Column="0"/>
-        <TextBlock Text="Company name:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" FontSize="14"
+        <TextBlock Text="Company name:"
+                   Style="{StaticResource textBlockLabel}"
                    Grid.Row="1" Grid.Column="0"/>
         <TextBlock Text="Position applied:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" FontSize="14"
                    Grid.Row="2" Grid.Column="0"/>
         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20">
-            <RadioButton IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=1, Mode=TwoWay}" Content="Save"
-                     VerticalAlignment="Center" Margin="5" FontSize="14"
-                   Grid.Row="3" Grid.Column="0"/>
-            <RadioButton IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=2, Mode=TwoWay}" Content="Send"
-                     VerticalAlignment="Center" Margin="5" FontSize="14"
-                   Grid.Row="3" Grid.Column="0"/>
+            <RadioButton Style="{StaticResource radio}"
+                IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=1, Mode=TwoWay}"
+                Content="Save"
+                Grid.Row="3" Grid.Column="0"/>
+            <RadioButton Style="{StaticResource radio}"
+                         IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=2, Mode=TwoWay}"
+                         Content="Send"
+                         Grid.Row="3" Grid.Column="0"/>
         </StackPanel>
 
         <TextBox Text="{Binding ProjectsSelected, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14" IsReadOnly="True">
+                   Style="{StaticResource textBox}"
+                 IsReadOnly="True">
             <TextBox.InputBindings>
                 <MouseBinding Command="{Binding OpenProjectsLoaderAsync}" MouseAction="LeftClick" />
             </TextBox.InputBindings>
         </TextBox>
         <TextBox Text="{Binding CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-                   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14"/>
+                   Style="{StaticResource textBox}"/>
         <TextBox Text="{Binding PositionApplied, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                    Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14"/>
+                   Style="{StaticResource textBox}"/>
         <TextBox Text="{Binding EmailAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Visibility="{Binding IsSendingEmailVisible, Converter={StaticResource BoolToVis}}"
                    Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
-                   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14"/>
+                   Style="{StaticResource textBox}"/>
         <TextBox Text="{Binding FilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Visibility="{Binding IsFIleSavingVisible, Converter={StaticResource BoolToVis}}"
                    Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
-                   HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20" FontSize="14"/>
+                   Style="{StaticResource textBox}"
+                 IsReadOnly="True">
+        <TextBox.InputBindings>
+                <MouseBinding Command="{Binding OpenFilePathWindowAsync}" MouseAction="LeftClick" />
+            </TextBox.InputBindings>
+        </TextBox>
     </Grid>
 </UserControl>

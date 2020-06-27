@@ -11,10 +11,16 @@ namespace CV_Creator.Desktop.ViewModels
         {
             SendOrSave = 1;
             OpenProjectsLoaderAsync = new AsyncCommand(async () => await OnOpenProjectsLoader());
+            OpenFilePathWindowAsync = new AsyncCommand(async () => await OnOpenFilePathWindow());
 
             //TODO: remove later
             EmailAddress = "email";
             FilePath = "file";
+        }
+
+        private async Task OnOpenFilePathWindow()
+        {
+            throw new NotImplementedException(); //TODO: await window opened and file path from window manager
         }
 
         private async Task OnOpenProjectsLoader()
@@ -22,6 +28,7 @@ namespace CV_Creator.Desktop.ViewModels
             throw new NotImplementedException(); //TODO: await window opened and model update from window manager
         }
 
+        public ICommand OpenFilePathWindowAsync { get; private set; }
         public ICommand OpenProjectsLoaderAsync { get; private set; }
 
         private string _projectsSelected;
