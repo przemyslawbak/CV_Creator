@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="Commands\AsyncCommand.cs" />
     <Compile Include="Commands\AsyncCommandBase.cs" />
+    <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Converters\RadioBoolToIntConverter.cs" />
     <Compile Include="Converters\TabSizeConverter.cs" />
     <Compile Include="Startup.cs" />
@@ -118,7 +119,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CV_Creator.Events\CV_Creator.Events.csproj">
+      <Project>{c084b8b2-d38e-42f1-a683-0c0dc47f26c1}</Project>
+      <Name>CV_Creator.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CV_Creator.Models\CV_Creator.Models.csproj">
+      <Project>{1d4d55bb-a1c1-4bd5-8db7-c96f069b76cc}</Project>
+      <Name>CV_Creator.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CV_Creator.Services\CV_Creator.Services.csproj">
+      <Project>{96c72684-12da-4bbd-ae2c-3cd861f9fcf5}</Project>
+      <Name>CV_Creator.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Controls\ItUserControl.xaml">
       <SubType>Designer</SubType>

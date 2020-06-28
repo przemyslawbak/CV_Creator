@@ -1,4 +1,5 @@
 ﻿using CV_Creator.Desktop.Commands;
+using CV_Creator.Services;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -7,29 +8,53 @@ namespace CV_Creator.Desktop.ViewModels
 {
     public class ItControlViewModel : ViewModelBase
     {
-        public ItControlViewModel()
+        private readonly IWindowManager _windowManager;
+        private readonly IFileManager _fileManager;
+        public ItControlViewModel(IWindowManager windowManager, IFileManager fileManager)
         {
-            SendOrSave = 1;
-            OpenProjectsLoaderAsync = new AsyncCommand(async () => await OnOpenProjectsLoader());
-            OpenFilePathWindowAsync = new AsyncCommand(async () => await OnOpenFilePathWindow());
+            _windowManager = windowManager;
+            _fileManager = fileManager;
+
+            OpenProjectsLoader = new AsyncCommand(async () => await OnOpenProjectsLoader());
+            OpenFilePathWindow = new AsyncCommand(async () => await OnOpenFilePathWindow());
+            ExecuteOperation = new DelegateCommand(OnExecuteOperation);
+            ClearInputs = new DelegateCommand(OnClearInputs);
 
             //TODO: remove later
+            SendOrSave = 1;
             EmailAddress = "email";
             FilePath = "file";
         }
 
+        private void OnClearInputs(object o)
+        {
+            SendOrSave = 1;
+            ProjectsSelected = string.Empty;
+            CompanyName = string.Empty;
+            PositionApplied = string.Empty;
+            FilePath = _fileManager.GetDefaultPdfPath();
+            EmailAddress = string.Empty;
+        }
+
+        private void OnExecuteOperation(object o)
+        {
+            throw new NotImplementedException();
+        }
+
         private async Task OnOpenFilePathWindow()
         {
-            throw new NotImplementedException(); //TODO: await window opened and file path from window manager
+            throw new NotImplementedException();
         }
 
         private async Task OnOpenProjectsLoader()
         {
-            throw new NotImplementedException(); //TODO: await window opened and model update from window manager
+            throw new NotImplementedException();
         }
 
-        public ICommand OpenFilePathWindowAsync { get; private set; }
-        public ICommand OpenProjectsLoaderAsync { get; private set; }
+        public ICommand OpenFilePathWindow { get; private set; }
+        public ICommand OpenProjectsLoader { get; private set; }
+        public ICommand ExecuteOperation { get; private set; }
+        public ICommand ClearInputs { get; private set; }
 
         private string _projectsSelected;
         public string ProjectsSelected

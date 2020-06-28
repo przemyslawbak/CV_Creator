@@ -2,6 +2,7 @@
 using CV_Creator.Desktop.ViewModels;
 using CV_Creator.Desktop.Views;
 using CV_Creator.Desktop.Views.Controls;
+using CV_Creator.Services;
 
 namespace CV_Creator
 {
@@ -10,6 +11,11 @@ namespace CV_Creator
         public static IContainer BootStrap()
         {
             var builder = new ContainerBuilder();
+
+            builder.RegisterType<WindowManager>()
+              .As<IWindowManager>().SingleInstance();
+            builder.RegisterType<FileManager>()
+              .As<IFileManager>().SingleInstance();
 
             builder.RegisterType<MainWindow>().AsSelf();
 

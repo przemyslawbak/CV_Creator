@@ -10,13 +10,13 @@
     <UserControl.Resources>
         <conv:RadioBoolToIntConverter x:Key="radioBoolToIntConverter" />
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="DarkSeaGreen">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -29,9 +29,10 @@
         <TextBlock Text="Company name:"
                    Style="{StaticResource textBlockLabel}"
                    Grid.Row="1" Grid.Column="0"/>
-        <TextBlock Text="Position applied:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" FontSize="14"
+        <TextBlock Text="Position applied:"
+                   Style="{StaticResource textBlockLabel}"
                    Grid.Row="2" Grid.Column="0"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20">
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
             <RadioButton Style="{StaticResource radio}"
                 IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=1, Mode=TwoWay}"
                 Content="Save"
@@ -47,7 +48,7 @@
                    Style="{StaticResource textBox}"
                  IsReadOnly="True">
             <TextBox.InputBindings>
-                <MouseBinding Command="{Binding OpenProjectsLoaderAsync}" MouseAction="LeftClick" />
+                <MouseBinding Command="{Binding OpenProjectsLoader}" MouseAction="LeftClick" />
             </TextBox.InputBindings>
         </TextBox>
         <TextBox Text="{Binding CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -66,8 +67,29 @@
                    Style="{StaticResource textBox}"
                  IsReadOnly="True">
         <TextBox.InputBindings>
-                <MouseBinding Command="{Binding OpenFilePathWindowAsync}" MouseAction="LeftClick" />
+                <MouseBinding Command="{Binding OpenFilePathWindow}" MouseAction="LeftClick" />
             </TextBox.InputBindings>
         </TextBox>
+
+        <Button
+            Grid.Row="4"
+            Grid.Column="1"
+            Content="Create"
+            HorizontalAlignment="Center"
+            Width="120"
+            Margin="20"
+            Command="{Binding ExecuteOperation}"
+            IsEnabled="{Binding IsExecuteButtonEnabled}">
+        </Button>
+        <Button
+            Grid.Row="4"
+            Grid.Column="2"
+            Content="Clear"
+            HorizontalAlignment="Center"
+            Width="120"
+            Margin="20"
+            Command="{Binding ClearInputs}"
+            IsEnabled="{Binding IsClearButtonEnabled}">
+        </Button>
     </Grid>
 </UserControl>
