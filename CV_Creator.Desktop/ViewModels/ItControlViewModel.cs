@@ -1,6 +1,7 @@
 ﻿using CV_Creator.Desktop.Commands;
 using CV_Creator.Services;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -15,46 +16,40 @@ namespace CV_Creator.Desktop.ViewModels
             _windowManager = windowManager;
             _fileManager = fileManager;
 
-            OpenProjectsLoader = new AsyncCommand(async () => await OnOpenProjectsLoader());
-            OpenFilePathWindow = new AsyncCommand(async () => await OnOpenFilePathWindow());
-            ExecuteOperation = new DelegateCommand(OnExecuteOperation);
-            ClearInputs = new DelegateCommand(OnClearInputs);
+            OpenProjectsLoaderCommand = new AsyncCommand(async () => await OnOpenProjectsLoaderAsync());
+            OpenFilePathWindowCommand = new DelegateCommand(OnSaveFilePathWindow);
+            ExecuteOperationCommand = new DelegateCommand(OnExecuteOperation);
+            ClearInputsCommand = new DelegateCommand(OnClearInputs);
 
-            //TODO: remove later
-            SendOrSave = 1;
-            EmailAddress = "email";
-            FilePath = "file";
+            //TODO: load latest from the file at first
         }
 
-        private void OnClearInputs(object o)
+        public ICommand OpenFilePathWindowCommand { get; private set; }
+        public ICommand OpenProjectsLoaderCommand { get; private set; }
+        public ICommand ExecuteOperationCommand { get; private set; }
+        public ICommand ClearInputsCommand { get; private set; }
+
+        private bool _isExecuteButtonEnabled;
+        public bool IsExecuteButtonEnabled
         {
-            SendOrSave = 1;
-            ProjectsSelected = string.Empty;
-            CompanyName = string.Empty;
-            PositionApplied = string.Empty;
-            FilePath = _fileManager.GetDefaultPdfPath();
-            EmailAddress = string.Empty;
+            get => _isExecuteButtonEnabled;
+            set
+            {
+                _isExecuteButtonEnabled = value;
+                OnPropertyChanged();
+            }
         }
 
-        private void OnExecuteOperation(object o)
+        private bool _isClearButtonEnabled;
+        public bool IsClearButtonEnabled
         {
-            throw new NotImplementedException();
+            get => _isClearButtonEnabled;
+            set
+            {
+                _isClearButtonEnabled = value;
+                OnPropertyChanged();
+            }
         }
-
-        private async Task OnOpenFilePathWindow()
-        {
-            throw new NotImplementedException();
-        }
-
-        private async Task OnOpenProjectsLoader()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICommand OpenFilePathWindow { get; private set; }
-        public ICommand OpenProjectsLoader { get; private set; }
-        public ICommand ExecuteOperation { get; private set; }
-        public ICommand ClearInputs { get; private set; }
 
         private string _projectsSelected;
         public string ProjectsSelected
@@ -64,6 +59,7 @@ namespace CV_Creator.Desktop.ViewModels
             {
                 _projectsSelected = value;
                 OnPropertyChanged();
+                AreButtonsActive();
             }
         }
 
@@ -75,6 +71,7 @@ namespace CV_Creator.Desktop.ViewModels
             {
                 _companyName = value;
                 OnPropertyChanged();
+                AreButtonsActive();
             }
         }
 
@@ -86,6 +83,7 @@ namespace CV_Creator.Desktop.ViewModels
             {
                 _positionApplied = value;
                 OnPropertyChanged();
+                AreButtonsActive();
             }
         }
 
@@ -108,6 +106,7 @@ namespace CV_Creator.Desktop.ViewModels
             {
                 _emailAddress = value;
                 OnPropertyChanged();
+                AreButtonsActive();
             }
         }
 
@@ -166,6 +165,40 @@ namespace CV_Creator.Desktop.ViewModels
                 IsFIleSavingVisible = false;
                 IsSendingEmailVisible = true;
             }
+        }
+
+        private void AreButtonsActive()
+        {
+            string[] props = { ProjectsSelected, CompanyName, PositionApplied, EmailAddress };
+
+            IsClearButtonEnabled = props.Any(prop => !string.IsNullOrEmpty(prop)) ? true : false;
+
+            IsExecuteButtonEnabled = props.All(prop => !string.IsNullOrEmpty(prop)) ? true : false;
+        }
+
+        private void OnClearInputs(object o)
+        {
+            SendOrSave = 1;
+            ProjectsSelected = string.Empty;
+            CompanyName = string.Empty;
+            PositionApplied = string.Empty;
+            FilePath = _fileManager.GetDefaultPdfPath();
+            EmailAddress = string.Empty;
+        }
+
+        private void OnExecuteOperation(object o)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OnSaveFilePathWindow(object o)
+        {
+            FilePath = _windowManager.OpenFileDialogWindow(FilePath);
+        }
+
+        private async Task OnOpenProjectsLoaderAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

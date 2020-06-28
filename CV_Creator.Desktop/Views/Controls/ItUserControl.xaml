@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <conv:RadioBoolToIntConverter x:Key="radioBoolToIntConverter" />
     </UserControl.Resources>
-    <Grid Background="DarkSeaGreen">
+    <Grid Background="#e0ece0">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -48,7 +48,7 @@
                    Style="{StaticResource textBox}"
                  IsReadOnly="True">
             <TextBox.InputBindings>
-                <MouseBinding Command="{Binding OpenProjectsLoader}" MouseAction="LeftClick" />
+                <MouseBinding Command="{Binding OpenProjectsLoaderCommand}" MouseAction="LeftClick" />
             </TextBox.InputBindings>
         </TextBox>
         <TextBox Text="{Binding CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -67,7 +67,7 @@
                    Style="{StaticResource textBox}"
                  IsReadOnly="True">
         <TextBox.InputBindings>
-                <MouseBinding Command="{Binding OpenFilePathWindow}" MouseAction="LeftClick" />
+                <MouseBinding Command="{Binding OpenFilePathWindowCommand}" MouseAction="LeftClick" />
             </TextBox.InputBindings>
         </TextBox>
 
@@ -78,7 +78,7 @@
             HorizontalAlignment="Center"
             Width="120"
             Margin="20"
-            Command="{Binding ExecuteOperation}"
+            Command="{Binding ExecuteOperationCommand}"
             IsEnabled="{Binding IsExecuteButtonEnabled}">
         </Button>
         <Button
@@ -88,7 +88,7 @@
             HorizontalAlignment="Center"
             Width="120"
             Margin="20"
-            Command="{Binding ClearInputs}"
+            Command="{Binding ClearInputsCommand}"
             IsEnabled="{Binding IsClearButtonEnabled}">
         </Button>
     </Grid>

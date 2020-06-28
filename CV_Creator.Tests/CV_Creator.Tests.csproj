@@ -13,4 +13,9 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CV_Creator.Desktop\CV_Creator.Desktop.csproj" />
+    <ProjectReference Include="..\CV_Creator.Services\CV_Creator.Services.csproj" />
+  </ItemGroup>
+
 </Project>
