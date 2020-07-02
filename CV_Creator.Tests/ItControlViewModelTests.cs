@@ -16,15 +16,14 @@ namespace CV_Creator.Tests
             _windowManagerMock = new Mock<IWindowManager>();
             _fileManagerMock = new Mock<IFileManager>();
 
-            _viewModel = new ItControlViewModel(_windowManagerMock.Object, _fileManagerMock.Object);
+            _viewModel = new ItControlViewModel(_windowManagerMock.Object, _fileManagerMock.Object, ProjectLoaderViewModel);
         }
 
-        [Fact]
-        public void ClearInputsCommand_Executed_CallsGetDefaultPdfPathOnce()
+        private IProjectLoaderViewModel ProjectLoaderViewModel()
         {
-            _viewModel.ClearInputsCommand.Execute(null);
+            var projectLoaderViewModelMock = new Mock<IProjectLoaderViewModel>();
 
-            _fileManagerMock.Verify(mock => mock.GetDefaultPdfPath(), Times.Once);
+            return projectLoaderViewModelMock.Object;
         }
 
         [Fact]
@@ -34,5 +33,17 @@ namespace CV_Creator.Tests
 
             _windowManagerMock.Verify(mock => mock.OpenFileDialogWindow(It.IsAny<string>()), Times.Once);
         }
+
+        [Fact]
+        public void OpenProjectsLoaderCommand_Executed_CallsOpenResultWindowOnce()
+        {
+            _viewModel.OpenProjectsLoaderCommand.Execute(null);
+
+            _windowManagerMock.Verify(mock => mock.OpenResultWindow(It.IsAny<object>()), Times.Once);
+        }
+
+        //TODO: what returns OpenResultWindow
+
+        //TODO: what returns OpenFileDialogWindow
     }
 }

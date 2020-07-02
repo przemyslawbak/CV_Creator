@@ -80,6 +80,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ItControlViewModel.cs" />
     <Compile Include="ViewModels\OffshoreControlViewModel.cs" />
+    <Compile Include="ViewModels\ProjectLoaderViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\Controls\ItUserControl.xaml.cs">
@@ -90,6 +91,9 @@
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProjectLoaderWindow.xaml.cs">
+      <DependentUpon>ProjectLoaderWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProjectLoaderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

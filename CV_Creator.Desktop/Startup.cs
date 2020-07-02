@@ -14,8 +14,12 @@ namespace CV_Creator
 
             builder.RegisterType<WindowManager>()
               .As<IWindowManager>().SingleInstance();
+
             builder.RegisterType<FileManager>()
               .As<IFileManager>().SingleInstance();
+
+            builder.RegisterType<ProjectLoaderViewModel>()
+              .As<IProjectLoaderViewModel>().SingleInstance();
 
             builder.RegisterType<MainWindow>().AsSelf();
 
@@ -24,6 +28,8 @@ namespace CV_Creator
 
             builder.RegisterType<OffshoreUserControl>().AsSelf();
             builder.RegisterType<OffshoreControlViewModel>().AsSelf().SingleInstance();
+
+            builder.RegisterType<ProjectLoaderWindow>().AsSelf();
 
             return builder.Build();
         }

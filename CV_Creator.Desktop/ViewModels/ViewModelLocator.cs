@@ -26,5 +26,7 @@ namespace CV_Creator.Desktop.ViewModels
                 return _container.Resolve<ItControlViewModel>();
             }
         }
+
+        //TODO: clean up for new approach
     }
 }

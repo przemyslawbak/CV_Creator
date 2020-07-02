@@ -1,6 +1,8 @@
 ﻿using CV_Creator.Desktop.Commands;
+using CV_Creator.Models;
 using CV_Creator.Services;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -11,17 +13,20 @@ namespace CV_Creator.Desktop.ViewModels
     {
         private readonly IWindowManager _windowManager;
         private readonly IFileManager _fileManager;
-        public ItControlViewModel(IWindowManager windowManager, IFileManager fileManager)
+        private Func<IProjectLoaderViewModel> _projectLoaderVMCreator;
+
+        public ItControlViewModel(IWindowManager windowManager, IFileManager fileManager, Func<IProjectLoaderViewModel> projectLoaderVMCreator)
         {
             _windowManager = windowManager;
             _fileManager = fileManager;
+            _projectLoaderVMCreator = projectLoaderVMCreator;
 
             OpenProjectsLoaderCommand = new AsyncCommand(async () => await OnOpenProjectsLoaderAsync());
             OpenFilePathWindowCommand = new DelegateCommand(OnSaveFilePathWindow);
             ExecuteOperationCommand = new DelegateCommand(OnExecuteOperation);
             ClearInputsCommand = new DelegateCommand(OnClearInputs);
 
-            //TODO: load latest from the file at first
+            LoadControlsFromFile();
         }
 
         public ICommand OpenFilePathWindowCommand { get; private set; }
@@ -95,6 +100,7 @@ namespace CV_Creator.Desktop.ViewModels
             {
                 _filePath = value;
                 OnPropertyChanged();
+                AreButtonsActive();
             }
         }
 
@@ -121,59 +127,36 @@ namespace CV_Creator.Desktop.ViewModels
             {
                 _sendOrSave = value;
                 OnPropertyChanged();
-                VisibilityUpdate(_sendOrSave);
-            }
-        }
-
-        private bool _isEmailAddressVisible;
-        public bool IsSendingEmailVisible
-        {
-            get
-            {
-                return _isEmailAddressVisible;
-            }
-            set
-            {
-                _isEmailAddressVisible = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private bool _isFilePathVisible;
-        public bool IsFIleSavingVisible
-        {
-            get
-            {
-                return _isFilePathVisible;
-            }
-            set
-            {
-                _isFilePathVisible = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private void VisibilityUpdate(int _sendOrSave)
-        {
-            if (_sendOrSave == 1)
-            {
-                IsFIleSavingVisible = true;
-                IsSendingEmailVisible = false;
-            }
-            else
-            {
-                IsFIleSavingVisible = false;
-                IsSendingEmailVisible = true;
+                AreButtonsActive();
             }
         }
 
         private void AreButtonsActive()
         {
-            string[] props = { ProjectsSelected, CompanyName, PositionApplied, EmailAddress };
+            string[] allProps = { ProjectsSelected, CompanyName, PositionApplied, FilePath, EmailAddress };
+            IsClearButtonEnabled = allProps.Any(prop => !string.IsNullOrEmpty(prop)) ? true : false;
 
-            IsClearButtonEnabled = props.Any(prop => !string.IsNullOrEmpty(prop)) ? true : false;
+            if (SendOrSave == 1)
+            {
+                string[] props = { ProjectsSelected, CompanyName, PositionApplied, FilePath };
+                IsExecuteButtonEnabled = props.All(prop => !string.IsNullOrEmpty(prop)) ? true : false;
+            }
+            else
+            {
+                string[] props = { ProjectsSelected, CompanyName, PositionApplied, EmailAddress };
+                IsExecuteButtonEnabled = props.All(prop => !string.IsNullOrEmpty(prop)) ? true : false;
+            }
+        }
 
-            IsExecuteButtonEnabled = props.All(prop => !string.IsNullOrEmpty(prop)) ? true : false;
+        private void LoadControlsFromFile()
+        {
+            //TODO: load from file
+            SendOrSave = 1;
+            ProjectsSelected = string.Empty;
+            CompanyName = string.Empty;
+            PositionApplied = string.Empty;
+            FilePath = string.Empty;
+            EmailAddress = string.Empty;
         }
 
         private void OnClearInputs(object o)
@@ -182,7 +165,7 @@ namespace CV_Creator.Desktop.ViewModels
             ProjectsSelected = string.Empty;
             CompanyName = string.Empty;
             PositionApplied = string.Empty;
-            FilePath = _fileManager.GetDefaultPdfPath();
+            FilePath = string.Empty;
             EmailAddress = string.Empty;
         }
 
@@ -198,7 +181,7 @@ namespace CV_Creator.Desktop.ViewModels
 
         private async Task OnOpenProjectsLoaderAsync()
         {
-            throw new NotImplementedException();
+            List<Project> projects = await _windowManager.OpenResultWindow(_projectLoaderVMCreator()) as List<Project>;
         }
     }
 }

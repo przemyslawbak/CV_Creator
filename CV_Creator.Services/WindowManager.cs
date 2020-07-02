@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CV_Creator.Services
 {
@@ -25,6 +26,11 @@ namespace CV_Creator.Services
             }
 
             return result;
+        }
+
+        public async Task<object> OpenResultWindow(object viewModel)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
