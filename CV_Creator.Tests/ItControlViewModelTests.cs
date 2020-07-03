@@ -41,9 +41,5 @@ namespace CV_Creator.Tests
 
             _windowManagerMock.Verify(mock => mock.OpenResultWindow(It.IsAny<object>()), Times.Once);
         }
-
-        //TODO: what returns OpenResultWindow
-
-        //TODO: what returns OpenFileDialogWindow
     }
 }

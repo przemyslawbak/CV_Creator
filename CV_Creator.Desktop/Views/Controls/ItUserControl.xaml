@@ -80,7 +80,6 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <!--TODO: placeholder-->
         <TextBox Text="{Binding PositionApplied, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Name="tbPosition"
                    Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
