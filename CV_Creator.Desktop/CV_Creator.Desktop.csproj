@@ -79,10 +79,10 @@
     <Compile Include="Converters\TabSizeConverter.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ItControlViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\OffshoreControlViewModel.cs" />
     <Compile Include="ViewModels\ProjectLoaderViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\Controls\ItUserControl.xaml.cs">
       <DependentUpon>ItUserControl.xaml</DependentUpon>
     </Compile>

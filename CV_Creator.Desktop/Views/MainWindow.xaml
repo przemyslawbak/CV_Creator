@@ -29,7 +29,7 @@
                         <TextBlock Text="IT Resume" Foreground="Black" FontSize="18"/>
                     </StackPanel>
                 </TabItem.Header>
-                <contr:ItUserControl/>
+                <contr:ItUserControl DataContext="{Binding ItControlViewModel}"/>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -37,7 +37,7 @@
                         <TextBlock Text="Offshore Resume" Foreground="Black" FontSize="18"/>
                     </StackPanel>
                 </TabItem.Header>
-                <contr:OffshoreUserControl/>
+                <contr:OffshoreUserControl DataContext="{Binding OffshoreControlViewModel}"/>
             </TabItem>
         </TabControl>
     </Grid>

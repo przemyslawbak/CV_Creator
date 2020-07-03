@@ -27,6 +27,21 @@ namespace CV_Creator.Services
         public List<WindowModel> OpenedViews { get; set; }
 
         /// <summary>
+        /// Opens window for specific view model using name convention. Attaches event handler for Window.Closed.
+        /// </summary>
+        /// <param name="viewModel">View model name</param>
+        public void OpenWindow(object viewModel)
+        {
+            if (!CheckIfAlreadyOpened(viewModel))
+            {
+                WindowModel model = CreateWindoModel(viewModel);
+
+                model.OpenedWindow.Closed += new EventHandler((s, e) => WindowClosed(s, e, model));
+                model.OpenedWindow.Show();
+            }
+        }
+
+        /// <summary>
         /// OpenFileDialog wrapper.
         /// </summary>
         /// <param name="filePath">Initial file path</param>
@@ -145,6 +160,19 @@ namespace CV_Creator.Services
             };
 
             return model;
+        }
+
+        /// <summary>
+        /// Handler for Closed event, triggered when window is about to close.
+        /// </summary>
+        /// <param name="sender">Window object</param>
+        /// <param name="model">Window model object related to the window</param>
+        private void WindowClosed(object sender, EventArgs args, WindowModel model)
+        {
+            Window window = (Window)sender;
+            window.Closed -= new EventHandler((s, e) => WindowClosed(s, e, model));
+
+            OpenedViews.Remove(model);
         }
     }
 }

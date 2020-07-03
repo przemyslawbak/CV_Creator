@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using System.Windows;
 
 namespace CV_Creator.Services
 {
@@ -7,5 +6,6 @@ namespace CV_Creator.Services
     {
         string OpenFileDialogWindow(string filePath);
         Task<object> OpenResultWindow(object viewModel);
+        void OpenWindow(object vm);
     }
 }
