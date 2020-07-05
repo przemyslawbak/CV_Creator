@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CV_Creator.Services
 {
-    public class ProjectsPaginationService : IProjectsPaginationService
+    public class ProjectCollectionDisplayService : IProjectCollectionDisplayService
     {
         public List<CheckedProject> GetDisplayResults(int currentPage, int displayItemsPerPage, List<CheckedProject> filteredProjects)
         {

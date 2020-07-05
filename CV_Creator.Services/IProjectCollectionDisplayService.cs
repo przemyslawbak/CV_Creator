@@ -3,7 +3,7 @@ using CV_Creator.Models;
 
 namespace CV_Creator.Services
 {
-    public interface IProjectsPaginationService
+    public interface IProjectCollectionDisplayService
     {
         List<CheckedProject> GetDisplayResults(int currentPage, int displayItemsPerPage, List<CheckedProject> filteredProjects);
         List<CheckedProject> FilterDisplayedCollection(string filterTechPhrase, List<CheckedProject> filteredProjects, List<CheckedProject> loadedAllProjects, int _displayItemsPerPage, int currentPage);

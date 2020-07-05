@@ -18,12 +18,12 @@ namespace CV_Creator.Desktop.ViewModels
     {
         private readonly IWindowManager _winService;
         private readonly IProjectRepository _repositoryProj;
-        private readonly IProjectsPaginationService _paginationService;
+        private readonly IProjectCollectionDisplayService _paginationService;
         private readonly List<CheckedProject> _loadedAllProjects;
         private List<CheckedProject> _filteredProjects;
         private readonly int _displayItemsPerPage;
 
-        public ProjectLoaderViewModel(IProjectRepository repoProj, IProjectsPaginationService paginationService, IWindowManager winService)
+        public ProjectLoaderViewModel(IProjectRepository repoProj, IProjectCollectionDisplayService paginationService, IWindowManager winService)
         {
             _winService = winService;
             _repositoryProj = repoProj;

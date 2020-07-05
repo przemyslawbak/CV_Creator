@@ -27,8 +27,8 @@ namespace CV_Creator
             builder.RegisterType<WindowManager>()
               .As<IWindowManager>().SingleInstance(); //singleton for window collection prop
 
-            builder.RegisterType<ProjectsPaginationService>()
-              .As<IProjectsPaginationService>();
+            builder.RegisterType<ProjectCollectionDisplayService>()
+              .As<IProjectCollectionDisplayService>();
 
             builder.RegisterType<FileManager>()
               .As<IFileManager>();
