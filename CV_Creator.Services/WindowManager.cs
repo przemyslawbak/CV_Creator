@@ -174,5 +174,23 @@ namespace CV_Creator.Services
 
             OpenedViews.Remove(model);
         }
+
+        /// <summary>
+        /// Finds Window in OpenedViews List basing on VM object type, closes this window, removes from dictionary.
+        /// </summary>
+        /// <param name="viewModel">View model object</param>
+        public void CloseWindow(object viewModel)
+        {
+            if (viewModel != null)
+            {
+                Type type = viewModel.GetType();
+                Window window = OpenedViews.FirstOrDefault(model => model.AssignedViewModel.GetType() == type).OpenedWindow as Window;
+
+                if (window != null)
+                {
+                    window.Close();
+                }
+            }
+        }
     }
 }

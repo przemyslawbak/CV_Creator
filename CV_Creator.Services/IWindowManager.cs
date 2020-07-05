@@ -7,5 +7,6 @@ namespace CV_Creator.Services
         string OpenFileDialogWindow(string filePath);
         Task<object> OpenResultWindow(object viewModel);
         void OpenWindow(object vm);
+        void CloseWindow(object viewModel);
     }
 }

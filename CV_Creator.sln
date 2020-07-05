@@ -5,13 +5,15 @@ VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV_Creator.Desktop", "CV_Creator.Desktop\CV_Creator.Desktop.csproj", "{5A718A47-9488-49EE-BABC-8E4A1E1759C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV_Creator.Events", "CV_Creator.Events\CV_Creator.Events.csproj", "{C084B8B2-D38E-42F1-A683-0C0DC47F26C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CV_Creator.Events", "CV_Creator.Events\CV_Creator.Events.csproj", "{C084B8B2-D38E-42F1-A683-0C0DC47F26C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV_Creator.Models", "CV_Creator.Models\CV_Creator.Models.csproj", "{1D4D55BB-A1C1-4BD5-8DB7-C96F069B76CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CV_Creator.Models", "CV_Creator.Models\CV_Creator.Models.csproj", "{1D4D55BB-A1C1-4BD5-8DB7-C96F069B76CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV_Creator.Services", "CV_Creator.Services\CV_Creator.Services.csproj", "{96C72684-12DA-4BBD-AE2C-3CD861F9FCF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CV_Creator.Services", "CV_Creator.Services\CV_Creator.Services.csproj", "{96C72684-12DA-4BBD-AE2C-3CD861F9FCF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV_Creator.Tests", "CV_Creator.Tests\CV_Creator.Tests.csproj", "{320AFA92-46F8-4E8E-92D8-3F8CA101921D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CV_Creator.Tests", "CV_Creator.Tests\CV_Creator.Tests.csproj", "{320AFA92-46F8-4E8E-92D8-3F8CA101921D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV_Creator.DAL", "CV_Creator.DAL\CV_Creator.DAL.csproj", "{51C2A06A-1569-48D0-9885-BCDC9A7B751D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{320AFA92-46F8-4E8E-92D8-3F8CA101921D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{320AFA92-46F8-4E8E-92D8-3F8CA101921D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{320AFA92-46F8-4E8E-92D8-3F8CA101921D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C2A06A-1569-48D0-9885-BCDC9A7B751D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C2A06A-1569-48D0-9885-BCDC9A7B751D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C2A06A-1569-48D0-9885-BCDC9A7B751D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C2A06A-1569-48D0-9885-BCDC9A7B751D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

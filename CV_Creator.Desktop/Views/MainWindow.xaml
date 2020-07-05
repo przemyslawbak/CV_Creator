@@ -31,6 +31,17 @@
                 </TabItem.Header>
                 <contr:ItUserControl DataContext="{Binding ItControlViewModel}"/>
             </TabItem>
+        </TabControl>
+        <!-- NEXT VERSION:
+        <TabControl>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Height="25">
+                        <TextBlock Text="IT Resume" Foreground="Black" FontSize="18"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <contr:ItUserControl DataContext="{Binding ItControlViewModel}"/>
+            </TabItem>
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal" Height="25">
@@ -40,5 +51,6 @@
                 <contr:OffshoreUserControl DataContext="{Binding OffshoreControlViewModel}"/>
             </TabItem>
         </TabControl>
+        -->
     </Grid>
 </Window>

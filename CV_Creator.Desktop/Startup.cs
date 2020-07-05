@@ -1,8 +1,10 @@
 ﻿using Autofac;
+using CV_Creator.DAL;
 using CV_Creator.Desktop.ViewModels;
 using CV_Creator.Desktop.Views;
 using CV_Creator.Desktop.Views.Controls;
 using CV_Creator.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace CV_Creator
 {
@@ -12,14 +14,27 @@ namespace CV_Creator
         {
             var builder = new ContainerBuilder();
 
+            builder.RegisterType<ProjectRepository>()
+                .As<IProjectRepository>();
+
+            var dbContextOptionsBuilder = new DbContextOptionsBuilder<ProjectsDbContext>()
+                .UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Portfolio_Strona;Trusted_Connection=True;MultipleActiveResultSets=true");
+
+            builder.RegisterType<ProjectsDbContext>()
+            .WithParameter("options", dbContextOptionsBuilder.Options)
+            .InstancePerLifetimeScope();
+
             builder.RegisterType<WindowManager>()
-              .As<IWindowManager>().SingleInstance();
+              .As<IWindowManager>().SingleInstance(); //singleton for window collection prop
+
+            builder.RegisterType<ProjectsPaginationService>()
+              .As<IProjectsPaginationService>();
 
             builder.RegisterType<FileManager>()
-              .As<IFileManager>().SingleInstance();
+              .As<IFileManager>();
 
             builder.RegisterType<ProjectLoaderViewModel>()
-              .As<IProjectLoaderViewModel>().SingleInstance();
+              .As<IProjectLoaderViewModel>();
 
             builder.RegisterType<MainWindow>().AsSelf();
             builder.RegisterType<MainViewModel>().AsSelf().SingleInstance();
@@ -31,7 +46,6 @@ namespace CV_Creator
             builder.RegisterType<OffshoreControlViewModel>().AsSelf().SingleInstance();
 
             builder.RegisterType<ProjectLoaderWindow>().AsSelf();
-            builder.RegisterType<ProjectLoaderViewModel>().AsSelf();
 
             return builder.Build();
         }
