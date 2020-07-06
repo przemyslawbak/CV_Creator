@@ -5,6 +5,8 @@ using CV_Creator.Desktop.Views;
 using CV_Creator.Desktop.Views.Controls;
 using CV_Creator.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
 
 namespace CV_Creator
 {
@@ -17,12 +19,14 @@ namespace CV_Creator
             builder.RegisterType<ProjectRepository>()
                 .As<IProjectRepository>();
 
+
             var dbContextOptionsBuilder = new DbContextOptionsBuilder<ProjectsDbContext>()
                 .UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Portfolio_Strona;Trusted_Connection=True;MultipleActiveResultSets=true");
 
             builder.RegisterType<ProjectsDbContext>()
             .WithParameter("options", dbContextOptionsBuilder.Options)
             .InstancePerLifetimeScope();
+
 
             builder.RegisterType<WindowManager>()
               .As<IWindowManager>().SingleInstance(); //singleton for window collection prop
