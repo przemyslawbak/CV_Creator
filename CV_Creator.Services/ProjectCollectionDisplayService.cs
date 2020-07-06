@@ -24,7 +24,7 @@ namespace CV_Creator.Services
                 filteredProjects = loadedAllProjects;
             }
 
-            return GetDisplayResults(currentPage, displayItemsPerPage, filteredProjects);
+            return filteredProjects;
         }
 
         public int GetPagesCount(int filteredProjectsCount, int displayItemsPerPage)

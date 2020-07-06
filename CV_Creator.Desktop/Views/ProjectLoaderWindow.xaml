@@ -3,43 +3,136 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CV_Creator.Desktop.Views"
         mc:Ignorable="d"
-        Title="ProjectLoaderWindow" Height="450" Width="800">
+        Title="Select Projects" Height="550" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Label Grid.Row="0" Margin="2">
-                <Label.Content>
-                    <Binding Path="CurrentPage">
-                        <Binding.StringFormat>Current Page: {0}</Binding.StringFormat>
-                    </Binding>
-                </Label.Content>
-            </Label>
-            <Label Grid.Row="0" Margin="2">
-                <Label.Content>
-                    <Binding Path="PageCount">
-                        <Binding.StringFormat>of {0}</Binding.StringFormat>
-                    </Binding>
-                </Label.Content>
-            </Label>
-            <Button Content="Prev" Command="{Binding PrevClickCommand}" Margin="2"/>
-            <Button Content="Next" Command="{Binding NextClickCommand}" Margin="2"/>
-            <TextBlock Text="filter technologies:"/>
-            <TextBox Text="{Binding FilterTechPhrase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" Height="20"/>
+            <Button Content="Prev" Command="{Binding PrevClickCommand}"
+                Width="60"
+                Height="40"
+                Margin="10 20 5 20"/>
+            <Button Content="Next" Command="{Binding NextClickCommand}"
+                Width="60"
+                Height="40"
+                Margin="5 20 10 20"/>
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        Width="60"
+                        Height="40"
+                        Margin="0 20 10 20">
+                <TextBlock Text="Page:" HorizontalAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0} of {1}">
+                            <Binding Path="CurrentPage" />
+                            <Binding Path="PageCount" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
         </StackPanel>
-        <DataGrid ItemsSource="{Binding Path=DisplayCollection}" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="false">
+        <DockPanel LastChildFill="False" HorizontalAlignment="Right">
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        Width="210"
+                        Height="40"
+                        Margin="5 20 10 20"
+                            DockPanel.Dock="Right">
+                <TextBlock Text="filter technologies:" HorizontalAlignment="Center"/>
+                <TextBox Text="{Binding FilterTechPhrase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" Height="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </DockPanel>
+        <DataGrid ItemsSource="{Binding Path=DisplayCollection}"
+                  HeadersVisibility="Column"
+                  ScrollViewer.CanContentScroll="False"
+                  FontSize="14"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="false"
+                  CanUserSortColumns="False"
+                  HorizontalAlignment="Stretch">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridCellsPresenter">
+                    <Setter Property="Height" Value="150" />
+                </Style>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="Background" Value="#e0ece0"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="DataGridCell.IsSelected" Value="True">
+                            <Setter Property="BorderBrush">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="Transparent"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground"
+                            Value="{DynamicResource
+                                   {x:Static SystemColors.ControlTextBrushKey}}"/>
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="Transparent"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="BorderThickness" Value="0.2" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Choosed" Binding="{Binding Checked}" IsReadOnly="False"/>
-                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Comments" Width="*" Binding="{Binding Comment}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Techs" Width="*" Binding="{Binding Techs}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Check" Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Path=Checked, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Name}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Comments" Width="*" Binding="{Binding Comment}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Technology" Width="150" Binding="{Binding Techs}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Finish" Command="{Binding FinishClickCommand}" Margin="2" Grid.Row="2" Height="30" Width="200"/>
+        <Button Content="Finish" Command="{Binding FinishClickCommand}"
+                Grid.Row="2"
+                Width="120"
+                Height="40"
+                Margin="20"/>
     </Grid>
 </Window>

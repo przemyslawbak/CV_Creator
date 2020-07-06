@@ -160,6 +160,7 @@
     <Compile Include="Commands\AsyncCommandBase.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Converters\RadioBoolToIntConverter.cs" />
+    <Compile Include="Converters\RowHeightConverter.cs" />
     <Compile Include="Converters\TabSizeConverter.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ItControlViewModel.cs" />

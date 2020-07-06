@@ -2,6 +2,7 @@
 using CV_Creator.Desktop.Commands;
 using CV_Creator.Models;
 using CV_Creator.Services;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace CV_Creator.Desktop.ViewModels
             _paginationService = paginationService;
             _loadedAllProjects = _repositoryProj.GetAllCheckedProjects();
             _filteredProjects = _loadedAllProjects;
-            _displayItemsPerPage = 3;
+            _displayItemsPerPage = 2;
 
             CurrentPage = 1;
             DisplayCollection = GetNewPageCollection();
@@ -45,6 +46,8 @@ namespace CV_Creator.Desktop.ViewModels
         public ICommand PrevClickCommand { get; private set; }
         public ICommand FinishClickCommand { get; private set; }
 
+        //TODO: number of added, max number
+
         public object ObjectResult { get; set; }
 
         private string _filterTechPhrase;
@@ -56,9 +59,12 @@ namespace CV_Creator.Desktop.ViewModels
                 _filterTechPhrase = value;
                 OnPropertyChanged();
                 CurrentPage = 1;
+                _filteredProjects = FilterPageCollection();
                 DisplayCollection = GetNewPageCollection();
+                PageCount = GetPageCount();
             }
         }
+
 
         private int _pageCount;
         public int PageCount
@@ -113,13 +119,24 @@ namespace CV_Creator.Desktop.ViewModels
 
         private ObservableCollection<CheckedProject> GetNewPageCollection()
         {
-            return new ObservableCollection<CheckedProject>(
-                    _paginationService.FilterDisplayedCollection(
+            return new ObservableCollection<CheckedProject>(_paginationService.GetDisplayResults(
+                CurrentPage,
+                _displayItemsPerPage,
+                _filteredProjects));
+        }
+
+        private List<CheckedProject> FilterPageCollection()
+        {
+            return _paginationService.FilterDisplayedCollection(
                     FilterTechPhrase,
                     _filteredProjects,
                     _loadedAllProjects,
                     _displayItemsPerPage,
-                    CurrentPage));
+                    CurrentPage);
+        }
+        private int GetPageCount()
+        {
+            return _paginationService.GetPagesCount(_filteredProjects.Count(), _displayItemsPerPage);
         }
 
         private void OnFinishClick(object obj)

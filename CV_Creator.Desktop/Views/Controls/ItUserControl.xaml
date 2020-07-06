@@ -142,6 +142,7 @@
             Content="Create"
             HorizontalAlignment="Center"
             Width="120"
+            Height="40"
             Margin="20"
             Command="{Binding ExecuteOperationCommand}"
             IsEnabled="{Binding IsExecuteButtonEnabled}">
@@ -152,6 +153,7 @@
             Content="Clear"
             HorizontalAlignment="Center"
             Width="120"
+            Height="40"
             Margin="20"
             Command="{Binding ClearInputsCommand}"
             IsEnabled="{Binding IsClearButtonEnabled}">
