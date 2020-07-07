@@ -2,6 +2,6 @@
 {
     public interface IFileManager
     {
-        string GetDefaultPdfPath();
+        void SaveToDiskAsync(byte[] pdfCv, string filePath);
     }
 }

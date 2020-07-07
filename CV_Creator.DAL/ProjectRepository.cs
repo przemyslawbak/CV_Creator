@@ -13,7 +13,7 @@ namespace CV_Creator.DAL
         {
             _context = context;
         }
-        public async Task<List<CheckedProject>> GetAllCheckedProjects()
+        public async Task<List<CheckedProject>> GetAllCheckedProjectsAsync()
         {
             return await (from q in _context.Projects.Include(i => i.TechnologiesProjects).ThenInclude(techproj => techproj.Technology)
                           select new CheckedProject

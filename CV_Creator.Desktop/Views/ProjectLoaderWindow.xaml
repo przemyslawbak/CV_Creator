@@ -48,6 +48,7 @@
             </StackPanel>
         </DockPanel>
         <DataGrid ItemsSource="{Binding Path=DisplayCollection}"
+                  Background="#e0ece0"
                   HeadersVisibility="Column"
                   ScrollViewer.CanContentScroll="False"
                   FontSize="14"
@@ -55,7 +56,8 @@
                   AutoGenerateColumns="False"
                   CanUserAddRows="false"
                   CanUserSortColumns="False"
-                  HorizontalAlignment="Stretch">
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch">
             <DataGrid.Resources>
                 <Style TargetType="DataGridCellsPresenter">
                     <Setter Property="Height" Value="150" />

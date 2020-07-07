@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace CV_Creator.Services
 {
     public class FileManager : IFileManager
     {
-        public string GetDefaultPdfPath()
+        public void SaveToDiskAsync(byte[] pdfCv, string filePath)
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Przemyslaw_Bak_CV.pdf");
+            throw new NotImplementedException();
         }
     }
 }

@@ -43,7 +43,7 @@ namespace CV_Creator.Desktop.ViewModels
         private async Task LoadDataAndInitPropertiesAsync()
         {
             LoadingData = true;
-            _loadedAllProjects = await _repositoryProj.GetAllCheckedProjects();
+            _loadedAllProjects = await _repositoryProj.GetAllCheckedProjectsAsync();
             _filteredProjects = _loadedAllProjects;
             DisplayCollection = GetNewPageCollection();
             PageCount = _paginationService.GetPagesCount(_filteredProjects.Count(), _displayItemsPerPage);

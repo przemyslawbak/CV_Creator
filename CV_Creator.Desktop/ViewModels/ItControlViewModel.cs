@@ -12,14 +12,24 @@ namespace CV_Creator.Desktop.ViewModels
     public class ItControlViewModel : ViewModelBase
     {
         private readonly IWindowManager _windowManager;
+        private readonly IDataProcessor _dataProcessor;
         private readonly IFileManager _fileManager;
+        private readonly IEmailManager _emailManager;
         private Func<IProjectLoaderViewModel> _projectLoaderVMCreator;
 
-        public ItControlViewModel(IWindowManager windowManager, IFileManager fileManager, Func<IProjectLoaderViewModel> projectLoaderVMCreator)
+        public ItControlViewModel(
+            IWindowManager windowManager,
+            IDataProcessor dataProcessor,
+            Func<IProjectLoaderViewModel> projectLoaderVMCreator,
+            IFileManager fileManager,
+            IEmailManager emailManager
+            )
         {
             _windowManager = windowManager;
-            _fileManager = fileManager;
+            _dataProcessor = dataProcessor;
             _projectLoaderVMCreator = projectLoaderVMCreator;
+            _fileManager = fileManager;
+            _emailManager = emailManager;
 
             OpenProjectsLoaderCommand = new AsyncCommand(async () => await OnOpenProjectsLoaderAsync());
             OpenFilePathWindowCommand = new DelegateCommand(OnSaveFilePathWindow);
@@ -33,6 +43,8 @@ namespace CV_Creator.Desktop.ViewModels
         public ICommand OpenProjectsLoaderCommand { get; private set; }
         public ICommand ExecuteOperationCommand { get; private set; }
         public ICommand ClearInputsCommand { get; private set; }
+
+        public List<Project> LoadedProjects { get; set; }
 
         private bool _isExecuteButtonEnabled;
         public bool IsExecuteButtonEnabled
@@ -171,7 +183,16 @@ namespace CV_Creator.Desktop.ViewModels
 
         private void OnExecuteOperation(object o)
         {
-            throw new NotImplementedException();
+            byte[] pdfCv = _dataProcessor.ProcessPortfolio(LoadedProjects);
+
+            if (SendOrSave == 1)
+            {
+                _fileManager.SaveToDiskAsync(pdfCv, FilePath);
+            }
+            else
+            {
+                _emailManager.SendToAddressAsync(pdfCv, EmailAddress);
+            }
         }
 
         private void OnSaveFilePathWindow(object o)
@@ -181,15 +202,15 @@ namespace CV_Creator.Desktop.ViewModels
 
         private async Task OnOpenProjectsLoaderAsync()
         {
-            List<Project> projects = await _windowManager.OpenResultWindow(_projectLoaderVMCreator()) as List<Project>;
+            LoadedProjects = await _windowManager.OpenResultWindowAsync(_projectLoaderVMCreator()) as List<Project>;
 
             ProjectsSelected = string.Empty;
 
-            if (projects != null)
+            if (LoadedProjects != null)
             {
                 List<string> names = new List<string>();
 
-                foreach (var project in projects)
+                foreach (var project in LoadedProjects)
                 {
                     names.Add(project.Name);
                 }

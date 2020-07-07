@@ -11,14 +11,23 @@ namespace CV_Creator.Tests
     {
         private ItControlViewModel _viewModel;
         private readonly Mock<IWindowManager> _windowManagerMock;
+        private readonly Mock<IDataProcessor> _dataProcessorMock;
         private readonly Mock<IFileManager> _fileManagerMock;
+        private readonly Mock<IEmailManager> _emailManagerMock;
 
         public ItControlViewModelTests()
         {
             _windowManagerMock = new Mock<IWindowManager>();
+            _dataProcessorMock = new Mock<IDataProcessor>();
             _fileManagerMock = new Mock<IFileManager>();
+            _emailManagerMock = new Mock<IEmailManager>();
 
-            _viewModel = new ItControlViewModel(_windowManagerMock.Object, _fileManagerMock.Object, ProjectLoaderViewModel);
+            _viewModel = new ItControlViewModel(
+                _windowManagerMock.Object,
+                _dataProcessorMock.Object,
+                ProjectLoaderViewModel,
+                _fileManagerMock.Object,
+                _emailManagerMock.Object);
         }
 
         private IProjectLoaderViewModel ProjectLoaderViewModel()
@@ -41,14 +50,14 @@ namespace CV_Creator.Tests
         {
             _viewModel.OpenProjectsLoaderCommand.Execute(null);
 
-            _windowManagerMock.Verify(mock => mock.OpenResultWindow(It.IsAny<object>()), Times.Once);
+            _windowManagerMock.Verify(mock => mock.OpenResultWindowAsync(It.IsAny<object>()), Times.Once);
         }
 
         [Fact]
         public void OpenResultWindow_ReturnsValue_ProjectsSelectedIsString()
         {
             _viewModel.ProjectsSelected = string.Empty;
-            _windowManagerMock.Setup(window => window.OpenResultWindow(It.IsAny<object>())).ReturnsAsync(new List<Project>() { new Project() { Name = "Test project" }, new Project() { Name = "Second project" } });
+            _windowManagerMock.Setup(window => window.OpenResultWindowAsync(It.IsAny<object>())).ReturnsAsync(new List<Project>() { new Project() { Name = "Test project" }, new Project() { Name = "Second project" } });
 
             _viewModel.OpenProjectsLoaderCommand.Execute(null);
 
@@ -59,7 +68,7 @@ namespace CV_Creator.Tests
         public void OpenResultWindow_ReturnsNull_ProjectsSelectedIsEmpty()
         {
             _viewModel.ProjectsSelected = string.Empty;
-            _windowManagerMock.Setup(window => window.OpenResultWindow(It.IsAny<object>())).ReturnsAsync(null);
+            _windowManagerMock.Setup(window => window.OpenResultWindowAsync(It.IsAny<object>())).ReturnsAsync(null);
 
             _viewModel.OpenProjectsLoaderCommand.Execute(null);
 

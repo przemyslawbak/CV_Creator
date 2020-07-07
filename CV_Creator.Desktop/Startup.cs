@@ -34,6 +34,12 @@ namespace CV_Creator
             builder.RegisterType<ProjectCollectionDisplayService>()
               .As<IProjectCollectionDisplayService>();
 
+            builder.RegisterType<EmailManager>()
+              .As<IEmailManager>();
+
+            builder.RegisterType<DataProcessor>()
+              .As<IDataProcessor>();
+
             builder.RegisterType<FileManager>()
               .As<IFileManager>();
 

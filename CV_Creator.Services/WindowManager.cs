@@ -72,7 +72,7 @@ namespace CV_Creator.Services
         /// </summary>
         /// <param name="viewModel">View model name</param>
         /// <returns>Object result</returns>
-        public async Task<object> OpenResultWindow(object viewModel)
+        public async Task<object> OpenResultWindowAsync(object viewModel)
         {
             if (!CheckIfAlreadyOpened(viewModel))
             {
