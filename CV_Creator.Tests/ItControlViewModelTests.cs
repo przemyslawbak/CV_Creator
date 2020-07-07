@@ -74,5 +74,33 @@ namespace CV_Creator.Tests
 
             Assert.Equal(string.Empty, _viewModel.ProjectsSelected);
         }
+
+        [Fact]
+        public void ExecuteOperationCommand_Executed_CallsProcessPortfolioOnce()
+        {
+            _viewModel.ExecuteOperationCommand.Execute(null);
+
+            _dataProcessorMock.Verify(mock => mock.ProcessPortfolio(It.IsAny<List<Project>>()), Times.Once);
+        }
+
+        [Fact]
+        public void ExecuteOperationCommand_ExecutedWhenSendOrSaveIsSave_CallsSaveToDiskAsyncOnce()
+        {
+            _viewModel.SendOrSave = 1;
+
+            _viewModel.ExecuteOperationCommand.Execute(null);
+
+            _fileManagerMock.Verify(mock => mock.SaveToDiskAsync(It.IsAny<byte[]>(), It.IsAny<string>()), Times.Once);
+        }
+
+        [Fact]
+        public void ExecuteOperationCommand_ExecutedWhenSendOrSaveIsSend_CallsSaveToDiskAsyncOnce()
+        {
+            _viewModel.SendOrSave = 2;
+
+            _viewModel.ExecuteOperationCommand.Execute(null);
+
+            _emailManagerMock.Verify(mock => mock.SendToAddressAsync(It.IsAny<byte[]>(), It.IsAny<string>()), Times.Once);
+        }
     }
 }

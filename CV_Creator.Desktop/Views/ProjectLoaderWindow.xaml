@@ -48,7 +48,6 @@
             </StackPanel>
         </DockPanel>
         <DataGrid ItemsSource="{Binding Path=DisplayCollection}"
-                  Background="#e0ece0"
                   HeadersVisibility="Column"
                   ScrollViewer.CanContentScroll="False"
                   FontSize="14"
@@ -137,9 +136,9 @@
                 Height="40"
                 Margin="20"/>
         <Label
+                  Background="#e0ece0"
             Width="150"
             HorizontalContentAlignment="Center"
-            Background="#F4F4F4"
                 Content="Loading..."
                 FontSize="15"
 				 Grid.Row="1"
