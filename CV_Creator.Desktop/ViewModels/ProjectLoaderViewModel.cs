@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace CV_Creator.Desktop.ViewModels
@@ -20,7 +21,7 @@ namespace CV_Creator.Desktop.ViewModels
         private readonly IWindowManager _winService;
         private readonly IProjectRepository _repositoryProj;
         private readonly IProjectCollectionDisplayService _paginationService;
-        private readonly List<CheckedProject> _loadedAllProjects;
+        private List<CheckedProject> _loadedAllProjects;
         private List<CheckedProject> _filteredProjects;
         private readonly int _displayItemsPerPage;
 
@@ -29,17 +30,24 @@ namespace CV_Creator.Desktop.ViewModels
             _winService = winService;
             _repositoryProj = repoProj;
             _paginationService = paginationService;
-            _loadedAllProjects = _repositoryProj.GetAllCheckedProjects();
-            _filteredProjects = _loadedAllProjects;
             _displayItemsPerPage = 4;
-
             CurrentPage = 1;
-            DisplayCollection = GetNewPageCollection();
-            PageCount = _paginationService.GetPagesCount(_filteredProjects.Count(), _displayItemsPerPage);
+
+            Initialization = LoadDataAndInitPropertiesAsync();
 
             NextClickCommand = new DelegateCommand(OnNextClick);
             PrevClickCommand = new DelegateCommand(OnPrevClick);
             FinishClickCommand = new DelegateCommand(OnFinishClick);
+        }
+
+        private async Task LoadDataAndInitPropertiesAsync()
+        {
+            LoadingData = true;
+            _loadedAllProjects = await _repositoryProj.GetAllCheckedProjects();
+            _filteredProjects = _loadedAllProjects;
+            DisplayCollection = GetNewPageCollection();
+            PageCount = _paginationService.GetPagesCount(_filteredProjects.Count(), _displayItemsPerPage);
+            LoadingData = false;
         }
 
         public ICommand NextClickCommand { get; private set; }
@@ -48,6 +56,7 @@ namespace CV_Creator.Desktop.ViewModels
 
         //TODO: number of added, max number
 
+        public Task Initialization { get; private set; }
         public object ObjectResult { get; set; }
 
         private string _filterTechPhrase;
@@ -65,6 +74,16 @@ namespace CV_Creator.Desktop.ViewModels
             }
         }
 
+        private bool _loadingData;
+        public bool LoadingData
+        {
+            get => _loadingData;
+            set
+            {
+                _loadingData = value;
+                OnPropertyChanged();
+            }
+        }
 
         private int _pageCount;
         public int PageCount

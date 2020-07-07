@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CV_Creator.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CV_Creator.DAL
 {
@@ -13,17 +13,17 @@ namespace CV_Creator.DAL
         {
             _context = context;
         }
-        public List<CheckedProject> GetAllCheckedProjects()
+        public async Task<List<CheckedProject>> GetAllCheckedProjects()
         {
-            return (from q in _context.Projects.Include(i => i.TechnologiesProjects).ThenInclude(techproj => techproj.Technology)
-                    select new CheckedProject
-                    {
-                        ProjectID = q.ProjectID,
-                        Checked = false,
-                        Name = q.Name,
-                        Comment = q.Comments,
-                        Techs = string.Join(", ", q.TechnologiesProjects.Select(sn => sn.Technology.Name).ToArray())
-                    }).ToList();
+            return await (from q in _context.Projects.Include(i => i.TechnologiesProjects).ThenInclude(techproj => techproj.Technology)
+                          select new CheckedProject
+                          {
+                              ProjectID = q.ProjectID,
+                              Checked = false,
+                              Name = q.Name,
+                              Comment = q.Comments,
+                              Techs = string.Join(", ", q.TechnologiesProjects.Select(sn => sn.Technology.Name).ToArray())
+                          }).ToListAsync();
         }
 
         public object GetProjectsFromChecked(List<CheckedProject> list)

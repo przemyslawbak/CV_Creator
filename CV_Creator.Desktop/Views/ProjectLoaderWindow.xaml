@@ -134,5 +134,18 @@
                 Width="120"
                 Height="40"
                 Margin="20"/>
+        <Label
+            Width="150"
+            HorizontalContentAlignment="Center"
+            Background="#F4F4F4"
+                Content="Loading..."
+                FontSize="15"
+				 Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+            Padding="20"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            Visibility="{Binding LoadingData, Converter={StaticResource BoolToVis}}"/>
     </Grid>
 </Window>
