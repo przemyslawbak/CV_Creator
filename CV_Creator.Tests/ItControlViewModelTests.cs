@@ -1,6 +1,8 @@
 ﻿using CV_Creator.Desktop.ViewModels;
+using CV_Creator.Models;
 using CV_Creator.Services;
 using Moq;
+using System.Collections.Generic;
 using Xunit;
 
 namespace CV_Creator.Tests
@@ -40,6 +42,28 @@ namespace CV_Creator.Tests
             _viewModel.OpenProjectsLoaderCommand.Execute(null);
 
             _windowManagerMock.Verify(mock => mock.OpenResultWindow(It.IsAny<object>()), Times.Once);
+        }
+
+        [Fact]
+        public void OpenResultWindow_ReturnsValue_ProjectsSelectedIsString()
+        {
+            _viewModel.ProjectsSelected = string.Empty;
+            _windowManagerMock.Setup(window => window.OpenResultWindow(It.IsAny<object>())).ReturnsAsync(new List<Project>() { new Project() { Name = "Test project" }, new Project() { Name = "Second project" } });
+
+            _viewModel.OpenProjectsLoaderCommand.Execute(null);
+
+            Assert.Equal("Test project, Second project", _viewModel.ProjectsSelected);
+        }
+
+        [Fact]
+        public void OpenResultWindow_ReturnsNull_ProjectsSelectedIsEmpty()
+        {
+            _viewModel.ProjectsSelected = string.Empty;
+            _windowManagerMock.Setup(window => window.OpenResultWindow(It.IsAny<object>())).ReturnsAsync(null);
+
+            _viewModel.OpenProjectsLoaderCommand.Execute(null);
+
+            Assert.Equal(string.Empty, _viewModel.ProjectsSelected);
         }
     }
 }

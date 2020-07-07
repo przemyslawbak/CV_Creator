@@ -21,7 +21,7 @@ namespace CV_Creator
 
 
             var dbContextOptionsBuilder = new DbContextOptionsBuilder<ProjectsDbContext>()
-                .UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Portfolio_Strona;Trusted_Connection=True;MultipleActiveResultSets=true");
+                .UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Portfolio_Strona;Trusted_Connection=True;MultipleActiveResultSets=true"); //TODO: from config
 
             builder.RegisterType<ProjectsDbContext>()
             .WithParameter("options", dbContextOptionsBuilder.Options)

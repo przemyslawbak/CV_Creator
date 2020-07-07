@@ -182,6 +182,20 @@ namespace CV_Creator.Desktop.ViewModels
         private async Task OnOpenProjectsLoaderAsync()
         {
             List<Project> projects = await _windowManager.OpenResultWindow(_projectLoaderVMCreator()) as List<Project>;
+
+            ProjectsSelected = string.Empty;
+
+            if (projects != null)
+            {
+                List<string> names = new List<string>();
+
+                foreach (var project in projects)
+                {
+                    names.Add(project.Name);
+                }
+
+                ProjectsSelected = string.Join(", ", names.ToArray());
+            }
         }
     }
 }

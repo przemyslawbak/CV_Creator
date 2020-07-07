@@ -31,7 +31,7 @@ namespace CV_Creator.Desktop.ViewModels
             _paginationService = paginationService;
             _loadedAllProjects = _repositoryProj.GetAllCheckedProjects();
             _filteredProjects = _loadedAllProjects;
-            _displayItemsPerPage = 2;
+            _displayItemsPerPage = 4;
 
             CurrentPage = 1;
             DisplayCollection = GetNewPageCollection();
