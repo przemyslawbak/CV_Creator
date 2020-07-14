@@ -5,9 +5,6 @@ using CV_Creator.Desktop.Views;
 using CV_Creator.Desktop.Views.Controls;
 using CV_Creator.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.Configuration;
-
 namespace CV_Creator
 {
     public class Startup

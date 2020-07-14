@@ -183,7 +183,7 @@ namespace CV_Creator.Desktop.ViewModels
 
         private void OnExecuteOperation(object o)
         {
-            byte[] pdfCv = _dataProcessor.ProcessPortfolio(LoadedProjects);
+            byte[] pdfCv = _dataProcessor.ProcessPortfolio(LoadedProjects, CompanyName, PositionApplied);
 
             if (SendOrSave == 1)
             {
