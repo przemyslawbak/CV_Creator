@@ -5,12 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:conv="clr-namespace:CV_Creator.Desktop.Converters"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="550" d:DesignWidth="500">
     <UserControl.Resources>
         <conv:RadioBoolToIntConverter x:Key="radioBoolToIntConverter" />
     </UserControl.Resources>
     <Grid Background="#e0ece0">
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -26,20 +27,23 @@
         <TextBlock Text="Selected projects:"
                    Style="{StaticResource textBlockLabel}"
                    Grid.Row="0" Grid.Column="0"/>
-        <TextBlock Text="Company name:"
+        <TextBlock Text="Selected tech stack:"
                    Style="{StaticResource textBlockLabel}"
                    Grid.Row="1" Grid.Column="0"/>
-        <TextBlock Text="Position applied:"
+        <TextBlock Text="Company name:"
                    Style="{StaticResource textBlockLabel}"
                    Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="Position applied:"
+                   Style="{StaticResource textBlockLabel}"
+                   Grid.Row="3" Grid.Column="0"/>
         <RadioButton Style="{StaticResource radio}"
                 IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=1, Mode=TwoWay}"
                 Content="Save"
-                Grid.Row="3" Grid.Column="0"/>
+                Grid.Row="4" Grid.Column="0"/>
         <RadioButton Style="{StaticResource radio}"
                          IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=2, Mode=TwoWay}"
                          Content="Send"
-                         Grid.Row="4" Grid.Column="0"/>
+                         Grid.Row="5" Grid.Column="0"/>
 
         <TextBox Text="{Binding ProjectsSelected, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                  Name="tbSelectedProjects"
@@ -63,12 +67,35 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBox   Name="tbCompanyName"  Text="{Binding CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+
+        <TextBox Text="{Binding TechStackSelected, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                 Name="tbSelectedTechStack"
                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                   Style="{StaticResource textBox}"
+                 IsReadOnly="True">
+            <TextBox.InputBindings>
+                <MouseBinding Command="{Binding OpenTechLoaderCommand}" MouseAction="LeftClick" />
+            </TextBox.InputBindings>
+        </TextBox>
+        <TextBlock Text="Pick up your tech stack..."
+                   IsHitTestVisible="False"
+                   Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource textBlockPlaceholder}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=tbSelectedTechStack}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBox   Name="tbCompanyName"  Text="{Binding CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                    Style="{StaticResource textBox}"/>
         <TextBlock Text="Enter name of the company..."
                    IsHitTestVisible="False"
-                   Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                   Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource textBlockPlaceholder}">
                     <Style.Triggers>
@@ -81,11 +108,11 @@
         </TextBlock>
         <TextBox Text="{Binding PositionApplied, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Name="tbPosition"
-                   Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                   Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                    Style="{StaticResource textBox}"/>
         <TextBlock Text="Enter desired position..."
                    IsHitTestVisible="False"
-                   Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                   Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource textBlockPlaceholder}">
                     <Style.Triggers>
@@ -98,7 +125,7 @@
         </TextBlock>
         <TextBox Text="{Binding FilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Name="tbFile"
-                   Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                   Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
                    Style="{StaticResource textBox}"
                  IsReadOnly="True">
             <TextBox.InputBindings>
@@ -107,7 +134,7 @@
         </TextBox>
         <TextBlock Text="Select save path..."
                    IsHitTestVisible="False"
-                   Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+                   Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource textBlockPlaceholder}">
                     <Style.Triggers>
@@ -120,11 +147,11 @@
         </TextBlock>
         <TextBox Text="{Binding EmailAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Name="tbEmail"
-                   Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+                   Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                    Style="{StaticResource textBox}"/>
         <TextBlock Text="Enter email address..."
                    IsHitTestVisible="False"
-                   Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+                   Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource textBlockPlaceholder}">
                     <Style.Triggers>
@@ -137,7 +164,7 @@
         </TextBlock>
 
         <Button
-            Grid.Row="5"
+            Grid.Row="6"
             Grid.Column="1"
             Content="Create"
             HorizontalAlignment="Center"
@@ -148,7 +175,7 @@
             IsEnabled="{Binding IsExecuteButtonEnabled}">
         </Button>
         <Button
-            Grid.Row="5"
+            Grid.Row="6"
             Grid.Column="2"
             Content="Clear"
             HorizontalAlignment="Center"

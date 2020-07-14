@@ -168,6 +168,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\OffshoreControlViewModel.cs" />
     <Compile Include="ViewModels\ProjectLoaderViewModel.cs" />
+    <Compile Include="ViewModels\TechStackLoaderViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\Controls\ItUserControl.xaml.cs">
       <DependentUpon>ItUserControl.xaml</DependentUpon>
@@ -180,6 +181,9 @@
     </Compile>
     <Compile Include="Views\ProjectLoaderWindow.xaml.cs">
       <DependentUpon>ProjectLoaderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TechStackLoaderWindow.xaml.cs">
+      <DependentUpon>TechStackLoaderWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +245,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProjectLoaderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TechStackLoaderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

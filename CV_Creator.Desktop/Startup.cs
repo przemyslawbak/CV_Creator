@@ -43,6 +43,9 @@ namespace CV_Creator
             builder.RegisterType<ProjectLoaderViewModel>()
               .As<IProjectLoaderViewModel>();
 
+            builder.RegisterType<TechStackLoaderViewModel>()
+              .As<ITechStackLoaderViewModel>();
+
             builder.RegisterType<MainWindow>().AsSelf();
             builder.RegisterType<MainViewModel>().AsSelf().SingleInstance();
 
@@ -53,6 +56,8 @@ namespace CV_Creator
             builder.RegisterType<OffshoreControlViewModel>().AsSelf().SingleInstance();
 
             builder.RegisterType<ProjectLoaderWindow>().AsSelf();
+
+            builder.RegisterType<TechStackLoaderWindow>().AsSelf();
 
             return builder.Build();
         }

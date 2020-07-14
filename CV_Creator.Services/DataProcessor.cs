@@ -7,7 +7,7 @@ namespace CV_Creator.Services
 {
     public class DataProcessor : IDataProcessor
     {
-        public byte[] ProcessPortfolio(List<Project> loadedProjects, string companyName, string positionApplied)
+        public byte[] ProcessPortfolio(List<Project> loadedProjects, List<Technology> loadedTechStack, string companyName, string positionApplied)
         {
             var converter = new BasicConverter(new PdfTools());
 

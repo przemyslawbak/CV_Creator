@@ -7,7 +7,7 @@
         xmlns:conv="clr-namespace:CV_Creator.Desktop.Converters"
         mc:Ignorable="d"
         Title="CV Creator"
-        MinHeight="480" MinWidth="500" Height="480" Width="500" MaxHeight="520" MaxWidth="650">
+        MinHeight="550" MinWidth="500" Height="550" Width="500" MaxHeight="520" MaxWidth="650">
     <Window.Resources>
         <conv:TabSizeConverter x:Key="tabSizeConverter" />
         <Style TargetType="{x:Type TabItem}">

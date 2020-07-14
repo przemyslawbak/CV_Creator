@@ -16,11 +16,13 @@ namespace CV_Creator.Desktop.ViewModels
         private readonly IFileManager _fileManager;
         private readonly IEmailManager _emailManager;
         private Func<IProjectLoaderViewModel> _projectLoaderVMCreator;
+        private Func<ITechStackLoaderViewModel> _techLoaderVMCreator;
 
         public ItControlViewModel(
             IWindowManager windowManager,
             IDataProcessor dataProcessor,
             Func<IProjectLoaderViewModel> projectLoaderVMCreator,
+            Func<ITechStackLoaderViewModel> techLoaderVMCreator,
             IFileManager fileManager,
             IEmailManager emailManager
             )
@@ -28,10 +30,12 @@ namespace CV_Creator.Desktop.ViewModels
             _windowManager = windowManager;
             _dataProcessor = dataProcessor;
             _projectLoaderVMCreator = projectLoaderVMCreator;
+            _techLoaderVMCreator = techLoaderVMCreator;
             _fileManager = fileManager;
             _emailManager = emailManager;
 
             OpenProjectsLoaderCommand = new AsyncCommand(async () => await OnOpenProjectsLoaderAsync());
+            OpenTechLoaderCommand = new AsyncCommand(async () => await OnOpenTechLoaderAsync());
             OpenFilePathWindowCommand = new DelegateCommand(OnSaveFilePathWindow);
             ExecuteOperationCommand = new DelegateCommand(OnExecuteOperation);
             ClearInputsCommand = new DelegateCommand(OnClearInputs);
@@ -41,10 +45,12 @@ namespace CV_Creator.Desktop.ViewModels
 
         public ICommand OpenFilePathWindowCommand { get; private set; }
         public ICommand OpenProjectsLoaderCommand { get; private set; }
+        public ICommand OpenTechLoaderCommand { get; private set; }
         public ICommand ExecuteOperationCommand { get; private set; }
         public ICommand ClearInputsCommand { get; private set; }
 
         public List<Project> LoadedProjects { get; set; }
+        public List<Technology> LoadedTechStack { get; set; }
 
         private bool _isExecuteButtonEnabled;
         public bool IsExecuteButtonEnabled
@@ -75,6 +81,18 @@ namespace CV_Creator.Desktop.ViewModels
             set
             {
                 _projectsSelected = value;
+                OnPropertyChanged();
+                AreButtonsActive();
+            }
+        }
+
+        private string _techSelected;
+        public string TechSelected
+        {
+            get => _techSelected;
+            set
+            {
+                _techSelected = value;
                 OnPropertyChanged();
                 AreButtonsActive();
             }
@@ -145,17 +163,17 @@ namespace CV_Creator.Desktop.ViewModels
 
         private void AreButtonsActive()
         {
-            string[] allProps = { ProjectsSelected, CompanyName, PositionApplied, FilePath, EmailAddress };
+            string[] allProps = { ProjectsSelected, TechSelected, CompanyName, PositionApplied, FilePath, EmailAddress };
             IsClearButtonEnabled = allProps.Any(prop => !string.IsNullOrEmpty(prop)) ? true : false;
 
             if (SendOrSave == 1)
             {
-                string[] props = { ProjectsSelected, CompanyName, PositionApplied, FilePath };
+                string[] props = { ProjectsSelected, TechSelected, CompanyName, PositionApplied, FilePath };
                 IsExecuteButtonEnabled = props.All(prop => !string.IsNullOrEmpty(prop)) ? true : false;
             }
             else
             {
-                string[] props = { ProjectsSelected, CompanyName, PositionApplied, EmailAddress };
+                string[] props = { ProjectsSelected, TechSelected, CompanyName, PositionApplied, EmailAddress };
                 IsExecuteButtonEnabled = props.All(prop => !string.IsNullOrEmpty(prop)) ? true : false;
             }
         }
@@ -165,6 +183,7 @@ namespace CV_Creator.Desktop.ViewModels
             //TODO: load from file
             SendOrSave = 1;
             ProjectsSelected = string.Empty;
+            TechSelected = string.Empty;
             CompanyName = string.Empty;
             PositionApplied = string.Empty;
             FilePath = string.Empty;
@@ -175,6 +194,7 @@ namespace CV_Creator.Desktop.ViewModels
         {
             SendOrSave = 1;
             ProjectsSelected = string.Empty;
+            TechSelected = string.Empty;
             CompanyName = string.Empty;
             PositionApplied = string.Empty;
             FilePath = string.Empty;
@@ -183,7 +203,7 @@ namespace CV_Creator.Desktop.ViewModels
 
         private void OnExecuteOperation(object o)
         {
-            byte[] pdfCv = _dataProcessor.ProcessPortfolio(LoadedProjects, CompanyName, PositionApplied);
+            byte[] pdfCv = _dataProcessor.ProcessPortfolio(LoadedProjects, LoadedTechStack, CompanyName, PositionApplied);
 
             if (SendOrSave == 1)
             {
@@ -216,6 +236,25 @@ namespace CV_Creator.Desktop.ViewModels
                 }
 
                 ProjectsSelected = string.Join(", ", names.ToArray());
+            }
+        }
+
+        private async Task OnOpenTechLoaderAsync()
+        {
+            LoadedTechStack = await _windowManager.OpenResultWindowAsync(_projectLoaderVMCreator()) as List<Technology>;
+
+            TechSelected = string.Empty;
+
+            if (LoadedTechStack != null)
+            {
+                List<string> names = new List<string>();
+
+                foreach (var tech in LoadedTechStack)
+                {
+                    names.Add(tech.Name);
+                }
+
+                TechSelected = string.Join(", ", names.ToArray());
             }
         }
     }
