@@ -26,6 +26,7 @@ namespace CV_Creator.Tests
                 _windowManagerMock.Object,
                 _dataProcessorMock.Object,
                 ProjectLoaderViewModel,
+                TechLoaderViewModel,
                 _fileManagerMock.Object,
                 _emailManagerMock.Object);
         }
@@ -35,6 +36,13 @@ namespace CV_Creator.Tests
             var projectLoaderViewModelMock = new Mock<IProjectLoaderViewModel>();
 
             return projectLoaderViewModelMock.Object;
+        }
+
+        private ITechStackLoaderViewModel TechLoaderViewModel()
+        {
+            var techLoaderViewModelMock = new Mock<ITechStackLoaderViewModel>();
+
+            return techLoaderViewModelMock.Object;
         }
 
         [Fact]
@@ -80,7 +88,7 @@ namespace CV_Creator.Tests
         {
             _viewModel.ExecuteOperationCommand.Execute(null);
 
-            _dataProcessorMock.Verify(mock => mock.ProcessPortfolio(It.IsAny<List<Project>>()), Times.Once);
+            _dataProcessorMock.Verify(mock => mock.ProcessPortfolio(It.IsAny<List<Project>>(), It.IsAny<List<Technology>>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         }
 
         [Fact]

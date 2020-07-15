@@ -87,7 +87,7 @@ namespace CV_Creator.Desktop.ViewModels
         }
 
         private string _techSelected;
-        public string TechSelected
+        public string TechStackSelected
         {
             get => _techSelected;
             set
@@ -163,17 +163,17 @@ namespace CV_Creator.Desktop.ViewModels
 
         private void AreButtonsActive()
         {
-            string[] allProps = { ProjectsSelected, TechSelected, CompanyName, PositionApplied, FilePath, EmailAddress };
+            string[] allProps = { ProjectsSelected, TechStackSelected, CompanyName, PositionApplied, FilePath, EmailAddress };
             IsClearButtonEnabled = allProps.Any(prop => !string.IsNullOrEmpty(prop)) ? true : false;
 
             if (SendOrSave == 1)
             {
-                string[] props = { ProjectsSelected, TechSelected, CompanyName, PositionApplied, FilePath };
+                string[] props = { ProjectsSelected, TechStackSelected, CompanyName, PositionApplied, FilePath };
                 IsExecuteButtonEnabled = props.All(prop => !string.IsNullOrEmpty(prop)) ? true : false;
             }
             else
             {
-                string[] props = { ProjectsSelected, TechSelected, CompanyName, PositionApplied, EmailAddress };
+                string[] props = { ProjectsSelected, TechStackSelected, CompanyName, PositionApplied, EmailAddress };
                 IsExecuteButtonEnabled = props.All(prop => !string.IsNullOrEmpty(prop)) ? true : false;
             }
         }
@@ -183,7 +183,7 @@ namespace CV_Creator.Desktop.ViewModels
             //TODO: load from file
             SendOrSave = 1;
             ProjectsSelected = string.Empty;
-            TechSelected = string.Empty;
+            TechStackSelected = string.Empty;
             CompanyName = string.Empty;
             PositionApplied = string.Empty;
             FilePath = string.Empty;
@@ -194,7 +194,7 @@ namespace CV_Creator.Desktop.ViewModels
         {
             SendOrSave = 1;
             ProjectsSelected = string.Empty;
-            TechSelected = string.Empty;
+            TechStackSelected = string.Empty;
             CompanyName = string.Empty;
             PositionApplied = string.Empty;
             FilePath = string.Empty;
@@ -243,7 +243,7 @@ namespace CV_Creator.Desktop.ViewModels
         {
             LoadedTechStack = await _windowManager.OpenResultWindowAsync(_projectLoaderVMCreator()) as List<Technology>;
 
-            TechSelected = string.Empty;
+            TechStackSelected = string.Empty;
 
             if (LoadedTechStack != null)
             {
@@ -254,7 +254,7 @@ namespace CV_Creator.Desktop.ViewModels
                     names.Add(tech.Name);
                 }
 
-                TechSelected = string.Join(", ", names.ToArray());
+                TechStackSelected = string.Join(", ", names.ToArray());
             }
         }
     }

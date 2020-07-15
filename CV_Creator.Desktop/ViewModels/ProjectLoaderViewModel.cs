@@ -2,7 +2,6 @@
 using CV_Creator.Desktop.Commands;
 using CV_Creator.Models;
 using CV_Creator.Services;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -38,6 +37,7 @@ namespace CV_Creator.Desktop.ViewModels
             NextClickCommand = new DelegateCommand(OnNextClick);
             PrevClickCommand = new DelegateCommand(OnPrevClick);
             FinishClickCommand = new DelegateCommand(OnFinishClick);
+            SelectedCountCommand = new DelegateCommand(OnSelectedCount);
         }
 
         private async Task LoadDataAndInitPropertiesAsync()
@@ -53,8 +53,7 @@ namespace CV_Creator.Desktop.ViewModels
         public ICommand NextClickCommand { get; private set; }
         public ICommand PrevClickCommand { get; private set; }
         public ICommand FinishClickCommand { get; private set; }
-
-        //TODO: number of added, max number
+        public ICommand SelectedCountCommand { get; private set; }
 
         public Task Initialization { get; private set; }
         public object ObjectResult { get; set; }
@@ -103,6 +102,17 @@ namespace CV_Creator.Desktop.ViewModels
             set
             {
                 _currentPage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _selectedCount;
+        public int SelectedCount
+        {
+            get => _selectedCount;
+            set
+            {
+                _selectedCount = value;
                 OnPropertyChanged();
             }
         }
@@ -162,6 +172,11 @@ namespace CV_Creator.Desktop.ViewModels
         {
             ObjectResult = _repositoryProj.GetProjectsFromChecked(_filteredProjects.Where(item => item.Checked == true).ToList());
             _winService.CloseWindow(this);
+        }
+
+        private void OnSelectedCount(object obj)
+        {
+            SelectedCount = _filteredProjects.Where(project => project.Checked).Count();
         }
     }
 }
