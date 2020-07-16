@@ -63,6 +63,7 @@
             </StackPanel>
         </DockPanel>
         <DataGrid ItemsSource="{Binding Path=DisplayCollection}"
+                  Name="dgLoadedProjects"
                   HeadersVisibility="Column"
                   ScrollViewer.CanContentScroll="False"
                   FontSize="14"
@@ -122,12 +123,14 @@
                                     <i:EventTrigger EventName="Unchecked">
                                         <i:InvokeCommandAction Command="{Binding DataContext.SelectedCountCommand,
                                             RelativeSource={RelativeSource FindAncestor,
-                                            AncestorType={x:Type DataGrid}}}"/>
+                                            AncestorType={x:Type DataGrid}}}"
+                                                               CommandParameter="{Binding SelectedItem, ElementName=dgLoadedProjects}"/>
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="Checked">
                                         <i:InvokeCommandAction Command="{Binding DataContext.SelectedCountCommand,
                                             RelativeSource={RelativeSource FindAncestor,
-                                            AncestorType={x:Type DataGrid}}}"/>
+                                            AncestorType={x:Type DataGrid}}}"
+                                                               CommandParameter="{Binding SelectedItem, ElementName=dgLoadedProjects}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </CheckBox>

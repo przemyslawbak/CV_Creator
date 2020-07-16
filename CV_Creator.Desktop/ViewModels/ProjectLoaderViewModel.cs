@@ -176,7 +176,17 @@ namespace CV_Creator.Desktop.ViewModels
 
         private void OnSelectedCount(object obj)
         {
-            SelectedCount = _filteredProjects.Where(project => project.Checked).Count();
+            if (SelectedCount < 6)
+            {
+                SelectedCount = _filteredProjects.Where(project => project.Checked).Count();
+            }
+            else
+            {
+                CheckedProject projectFromTheList = obj as CheckedProject;
+                projectFromTheList.Checked = false;
+            }
+
+            DisplayCollection = GetNewPageCollection();
         }
     }
 }
