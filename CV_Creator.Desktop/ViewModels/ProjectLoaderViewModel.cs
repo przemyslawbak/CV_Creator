@@ -23,6 +23,7 @@ namespace CV_Creator.Desktop.ViewModels
         private List<CheckedProject> _loadedAllProjects;
         private List<CheckedProject> _filteredProjects;
         private readonly int _displayItemsPerPage;
+        private readonly int _maxProjectsToBeSelected = 6;
 
         public ProjectLoaderViewModel(IProjectRepository repoProj, IProjectCollectionDisplayService paginationService, IWindowManager winService)
         {
@@ -40,16 +41,6 @@ namespace CV_Creator.Desktop.ViewModels
             SelectedCountCommand = new DelegateCommand(OnSelectedCount);
         }
 
-        private async Task LoadDataAndInitPropertiesAsync()
-        {
-            LoadingData = true;
-            _loadedAllProjects = await _repositoryProj.GetAllCheckedProjectsAsync();
-            _filteredProjects = _loadedAllProjects;
-            DisplayCollection = GetNewPageCollection();
-            PageCount = _paginationService.GetPagesCount(_filteredProjects.Count(), _displayItemsPerPage);
-            LoadingData = false;
-        }
-
         public ICommand NextClickCommand { get; private set; }
         public ICommand PrevClickCommand { get; private set; }
         public ICommand FinishClickCommand { get; private set; }
@@ -57,6 +48,7 @@ namespace CV_Creator.Desktop.ViewModels
 
         public Task Initialization { get; private set; }
         public object ObjectResult { get; set; }
+        public int MaxProjectsSelected { get; set; }
 
         private string _filterTechPhrase;
         public string FilterTechPhrase
@@ -128,6 +120,17 @@ namespace CV_Creator.Desktop.ViewModels
             }
         }
 
+        private async Task LoadDataAndInitPropertiesAsync()
+        {
+            LoadingData = true;
+            MaxProjectsSelected = _maxProjectsToBeSelected;
+            _loadedAllProjects = await _repositoryProj.GetAllCheckedProjectsAsync();
+            _filteredProjects = _loadedAllProjects;
+            DisplayCollection = GetNewPageCollection();
+            PageCount = _paginationService.GetPagesCount(_filteredProjects.Count(), _displayItemsPerPage);
+            LoadingData = false;
+        }
+
         private void OnNextClick(object obj)
         {
             if (CurrentPage < PageCount)
@@ -176,7 +179,7 @@ namespace CV_Creator.Desktop.ViewModels
 
         private void OnSelectedCount(object obj)
         {
-            if (SelectedCount < 6)
+            if (SelectedCount < _maxProjectsToBeSelected)
             {
                 SelectedCount = _filteredProjects.Where(project => project.Checked).Count();
             }

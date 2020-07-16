@@ -241,7 +241,7 @@ namespace CV_Creator.Desktop.ViewModels
 
         private async Task OnOpenTechLoaderAsync()
         {
-            LoadedTechStack = await _windowManager.OpenResultWindowAsync(_projectLoaderVMCreator()) as List<Technology>;
+            LoadedTechStack = await _windowManager.OpenResultWindowAsync(_techLoaderVMCreator()) as List<Technology>;
 
             TechStackSelected = string.Empty;
 

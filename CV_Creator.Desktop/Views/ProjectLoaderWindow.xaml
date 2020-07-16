@@ -44,8 +44,9 @@
                 <TextBlock Text="Selected:" HorizontalAlignment="Center"/>
                 <TextBlock HorizontalAlignment="Center">
                     <TextBlock.Text>
-                        <MultiBinding StringFormat="{}{0} of 6">
+                        <MultiBinding StringFormat="{}{0} of {1}">
                             <Binding Path="SelectedCount" />
+                            <Binding Path="MaxProjectsSelected" />
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>

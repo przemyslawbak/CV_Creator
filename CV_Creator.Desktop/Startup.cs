@@ -16,6 +16,8 @@ namespace CV_Creator
             builder.RegisterType<ProjectRepository>()
                 .As<IProjectRepository>();
 
+            builder.RegisterType<TechRepository>()
+                .As<ITechRepository>();
 
             var dbContextOptionsBuilder = new DbContextOptionsBuilder<ProjectsDbContext>()
                 .UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Portfolio_Strona;Trusted_Connection=True;MultipleActiveResultSets=true"); //TODO: from config

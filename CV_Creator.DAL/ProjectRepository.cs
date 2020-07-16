@@ -9,6 +9,7 @@ namespace CV_Creator.DAL
     public class ProjectRepository : IProjectRepository
     {
         private readonly ProjectsDbContext _context;
+
         public ProjectRepository(ProjectsDbContext context)
         {
             _context = context;

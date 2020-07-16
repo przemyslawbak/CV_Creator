@@ -3,10 +3,133 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CV_Creator.Desktop.Views"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="TechStackLoaderWindow" Height="450" Width="800">
+        Title="Select tech stack" Height="450" Width="300">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        Width="60"
+                        Height="40"
+                        Margin="0 20 10 20">
+                <TextBlock Text="Selected:" HorizontalAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0} of {1}">
+                            <Binding Path="SelectedCount" />
+                            <Binding Path="MaxTechSelected" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <DataGrid ItemsSource="{Binding Path=DisplayCollection}"
+                  Name="dgLoadedTechs"
+                  HeadersVisibility="Column"
+                  ScrollViewer.CanContentScroll="False"
+                  FontSize="14"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="false"
+                  CanUserSortColumns="False"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridCellsPresenter">
+                    <Setter Property="Height" Value="30" />
+                </Style>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="Background" Value="#e0ece0"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="DataGridCell.IsSelected" Value="True">
+                            <Setter Property="BorderBrush">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="Transparent"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground"
+                            Value="{DynamicResource
+                                   {x:Static SystemColors.ControlTextBrushKey}}"/>
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="Transparent"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="BorderThickness" Value="0.2" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Check" Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Path=Checked, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                </CheckBox.LayoutTransform>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.SelectedCountCommand,
+                                            RelativeSource={RelativeSource FindAncestor,
+                                            AncestorType={x:Type DataGrid}}}"
+                                                               CommandParameter="{Binding SelectedItem, ElementName=dgLoadedTechs}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.SelectedCountCommand,
+                                            RelativeSource={RelativeSource FindAncestor,
+                                            AncestorType={x:Type DataGrid}}}"
+                                                               CommandParameter="{Binding SelectedItem, ElementName=dgLoadedTechs}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Finish" Command="{Binding FinishClickCommand}"
+                Grid.Row="2"
+                Width="120"
+                Height="40"
+                Margin="20"/>
+        <Label
+                  Background="#e0ece0"
+            Width="150"
+            HorizontalContentAlignment="Center"
+                Content="Loading..."
+                FontSize="15"
+				 Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+            Padding="20"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            Visibility="{Binding LoadingData, Converter={StaticResource BoolToVis}}"/>
     </Grid>
 </Window>

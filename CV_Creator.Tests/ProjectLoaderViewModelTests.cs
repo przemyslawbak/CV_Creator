@@ -46,5 +46,19 @@ namespace CV_Creator.Tests
             Assert.Equal(expected ,_sampleProject.Checked);
             Assert.Single(_viewModel.DisplayCollection);
         }
+
+        [Fact]
+        public void SelectedCountCommand_Executed_GetDisplayResultsIsCalledOnce()
+        {
+            _viewModel.DisplayCollection = new ObservableCollection<CheckedProject>()
+            {
+                _sampleProject
+            };
+
+            _viewModel.SelectedCountCommand.Execute(_sampleProject);
+
+            //twice: Initialization and SelectedCountCommand
+            _paginationServiceMock.Verify(mock => mock.GetDisplayResults(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<List<CheckedProject>>()), Times.Exactly(2));
+        }
     }
 }
