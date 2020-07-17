@@ -39,6 +39,9 @@ namespace CV_Creator
             builder.RegisterType<DataProcessor>()
               .As<IDataProcessor>();
 
+            builder.RegisterType<HtmlStringSource>()
+              .As<IHtmlStringSource>();
+
             builder.RegisterType<FileManager>()
               .As<IFileManager>();
 
