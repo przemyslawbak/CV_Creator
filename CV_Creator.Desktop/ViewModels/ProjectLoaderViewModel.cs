@@ -2,6 +2,7 @@
 using CV_Creator.Desktop.Commands;
 using CV_Creator.Models;
 using CV_Creator.Services;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,16 +19,17 @@ namespace CV_Creator.Desktop.ViewModels
     public class ProjectLoaderViewModel : ViewModelBase, IProjectLoaderViewModel, IResultViewModel
     {
         private readonly IWindowManager _winService;
+        private readonly IStringSanitizer _stringSanitizer;
         private readonly IProjectRepository _repositoryProj;
         private readonly IProjectCollectionDisplayService _paginationService;
         private List<CheckedProject> _loadedAllProjects;
-        private List<CheckedProject> _filteredProjects;
         private readonly int _displayItemsPerPage;
         private readonly int _maxProjectsToBeSelected = 6;
 
-        public ProjectLoaderViewModel(IProjectRepository repoProj, IProjectCollectionDisplayService paginationService, IWindowManager winService)
+        public ProjectLoaderViewModel(IProjectRepository repoProj, IProjectCollectionDisplayService paginationService, IWindowManager winService, IStringSanitizer stringSanitizer)
         {
             _winService = winService;
+            _stringSanitizer = stringSanitizer;
             _repositoryProj = repoProj;
             _paginationService = paginationService;
             _displayItemsPerPage = 4;
@@ -49,6 +51,7 @@ namespace CV_Creator.Desktop.ViewModels
         public Task Initialization { get; private set; }
         public object ObjectResult { get; set; }
         public int MaxProjectsSelected { get; set; }
+        public List<CheckedProject> FilteredProjects { get; set; }
 
         private string _filterTechPhrase;
         public string FilterTechPhrase
@@ -59,9 +62,20 @@ namespace CV_Creator.Desktop.ViewModels
                 _filterTechPhrase = value;
                 OnPropertyChanged();
                 CurrentPage = 1;
-                _filteredProjects = FilterPageCollection();
+                FilteredProjects = FilterPageCollection();
                 DisplayCollection = GetNewPageCollection();
                 PageCount = GetPageCount();
+            }
+        }
+
+        private bool _isFinishButtonEnabled;
+        public bool IsFinishButtonEnabled
+        {
+            get => _isFinishButtonEnabled;
+            set
+            {
+                _isFinishButtonEnabled = value;
+                OnPropertyChanged();
             }
         }
 
@@ -125,9 +139,10 @@ namespace CV_Creator.Desktop.ViewModels
             LoadingData = true;
             MaxProjectsSelected = _maxProjectsToBeSelected;
             _loadedAllProjects = await _repositoryProj.GetAllCheckedProjectsAsync();
-            _filteredProjects = _loadedAllProjects;
+            _loadedAllProjects = CleanUpHtml(_loadedAllProjects);
+            FilteredProjects = _loadedAllProjects;
             DisplayCollection = GetNewPageCollection();
-            PageCount = _paginationService.GetPagesCount(_filteredProjects.Count(), _displayItemsPerPage);
+            PageCount = _paginationService.GetPagesCount(FilteredProjects.Count(), _displayItemsPerPage);
             LoadingData = false;
         }
 
@@ -154,42 +169,61 @@ namespace CV_Creator.Desktop.ViewModels
             return new ObservableCollection<CheckedProject>(_paginationService.GetDisplayResults(
                 CurrentPage,
                 _displayItemsPerPage,
-                _filteredProjects));
+                FilteredProjects));
         }
 
         private List<CheckedProject> FilterPageCollection()
         {
             return _paginationService.FilterDisplayedCollection(
                     FilterTechPhrase,
-                    _filteredProjects,
+                    FilteredProjects,
                     _loadedAllProjects,
                     _displayItemsPerPage,
                     CurrentPage);
         }
         private int GetPageCount()
         {
-            return _paginationService.GetPagesCount(_filteredProjects.Count(), _displayItemsPerPage);
+            return _paginationService.GetPagesCount(FilteredProjects.Count(), _displayItemsPerPage);
         }
 
         private void OnFinishClick(object obj)
         {
-            ObjectResult = _repositoryProj.GetProjectsFromChecked(_filteredProjects.Where(item => item.Checked == true).ToList());
+            ObjectResult = _repositoryProj.GetProjectsFromChecked(FilteredProjects.Where(item => item.Checked == true).ToList());
             _winService.CloseWindow(this);
         }
 
         private void OnSelectedCount(object obj)
         {
-            if (SelectedCount < _maxProjectsToBeSelected)
+            SelectedCount = FilteredProjects.Where(project => project.Checked).Count();
+
+            if (SelectedCount > _maxProjectsToBeSelected)
             {
-                SelectedCount = _filteredProjects.Where(project => project.Checked).Count();
+                SelectedCount--;
+                CheckedProject projectFromTheList = obj as CheckedProject;
+                projectFromTheList.Checked = false;
+
+                DisplayCollection = new ObservableCollection<CheckedProject>();
+                DisplayCollection = GetNewPageCollection();
+            }
+
+            if (SelectedCount == _maxProjectsToBeSelected)
+            {
+                IsFinishButtonEnabled = true;
             }
             else
             {
-                CheckedProject projectFromTheList = obj as CheckedProject;
-                projectFromTheList.Checked = false;
+                IsFinishButtonEnabled = false;
+            }
+        }
+
+        private List<CheckedProject> CleanUpHtml(List<CheckedProject> list)
+        {
+            foreach (var item in list)
+            {
+                item.Comment = _stringSanitizer.CleanUpComment(item.Comment);
             }
 
-            DisplayCollection = GetNewPageCollection();
+            return list;
         }
     }
 }

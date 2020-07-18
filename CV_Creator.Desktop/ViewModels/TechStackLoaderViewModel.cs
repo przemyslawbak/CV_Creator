@@ -39,6 +39,17 @@ namespace CV_Creator.Desktop.ViewModels
         public object ObjectResult { get; set; }
         public int MaxTechSelected { get; set; }
 
+        private bool _isFinishButtonEnabled;
+        public bool IsFinishButtonEnabled
+        {
+            get => _isFinishButtonEnabled;
+            set
+            {
+                _isFinishButtonEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
         private int _selectedCount;
         public int SelectedCount
         {
@@ -46,6 +57,17 @@ namespace CV_Creator.Desktop.ViewModels
             set
             {
                 _selectedCount = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<CheckedTech> _loadedTechnologies;
+        public ObservableCollection<CheckedTech> LoadedTechnologies
+        {
+            get => _loadedTechnologies;
+            set
+            {
+                _loadedTechnologies = value;
                 OnPropertyChanged();
             }
         }
@@ -75,8 +97,8 @@ namespace CV_Creator.Desktop.ViewModels
         private async Task LoadDataAndInitPropertiesAsync()
         {
             LoadingData = true;
-            var loadedTechnologies = await _repositoryTech.GetAllCheckedTechnologiesAsync();
-            DisplayCollection = new ObservableCollection<CheckedTech>(loadedTechnologies);
+            LoadedTechnologies = new ObservableCollection<CheckedTech>(await _repositoryTech.GetAllCheckedTechnologiesAsync());
+            DisplayCollection = LoadedTechnologies;
             LoadingData = false;
         }
 
@@ -88,14 +110,25 @@ namespace CV_Creator.Desktop.ViewModels
 
         private void OnSelectedCount(object obj)
         {
-            if (SelectedCount < _maxTechnologiesToBeSelected)
+            SelectedCount = LoadedTechnologies.Where(project => project.Checked).Count();
+
+            if (SelectedCount > _maxTechnologiesToBeSelected)
             {
-                SelectedCount = DisplayCollection.Where(tech => tech.Checked).Count();
+                SelectedCount--;
+                CheckedTech techFromTheList = obj as CheckedTech;
+                techFromTheList.Checked = false;
+
+                DisplayCollection = new ObservableCollection<CheckedTech>();
+                DisplayCollection = LoadedTechnologies;
+            }
+
+            if (SelectedCount == _maxTechnologiesToBeSelected)
+            {
+                IsFinishButtonEnabled = true;
             }
             else
             {
-                CheckedTech techFromTheList = obj as CheckedTech;
-                techFromTheList.Checked = false;
+                IsFinishButtonEnabled = false;
             }
         }
     }

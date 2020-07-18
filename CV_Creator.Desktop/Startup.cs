@@ -20,7 +20,7 @@ namespace CV_Creator
                 .As<ITechRepository>();
 
             var dbContextOptionsBuilder = new DbContextOptionsBuilder<ProjectsDbContext>()
-                .UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Portfolio_Strona;Trusted_Connection=True;MultipleActiveResultSets=true"); //TODO: from config
+                .UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Portfolio_Strona;Trusted_Connection=True;MultipleActiveResultSets=true"); //TODO: from the file
 
             builder.RegisterType<ProjectsDbContext>()
             .WithParameter("options", dbContextOptionsBuilder.Options)
@@ -35,6 +35,9 @@ namespace CV_Creator
 
             builder.RegisterType<EmailManager>()
               .As<IEmailManager>();
+
+            builder.RegisterType<StringSanitizer>()
+              .As<IStringSanitizer>();
 
             builder.RegisterType<DataProcessor>()
               .As<IDataProcessor>();

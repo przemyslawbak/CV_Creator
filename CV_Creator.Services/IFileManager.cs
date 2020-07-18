@@ -1,7 +1,9 @@
-﻿namespace CV_Creator.Services
+﻿using System.Threading.Tasks;
+
+namespace CV_Creator.Services
 {
     public interface IFileManager
     {
-        void SaveToDiskAsync(byte[] pdfCv, string filePath);
+        Task SaveToDiskAsync(byte[] pdfCv, string filePath);
     }
 }

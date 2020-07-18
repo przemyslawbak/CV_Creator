@@ -117,7 +117,8 @@
                 Grid.Row="2"
                 Width="120"
                 Height="40"
-                Margin="20"/>
+                Margin="20"
+            IsEnabled="{Binding IsFinishButtonEnabled}"/>
         <Label
                   Background="#e0ece0"
             Width="150"

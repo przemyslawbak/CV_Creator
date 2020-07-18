@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using CV_Creator.Models;
 
 namespace CV_Creator.Services
 {
     public class HtmlStringSource : IHtmlStringSource
-    {
+    {//TODO: czleaning addresses of http and slashes, TODO: tech images
+        private readonly IStringSanitizer _stringSanitizer;
+
+        public HtmlStringSource(IStringSanitizer stringSanitizer)
+        {
+            _stringSanitizer = stringSanitizer;
+        }
+
         public string GetHtmlBodyClosed()
         {
             return @"
@@ -138,6 +144,7 @@ namespace CV_Creator.Services
             sb.Append(@"<div class='sectionTitle'>Recent projects:</div>");
             foreach (var project in loadedProjects)
             {
+                project.Comments = _stringSanitizer.CleanUpComment(project.Comments);
                 sb.Append(CreateSingleProjectDisplay(project));
             }
 
@@ -260,7 +267,7 @@ namespace CV_Creator.Services
         {
             return @"
 <style>
-    .body {
+.body {
 }
 
 .sectionTitle {
