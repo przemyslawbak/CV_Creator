@@ -1,7 +1,0 @@
-UserControl
-- Loaded projects / vessels <textbox>
-- Choose projects / vessels <button>
-- Company name <textbox>
-- Position <textbox>
-- Save pdf / Send pdf <radio>
-- File path / email address <textbox>
