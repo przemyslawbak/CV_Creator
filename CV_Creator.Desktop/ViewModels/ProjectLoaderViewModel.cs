@@ -24,7 +24,7 @@ namespace CV_Creator.Desktop.ViewModels
         private readonly IProjectCollectionDisplayService _paginationService;
         private List<CheckedProject> _loadedAllProjects;
         private readonly int _displayItemsPerPage;
-        private readonly int _maxProjectsToBeSelected = 6;
+        private readonly int _projectsToBeSelected = 6;
 
         public ProjectLoaderViewModel(IProjectRepository repoProj, IProjectCollectionDisplayService paginationService, IWindowManager winService, IStringSanitizer stringSanitizer)
         {
@@ -137,7 +137,7 @@ namespace CV_Creator.Desktop.ViewModels
         private async Task LoadDataAndInitPropertiesAsync()
         {
             LoadingData = true;
-            MaxProjectsSelected = _maxProjectsToBeSelected;
+            MaxProjectsSelected = _projectsToBeSelected;
             _loadedAllProjects = await _repositoryProj.GetAllCheckedProjectsAsync();
             _loadedAllProjects = CleanUpHtml(_loadedAllProjects);
             FilteredProjects = _loadedAllProjects;
@@ -196,7 +196,7 @@ namespace CV_Creator.Desktop.ViewModels
         {
             SelectedCount = FilteredProjects.Where(project => project.Checked).Count();
 
-            if (SelectedCount > _maxProjectsToBeSelected)
+            if (SelectedCount > _projectsToBeSelected)
             {
                 SelectedCount--;
                 CheckedProject projectFromTheList = obj as CheckedProject;
@@ -206,7 +206,7 @@ namespace CV_Creator.Desktop.ViewModels
                 DisplayCollection = GetNewPageCollection();
             }
 
-            if (SelectedCount == _maxProjectsToBeSelected)
+            if (SelectedCount == _projectsToBeSelected)
             {
                 IsFinishButtonEnabled = true;
             }
