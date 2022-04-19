@@ -1,0 +1,9 @@
+- stack lvl x/3
+- remove education
+- file instead of DB?
+- projects + tech only
+- stack based on tech?
+- project design pattern prop
+- project unit test yes/no prop
+- cut and upload icons
+- company name in the footer
