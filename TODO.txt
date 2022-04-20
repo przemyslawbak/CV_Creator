@@ -6,4 +6,11 @@
 - project design pattern prop
 - project unit test yes/no prop
 - cut and upload icons
-- company name in the footer
+- github hyperlink in the footer
+- add tech: xunit, prism, autofac, nlog, Html Agility Pack, CefSharp, NLog
+- on 'save' set default file name and path
+- 'processing' on saving
+
+---
+
+OK - company name in the footer

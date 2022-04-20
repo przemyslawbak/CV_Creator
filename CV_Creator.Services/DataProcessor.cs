@@ -42,7 +42,7 @@ namespace CV_Creator.Services
                         HtmlText = GetCvHtml(loadedProjects, companyName, positionApplied, loadedTechStack),
                         WebSettings = GetWebSettings(),
                         CountPages = true,
-                        FooterSettings = GetFooterSettings()
+                        FooterSettings = GetFooterSettings(companyName)
                     }
                 }
             };
@@ -55,9 +55,9 @@ namespace CV_Creator.Services
             return new WebSettings() { UserStyleSheet = @"file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\styles.css" };
         }
 
-        private FooterSettings GetFooterSettings()
+        private FooterSettings GetFooterSettings(string companyName)
         {
-            return new FooterSettings() { FontSize = 9, LeftText = "Genereted by: github.com/przemyslawbak/CV_Creator", RightText = "Przemyslaw Bak - Page [page] of [toPage]", UseLineSeparator = true };
+            return new FooterSettings() { FontSize = 9, LeftText = companyName.ToUpper() + " application form genereted by: github.com/przemyslawbak/CV_Creator", RightText = "Przemyslaw Bak - Page [page] of [toPage]", UseLineSeparator = true };
         }
 
         private string GetCvHtml(List<Project> loadedProjects, string companyName, string positionApplied, List<Technology> loadedTechStack)
