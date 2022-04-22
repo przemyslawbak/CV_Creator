@@ -1,3 +1,4 @@
+- bug: pic missing
 - stack lvl x/3
 - remove / update education
 - update hobbies

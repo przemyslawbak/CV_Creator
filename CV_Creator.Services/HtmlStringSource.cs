@@ -230,10 +230,11 @@ namespace CV_Creator.Services
 
         private string CreateSingleTechDisplay(Technology technology)
         {
+            string filePath = @"file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\stack\" + technology.PictureFile;
             StringBuilder sb = new StringBuilder();
             sb.Append(@"
 <div class='singleTech'>
-    <img class='techPic' src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\stack\'" + technology.PictureFile + @"'>
+    <img class='techPic' src='" + filePath + @"' />
     <div class='techName'>" + technology.Name + @"</div>
 </div>
 ");
