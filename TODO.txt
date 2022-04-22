@@ -2,9 +2,6 @@
 - remove / update education
 - update hobbies
 - stack based on tech?
-- cut and upload icons
-- github hyperlink in the footer
-- add tech: xunit, prism, autofac, nlog, Html Agility Pack, CefSharp, NLog
 - on 'save' set default file name and path
 - 'processing' on saving
 - include tests in pdf
@@ -12,6 +9,10 @@
 
 ---
 
+OK - add tech: xunit, prism, autofac, nlog, Html Agility Pack, CefSharp
+NO - github hyperlink in the footer
+OK - limit stack list to main only
+OK - cut and upload icons
 OK - project design pattern prop
 OK - project unit test yes/no prop
 OK - projects + tech only
