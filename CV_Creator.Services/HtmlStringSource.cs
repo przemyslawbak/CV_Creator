@@ -89,7 +89,7 @@ namespace CV_Creator.Services
             StringBuilder sb = new StringBuilder();
             sb.Append(@"
 <div class='aboutMainContainer'>
-	<img src='file:///C:\Users\asus\Desktop\IT\!!Trials!!\02_APIs\HtmlToPdf_08_TuesPechkin_CV_Spike\HtmlToPdf\bin\Debug\pic.jpg'>
+	<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\pic.jpg'>
 	<div class='personalData'>
 		<div class='name'>" + name + @"</div>
 		<div>" + position + @"</div>
@@ -104,11 +104,11 @@ namespace CV_Creator.Services
 			<div>Wroclaw</div>
 		</div>
 		<div class='sideImages'>
-			<img src='file:///C:\Users\asus\Desktop\IT\!!Trials!!\02_APIs\HtmlToPdf_08_TuesPechkin_CV_Spike\HtmlToPdf\bin\Debug\phone.png' />
-			<img src='file:///C:\Users\asus\Desktop\IT\!!Trials!!\02_APIs\HtmlToPdf_08_TuesPechkin_CV_Spike\HtmlToPdf\bin\Debug\email.png' />
-			<img src='file:///C:\Users\asus\Desktop\IT\!!Trials!!\02_APIs\HtmlToPdf_08_TuesPechkin_CV_Spike\HtmlToPdf\bin\Debug\world.png' />
-			<img src='file:///C:\Users\asus\Desktop\IT\!!Trials!!\02_APIs\HtmlToPdf_08_TuesPechkin_CV_Spike\HtmlToPdf\bin\Debug\github.png' />
-			<img src='file:///C:\Users\asus\Desktop\IT\!!Trials!!\02_APIs\HtmlToPdf_08_TuesPechkin_CV_Spike\HtmlToPdf\bin\Debug\house.png' />
+			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\phone.png' />
+			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\email.png' />
+			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world.png' />
+			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\github.png' />
+			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\house.png' />
 		</div>
 	</div>
 </div>
@@ -124,9 +124,9 @@ namespace CV_Creator.Services
             sb.Append(@"
 <div class='interestsContainer'>
     <div class='interestsImages'>
-        <img src='file:///C:\Users\asus\Desktop\IT\!!Trials!!\02_APIs\HtmlToPdf_08_TuesPechkin_CV_Spike\HtmlToPdf\bin\Debug\financial.png' />
-        <img src='file:///C:\Users\asus\Desktop\IT\!!Trials!!\02_APIs\HtmlToPdf_08_TuesPechkin_CV_Spike\HtmlToPdf\bin\Debug\sport.png' />
-        <img src='file:///C:\Users\asus\Desktop\IT\!!Trials!!\02_APIs\HtmlToPdf_08_TuesPechkin_CV_Spike\HtmlToPdf\bin\Debug\book.png' />
+        <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\financial.png' />
+        <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\sport.png' />
+        <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\book.png' />
     </div>
     <div class='interestsText'>
         <div>Interested in global financial markets, observing them for many years.</div>
@@ -172,14 +172,14 @@ namespace CV_Creator.Services
 	<div class='projectComments'><b>About:</b> " + project.Comments + @"</div>
 	<div class='projectTech'><b>Tech:</b> VS2017, C#, JS, HTML, WPF, MVVM, LINQ, Git, Prism, Autofac, xUnit, CefSharp, Html Agility Pack, NLog</div>
 	<div class='projImages'>
-		<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\info_brown.png' />");
+		<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\info_brown.png' />");
             if (project.GitHubUrl != "#")
             {
-                sb.Append(@"<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\github_brown.png' />");
+                sb.Append(@"<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\github_brown.png' />");
             };
             if (project.WebUrl != "#")
             {
-                sb.Append(@"<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\world_brown.png' />");
+                sb.Append(@"<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world_brown.png' />");
             };
             sb.Append(@"
 	</div>
@@ -233,7 +233,7 @@ namespace CV_Creator.Services
             StringBuilder sb = new StringBuilder();
             sb.Append(@"
 <div class='singleTech'>
-    <img class='techPic' src='" + technology.PictureLink + @"'>
+    <img class='techPic' src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\stack\'" + technology.PictureFile + @"'>
     <div class='techName'>" + technology.Name + @"</div>
 </div>
 ");
