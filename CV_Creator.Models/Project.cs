@@ -16,5 +16,7 @@ namespace CV_Creator.Models
         public string PictureUrl { get; set; }
         public DateTime CompletionDate { get; set; }
         public ICollection<TechnologyProject> TechnologiesProjects { get; set; }
+        public string DesignPattern { get; set; }
+        public bool Tests { get; set; }
     }
 }

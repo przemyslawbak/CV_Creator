@@ -1,16 +1,19 @@
 - stack lvl x/3
-- remove education
-- file instead of DB?
-- projects + tech only
+- remove / update education
+- update hobbies
 - stack based on tech?
-- project design pattern prop
-- project unit test yes/no prop
 - cut and upload icons
 - github hyperlink in the footer
 - add tech: xunit, prism, autofac, nlog, Html Agility Pack, CefSharp, NLog
 - on 'save' set default file name and path
 - 'processing' on saving
+- include tests in pdf
+- include design pattern in pdf
 
 ---
 
+OK - project design pattern prop
+OK - project unit test yes/no prop
+OK - projects + tech only
+NO - file instead of DB?
 OK - company name in the footer
