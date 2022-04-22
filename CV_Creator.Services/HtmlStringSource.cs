@@ -89,7 +89,7 @@ namespace CV_Creator.Services
             StringBuilder sb = new StringBuilder();
             sb.Append(@"
 <div class='aboutMainContainer'>
-	<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\pic.jpg'>
+	<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\pic.jpg'>
 	<div class='personalData'>
 		<div class='name'>" + name + @"</div>
 		<div>" + position + @"</div>
