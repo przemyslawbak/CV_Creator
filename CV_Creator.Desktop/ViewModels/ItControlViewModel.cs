@@ -3,6 +3,7 @@ using CV_Creator.Models;
 using CV_Creator.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -11,6 +12,7 @@ namespace CV_Creator.Desktop.ViewModels
 {
     public class ItControlViewModel : ViewModelBase
     {
+        private readonly static string _basicFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Przemyslaw_Bak_application");
         private readonly IWindowManager _windowManager;
         private readonly IDataProcessor _dataProcessor;
         private readonly IFileManager _fileManager;
@@ -51,6 +53,7 @@ namespace CV_Creator.Desktop.ViewModels
 
         public List<Project> LoadedProjects { get; set; }
         public List<Technology> LoadedTechStack { get; set; }
+        public string FileName { get; set; } = _basicFilePath + ".pdf";
 
         private bool _isExecuteButtonEnabled;
         public bool IsExecuteButtonEnabled
@@ -107,6 +110,7 @@ namespace CV_Creator.Desktop.ViewModels
                 _companyName = value;
                 OnPropertyChanged();
                 AreButtonsActive();
+                CompanyNameUpdated();
             }
         }
 
@@ -125,7 +129,7 @@ namespace CV_Creator.Desktop.ViewModels
         private string _filePath;
         public string FilePath
         {
-            get => _filePath;
+            get => string.IsNullOrEmpty(_filePath) ? _basicFilePath + ".pdf" : _filePath + ".pdf";
             set
             {
                 _filePath = value;
@@ -149,16 +153,18 @@ namespace CV_Creator.Desktop.ViewModels
         private int _sendOrSave;
         public int SendOrSave
         {
-            get
-            {
-                return _sendOrSave;
-            }
+            get => _sendOrSave;
             set
             {
                 _sendOrSave = value;
                 OnPropertyChanged();
                 AreButtonsActive();
             }
+        }
+
+        private void CompanyNameUpdated()
+        {
+            FilePath = string.IsNullOrEmpty(CompanyName) ? _basicFilePath + ".pdf" : _basicFilePath + "_for_" + CompanyName.ToUpper() + ".pdf";
         }
 
         private void AreButtonsActive()
@@ -192,13 +198,7 @@ namespace CV_Creator.Desktop.ViewModels
 
         private void OnClearInputs(object o)
         {
-            SendOrSave = 1;
-            ProjectsSelected = string.Empty;
-            TechStackSelected = string.Empty;
-            CompanyName = string.Empty;
-            PositionApplied = string.Empty;
-            FilePath = string.Empty;
-            EmailAddress = string.Empty;
+            LoadControlsFromFile();
         }
 
         private void OnExecuteOperation(object o)

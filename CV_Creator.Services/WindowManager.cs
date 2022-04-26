@@ -34,7 +34,7 @@ namespace CV_Creator.Services
         {
             if (!CheckIfAlreadyOpened(viewModel))
             {
-                WindowModel model = CreateWindoModel(viewModel);
+                WindowModel model = CreateWindowModel(viewModel);
 
                 model.OpenedWindow.Closed += new EventHandler((s, e) => WindowClosed(s, e, model));
                 model.OpenedWindow.Show();
@@ -76,7 +76,7 @@ namespace CV_Creator.Services
         {
             if (!CheckIfAlreadyOpened(viewModel))
             {
-                WindowModel model = CreateWindoModel(viewModel);
+                WindowModel model = CreateWindowModel(viewModel);
 
                 model.OpenedWindow.Closed += new EventHandler((s, e) => ResultWindowClosed(s, e, model));
                 model.OpenedWindow.ShowDialog();
@@ -105,7 +105,7 @@ namespace CV_Creator.Services
         /// </summary>
         /// <param name="viewModel">View model object</param>
         /// <returns>WindowModel object</returns>
-        private WindowModel CreateWindoModel(object viewModel)
+        private WindowModel CreateWindowModel(object viewModel)
         {
             var modelType = viewModel.GetType();
             var windowTypeName = modelType.Name.Replace("ViewModel", "Window");
