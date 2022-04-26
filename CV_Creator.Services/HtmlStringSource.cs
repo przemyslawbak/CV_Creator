@@ -37,7 +37,7 @@ namespace CV_Creator.Services
             10.2003 - 06.2007
         </div>
         <div class='workDescription'>
-            Bachelor of Engineering in Navigation, specialization: Sea Transport.
+            Studying Navigation, specialization: Marine Transport.
         </div>
     </div>
 </div>

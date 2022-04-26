@@ -1,6 +1,5 @@
 
 - stack lvl x/3
-- remove / update education
 - update hobbies
 - stack based on tech?
 - on 'save' set default file name and path
@@ -12,6 +11,8 @@
 
 ---
 
+OK - remove / update education
+OK - add tech: moq
 OK - bug: pic missing
 OK - add tech: xunit, prism, autofac, nlog, Html Agility Pack, CefSharp
 NO - github hyperlink in the footer
