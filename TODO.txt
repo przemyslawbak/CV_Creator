@@ -11,6 +11,7 @@
 
 ---
 
+OK - update employment history
 OK - remove / update education
 OK - add tech: moq
 OK - bug: pic missing
@@ -23,3 +24,7 @@ OK - project unit test yes/no prop
 OK - projects + tech only
 NO - file instead of DB?
 OK - company name in the footer
+
+---FUTURE:
+
+- employment history: get data from the file / db
