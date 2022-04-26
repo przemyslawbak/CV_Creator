@@ -1,11 +1,11 @@
 
-- 'world' brown icon for languages?
 - remove www?
 - company name with caps in header
 - remove 'more about on' in projects?
 - corect HtmlAgilityPack icon and tech name
 - stack lvl x/3
 - stack based on tech?
+- project stack icons only
 - display 'processing' on saving
 - include tests in pdf
 - include design pattern in pdf
@@ -14,6 +14,7 @@
 
 ---
 
+OK - 'world' brown icon for languages?
 OK - on 'save' set default file name and path
 OK - remove 'maritime freelencer' of the employment history
 OK - update hobbies
