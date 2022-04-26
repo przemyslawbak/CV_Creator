@@ -133,7 +133,7 @@ namespace CV_Creator.Services
         <div>Swimming pool and calistenics.</div>
         <div>Learning German language to move it to the higher level.</div>
         <div>In my spare time, I listen to lectures on social psychology, anthropology and neurobiology.</div>
-        <div>I am interested in financial markets and their analysis, in particular index futures.</div>
+        <div>I am interested in financial markets and their analysis, specilized in index futures.</div>
     </div>
 </div>
 ");
