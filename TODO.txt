@@ -1,6 +1,9 @@
 
+- remove www?
+- company name with caps in header
+- remove 'more about on' in projects?
+- corect HtmlAgilityPack icon and tech name
 - stack lvl x/3
-- update hobbies
 - stack based on tech?
 - on 'save' set default file name and path
 - display 'processing' on saving
@@ -11,6 +14,8 @@
 
 ---
 
+OK - remove 'maritime freelencer' of the employment history
+OK - update hobbies
 OK - update employment history
 OK - remove / update education
 OK - add tech: moq

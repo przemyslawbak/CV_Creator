@@ -79,15 +79,6 @@ namespace CV_Creator.Services
             Work in the offshore industry as a Captain, Senior Officer and Dynamic Positioning Systems Operator on specialized ships for wind farm projects, oil / gas installations, scientific and seismic research, rescue and safety standby. Working in large and complex teams in high risk and stress conditions.
         </div>
     </div>
-    <div class='workHistory'>
-        <div class='workTitle'>Maritime transport freelancer</div>
-        <div class='workPeriod'>
-            08.2005 - 05.2011
-        </div>
-        <div class='workDescription'>
-            Work as a staff member and operational positions at maritime cargo transportation industry.
-        </div>
-    </div>
 </div>
 ");
             return sb.ToString();
@@ -133,14 +124,16 @@ namespace CV_Creator.Services
             sb.Append(@"
 <div class='interestsContainer'>
     <div class='interestsImages'>
-        <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\financial.png' />
         <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\sport.png' />
         <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\book.png' />
+        <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\book.png' />
+        <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\financial.png' />
     </div>
     <div class='interestsText'>
-        <div>Interested in global financial markets, observing them for many years.</div>
-        <div>Training calisthenics, as time allows matrial arts, and running at a medium distances.</div>
-        <div>Interested in social psychology, listening to SWPS lectures, if time permits reading publications.</div>
+        <div>Swimming pool and calistenics.</div>
+        <div>Learning German language to move it to the higher level.</div>
+        <div>In my spare time, I listen to lectures on social psychology, anthropology and neurobiology.</div>
+        <div>I am interested in financial markets and their analysis, in particular index futures.</div>
     </div>
 </div>
 ");
