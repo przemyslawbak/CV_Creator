@@ -1,5 +1,4 @@
 
-- resize 'about' project
 - bug: 2x pdf in file name
 - stack lvl x/3
 - stack based on tech?
@@ -13,6 +12,7 @@
 
 ---
 
+OK - resize 'about' project
 OK - moved back www
 NO - css for contact details
 OK - remove www?

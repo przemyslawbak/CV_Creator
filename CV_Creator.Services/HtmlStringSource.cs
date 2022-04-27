@@ -62,7 +62,7 @@ namespace CV_Creator.Services
         </div>
     </div>
     <div class='workHistory'>
-        <div class='workTitle'>Developer</div>
+        <div class='workTitle'>Developer, Freelancer</div>
         <div class='workPeriod'>
             04.2017 - present
         </div>
@@ -106,7 +106,7 @@ namespace CV_Creator.Services
 		<div class='sideImages'>
 			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\phone.png' />
 			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\email.png' />
-			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world_brown.png' />
+			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world.png' />
 			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\github.png' />
 			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\house.png' />
 		</div>
@@ -155,9 +155,9 @@ namespace CV_Creator.Services
 
         private string CreateSingleProjectDisplay(Project project)
         {
-            if (project.Comments.Length > 175)
+            if (project.Comments.Length > 220)
             {
-                int spaceIndex = project.Comments.IndexOf(" ", 175);
+                int spaceIndex = project.Comments.IndexOf(" ", 220);
                 try
                 {
                     project.Comments = project.Comments.Substring(0, spaceIndex) + " (...)";
@@ -375,7 +375,7 @@ namespace CV_Creator.Services
     margin-left: 10px;
     padding-right: 5px;
     text-align: justify;
-    height: 135px;
+    height: 170px;
 }
 
 .projectTech {
