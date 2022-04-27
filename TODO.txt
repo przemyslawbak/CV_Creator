@@ -1,5 +1,4 @@
 
-- bug: 2x pdf in file name
 - stack lvl x/3
 - stack based on tech?
 - project stack icons only
@@ -12,6 +11,7 @@
 
 ---
 
+OK - bug: 2x pdf in file name
 OK - resize 'about' project
 OK - moved back www
 NO - css for contact details

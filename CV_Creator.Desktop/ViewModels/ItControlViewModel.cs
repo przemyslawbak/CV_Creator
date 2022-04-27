@@ -129,7 +129,7 @@ namespace CV_Creator.Desktop.ViewModels
         private string _filePath;
         public string FilePath
         {
-            get => string.IsNullOrEmpty(_filePath) ? _basicFilePath + ".pdf" : _filePath + ".pdf";
+            get => string.IsNullOrEmpty(_filePath) ? FileName : _filePath;
             set
             {
                 _filePath = value;
