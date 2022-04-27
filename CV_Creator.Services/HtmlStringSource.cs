@@ -185,8 +185,7 @@ namespace CV_Creator.Services
             };
             sb.Append(@"
 	</div>
-	<div class='projText'>
-		<div><a class='projectLink' href='http://przemyslaw-bak.pl/myprojects/details?projectid=" + project.ProjectID + @"'>more about on: przemyslaw-bak.pl</a></div>");
+	<div class='projText'>");
             if (project.GitHubUrl != "#")
             {
                 sb.Append(@"<div><a class='projectLink' href=" + project.GitHubUrl + @" '>" + project.GitHubUrl.Replace("https://", "") + @"</a></div>");

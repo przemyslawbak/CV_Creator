@@ -1,6 +1,5 @@
 
 - remove www?
-- remove 'more about on' in projects?
 - corect HtmlAgilityPack icon and tech name
 - stack lvl x/3
 - stack based on tech?
@@ -13,6 +12,7 @@
 
 ---
 
+OK - remove 'more about on' in projects?
 OK - company name with caps in header
 OK - 'world' brown icon for languages?
 OK - on 'save' set default file name and path
