@@ -1,6 +1,6 @@
 
-- remove www?
-- corect HtmlAgilityPack icon and tech name
+- resize 'about' project
+- bug: 2x pdf in file name
 - stack lvl x/3
 - stack based on tech?
 - project stack icons only
@@ -9,9 +9,15 @@
 - include design pattern in pdf
 - fill up with project data
 - update GH projects info
+- update przemyslaw-bak.pl
 
 ---
 
+OK - moved back www
+NO - css for contact details
+OK - remove www?
+OK - bug: project info icon still displayed
+OK - correct HtmlAgilityPack icon and tech name
 OK - remove 'more about on' in projects?
 OK - company name with caps in header
 OK - 'world' brown icon for languages?
