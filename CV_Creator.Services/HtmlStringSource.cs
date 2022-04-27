@@ -93,7 +93,7 @@ namespace CV_Creator.Services
 	<div class='personalData'>
 		<div class='name'>" + name + @"</div>
 		<div>" + position + @"</div>
-		<div>in " + company + @"</div>
+		<div>in " + company.ToUpper() + @"</div>
 	</div>
 	<div class='sideInfo'>
 		<div class='sideText'>
