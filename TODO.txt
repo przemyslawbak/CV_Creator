@@ -1,7 +1,7 @@
 
 - stack lvl x/3
 - stack based on tech?
-- project stack icons only
+- project name min. height 2 rows?
 - display 'processing' on saving
 - include tests in pdf
 - include design pattern in pdf
@@ -11,6 +11,7 @@
 
 ---
 
+OK - project stack names
 OK - bug: 2x pdf in file name
 OK - resize 'about' project
 OK - moved back www

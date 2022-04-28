@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using CV_Creator.Models;
 
@@ -133,7 +135,7 @@ namespace CV_Creator.Services
         <div>Swimming pool and calistenics.</div>
         <div>Learning German language to move it to the higher level.</div>
         <div>In my spare time, I listen to lectures on social psychology, anthropology and neurobiology.</div>
-        <div>I am interested in financial markets and their analysis, specilized in index futures.</div>
+        <div>I am interested in financial markets and their analysis, specilized in WIG20 and DAX futures.</div>
     </div>
 </div>
 ");
@@ -171,32 +173,63 @@ namespace CV_Creator.Services
             sb.Append(@"
 <div class='projectContainer'>
 	<div class='projectName'>" + project.Name + @"</div>
-	<div class='projectComments'><b>About:</b> " + project.Comments + @"</div>
-	<div class='projectTech'><b>Tech:</b> VS2017, C#, JS, HTML, WPF, MVVM, LINQ, Git, Prism, Autofac, xUnit, CefSharp, Html Agility Pack, NLog</div>
+	<div class='projectComments'><b>About:</b> " + project.Comments + @"</div>");
+            sb.Append(GenerateProjectTechStackSection(project.TechnologiesProjects));
+            sb.Append(GenerateProjectGithubAndWebsiteInfoSection(project.GitHubUrl, project.WebUrl));
+            sb.Append(@"
+	</div>
+</div>
+");
+            return sb.ToString();
+        }
+
+        private string GenerateProjectTechStackSection(ICollection<TechnologyProject> technologiesProjects)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(@"
+	<div class='projectTech'><b>Tech:</b> ");
+
+            TechnologyProject last = technologiesProjects.Last();
+            foreach (TechnologyProject tech in technologiesProjects)
+            {
+                sb.Append(tech.Technology.Name);
+                if (!tech.Equals(last))
+                {
+                    sb.Append(", ");
+                }
+            }
+
+            sb.Append(@"</div>
 	<div class='projImages'>");
-            if (project.GitHubUrl != "#")
+
+            return sb.ToString();
+        }
+
+        private string GenerateProjectGithubAndWebsiteInfoSection(string gitHubUrl, string webUrl)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (gitHubUrl != "#")
             {
                 sb.Append(@"<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\github_brown.png' />");
             };
-            if (project.WebUrl != "#")
+            if (webUrl != "#")
             {
                 sb.Append(@"<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world_brown.png' />");
             };
             sb.Append(@"
 	</div>
 	<div class='projText'>");
-            if (project.GitHubUrl != "#")
+            if (gitHubUrl != "#")
             {
-                sb.Append(@"<div><a class='projectLink' href=" + project.GitHubUrl + @" '>" + project.GitHubUrl.Replace("https://", "") + @"</a></div>");
+                sb.Append(@"<div><a class='projectLink' href=" + gitHubUrl + @" '>" + gitHubUrl.Replace("https://", "") + @"</a></div>");
             };
-            if (project.WebUrl != "#")
+            if (webUrl != "#")
             {
-                sb.Append(@"<div><a class='projectLink' href='" + project.WebUrl + @"'>" + project.WebUrl.Replace("https://", "") + @"</a></div>");
+                sb.Append(@"<div><a class='projectLink' href='" + webUrl + @"'>" + webUrl.Replace("https://", "") + @"</a></div>");
             };
-            sb.Append(@"
-	</div>
-</div>
-");
+
             return sb.ToString();
         }
 
