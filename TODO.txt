@@ -3,6 +3,7 @@
 - display tech level in pdf
 - include tests in pdf
 - include design pattern in pdf
+- format project display in pdf
 - fill up with project data
 - update GH projects info
 - update przemyslaw-bak.pl

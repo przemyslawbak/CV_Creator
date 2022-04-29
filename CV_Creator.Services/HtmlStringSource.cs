@@ -174,12 +174,23 @@ namespace CV_Creator.Services
 <div class='projectContainer'>
 	<div class='projectName'>" + project.Name + @"</div>
 	<div class='projectComments'><b>About:</b> " + project.Comments + @"</div>");
+            sb.Append(GenerateProjectTestAndDesignSection(project.Tests, project.DesignPattern));
             sb.Append(GenerateProjectTechStackSection(project.TechnologiesProjects));
             sb.Append(GenerateProjectGithubAndWebsiteInfoSection(project.GitHubUrl, project.WebUrl));
             sb.Append(@"
 	</div>
 </div>
 ");
+            return sb.ToString();
+        }
+
+        private string GenerateProjectTestAndDesignSection(bool tests, string designPattern)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(@"
+	<div class='projectTech'><b>Tests:</b> YES; ><b>Design pattern:</b> MVC </div>");
+
             return sb.ToString();
         }
 
