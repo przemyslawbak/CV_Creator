@@ -188,7 +188,7 @@ namespace CV_Creator.Services
             StringBuilder sb = new StringBuilder();
 
             sb.Append(@"
-	<div class='projectTech'><b>Tech:</b> ");
+	<div class='projectTech'><b>Stack:</b> ");
 
             TechnologyProject last = technologiesProjects.Last();
             foreach (TechnologyProject tech in technologiesProjects)

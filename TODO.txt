@@ -1,7 +1,7 @@
 
 - stack lvl x/3
+- order stack by importance
 - stack based on tech?
-- project name min. height 2 rows?
 - display 'processing' on saving
 - include tests in pdf
 - include design pattern in pdf
@@ -11,6 +11,8 @@
 
 ---
 
+OK - add tech importance prop
+NO - project name min. height 2 rows?
 OK - project stack names
 OK - bug: 2x pdf in file name
 OK - resize 'about' project

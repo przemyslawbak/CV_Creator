@@ -9,6 +9,7 @@ namespace CV_Creator.Models
         public int TechnologyID { get; set; }
         public string Name { get; set; }
         public string PictureFile { get; set; }
+        public int Importance { get; set; }
         public ICollection<TechnologyProject> TechnologiesProjects { get; set; }
     }
 }
