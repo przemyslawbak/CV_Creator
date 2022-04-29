@@ -30,8 +30,9 @@ namespace CV_Creator.DAL
         {
             var ids = list.Select(item => item.TechnologyID).ToList();
             IQueryable<Technology> query = _context.Technologies
-                .OrderBy(tech => tech.Name)
-                .Where(tech => ids.Contains(tech.TechnologyID));
+                .Where(tech => ids.Contains(tech.TechnologyID))
+                .OrderByDescending(tech => tech.Importance)
+                .ThenByDescending(tech => tech.Level);
             return query.ToList();
         }
     }

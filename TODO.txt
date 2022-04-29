@@ -1,6 +1,4 @@
 
-- stack based on tech?
-- order stack by importance
 - display 'processing' on saving
 - display tech level in pdf
 - include tests in pdf
@@ -11,6 +9,7 @@
 
 ---
 
+OK - order stack by importance
 OK - stack lvl x/3
 OK - add tech importance prop
 NO - project name min. height 2 rows?
@@ -44,4 +43,5 @@ OK - company name in the footer
 
 ---FUTURE:
 
+- stack based on proj tech
 - employment history: get data from the file / db
