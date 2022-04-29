@@ -3,13 +3,13 @@
 - display tech level in pdf
 - include tests in pdf
 - include design pattern in pdf
-- format project display in pdf
 - fill up with project data
 - update GH projects info
 - update przemyslaw-bak.pl
 
 ---
 
+OK - format project display in pdf
 OK - order stack by importance
 OK - stack lvl x/3
 OK - add tech importance prop

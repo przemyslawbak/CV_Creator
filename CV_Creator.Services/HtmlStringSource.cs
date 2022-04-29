@@ -174,7 +174,8 @@ namespace CV_Creator.Services
 <div class='projectContainer'>
 	<div class='projectName'>" + project.Name + @"</div>
 	<div class='projectComments'><b>About:</b> " + project.Comments + @"</div>");
-            sb.Append(GenerateProjectTestAndDesignSection(project.Tests, project.DesignPattern));
+            sb.Append(GenerateProjectTestSection(project.Tests));
+            sb.Append(GenerateProjectDesignSection(project.DesignPattern));
             sb.Append(GenerateProjectTechStackSection(project.TechnologiesProjects));
             sb.Append(GenerateProjectGithubAndWebsiteInfoSection(project.GitHubUrl, project.WebUrl));
             sb.Append(@"
@@ -184,12 +185,22 @@ namespace CV_Creator.Services
             return sb.ToString();
         }
 
-        private string GenerateProjectTestAndDesignSection(bool tests, string designPattern)
+        private string GenerateProjectTestSection(bool tests)
         {
             StringBuilder sb = new StringBuilder();
 
             sb.Append(@"
-	<div class='projectTech'><b>Tests:</b> YES; ><b>Design pattern:</b> MVC </div>");
+	<div class='projectTech'><b>Tests:</b> yes");
+
+            return sb.ToString();
+        }
+
+        private string GenerateProjectDesignSection(string designPattern)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(@"
+	<div class='projectTech'><b>Design pattern:</b> MVC </div>");
 
             return sb.ToString();
         }
@@ -199,7 +210,7 @@ namespace CV_Creator.Services
             StringBuilder sb = new StringBuilder();
 
             sb.Append(@"
-	<div class='projectTech'><b>Stack:</b> ");
+    < div class='projectTech'><b>Stack:</b> ");
 
             TechnologyProject last = technologiesProjects.Last();
             foreach (TechnologyProject tech in technologiesProjects)
@@ -427,7 +438,7 @@ namespace CV_Creator.Services
     font-size: 27px;
     margin-top: 10px;
     margin-left: 10px;
-    height: 105px;
+    margin-bottom: 10px;
 }
 
 .projImages {
