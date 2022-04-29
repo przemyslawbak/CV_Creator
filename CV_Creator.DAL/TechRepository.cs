@@ -18,12 +18,12 @@ namespace CV_Creator.DAL
         public async Task<List<CheckedTech>> GetAllCheckedTechnologiesAsync()
         {
             return await(from q in _context.Technologies
-                         select new CheckedTech
-                         {
-                             TechnologyID = q.TechnologyID,
-                             Checked = false,
-                             Name = q.Name
-                         }).ToListAsync();
+                          select new CheckedTech
+                          {
+                              TechnologyID = q.TechnologyID,
+                              Checked = false,
+                              Name = q.Name
+                          }).ToListAsync();
         }
 
         public object GetTechnologiesFromChecked(List<CheckedTech> list)

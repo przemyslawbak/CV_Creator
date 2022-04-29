@@ -1,6 +1,6 @@
 
-- order stack by importance
 - stack based on tech?
+- order stack by importance
 - display 'processing' on saving
 - display tech level in pdf
 - include tests in pdf

@@ -18,14 +18,14 @@ namespace CV_Creator.Desktop.ViewModels
     {
         private readonly IWindowManager _winService;
         private readonly ITechRepository _repositoryTech;
-        private readonly int _technologiesToBeSelected = 10;
+        private readonly int _technologiesQtyToBeSelected = 10;
 
         public TechStackLoaderViewModel(ITechRepository repositoryTech, IWindowManager winService)
         {
             _winService = winService;
             _repositoryTech = repositoryTech;
 
-            MaxTechSelected = _technologiesToBeSelected;
+            MaxTechSelected = _technologiesQtyToBeSelected;
             Initialization = LoadDataAndInitPropertiesAsync();
 
             FinishClickCommand = new DelegateCommand(OnFinishClick);
@@ -112,7 +112,7 @@ namespace CV_Creator.Desktop.ViewModels
         {
             SelectedCount = LoadedTechnologies.Where(project => project.Checked).Count();
 
-            if (SelectedCount > _technologiesToBeSelected)
+            if (SelectedCount > _technologiesQtyToBeSelected)
             {
                 SelectedCount--;
                 CheckedTech techFromTheList = obj as CheckedTech;
@@ -122,7 +122,7 @@ namespace CV_Creator.Desktop.ViewModels
                 DisplayCollection = LoadedTechnologies;
             }
 
-            if (SelectedCount == _technologiesToBeSelected)
+            if (SelectedCount == _technologiesQtyToBeSelected)
             {
                 IsFinishButtonEnabled = true;
             }
