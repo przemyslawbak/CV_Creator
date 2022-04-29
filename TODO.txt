@@ -1,8 +1,8 @@
 
-- stack lvl x/3
 - order stack by importance
 - stack based on tech?
 - display 'processing' on saving
+- display tech level in pdf
 - include tests in pdf
 - include design pattern in pdf
 - fill up with project data
@@ -11,6 +11,7 @@
 
 ---
 
+OK - stack lvl x/3
 OK - add tech importance prop
 NO - project name min. height 2 rows?
 OK - project stack names
