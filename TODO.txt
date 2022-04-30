@@ -1,14 +1,14 @@
 
 - display 'processing' on saving
 - display tech level in pdf
-- include tests in pdf
-- include design pattern in pdf
 - fill up with project data
 - update GH projects info
 - update przemyslaw-bak.pl
 
 ---
 
+OK - include tests in pdf
+OK - include design pattern in pdf
 OK - format project display in pdf
 OK - order stack by importance
 OK - stack lvl x/3
