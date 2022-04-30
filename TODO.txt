@@ -1,6 +1,7 @@
 
 - display 'processing' on saving
 - display tech level in pdf
+- add project completion date?
 - fill up with project data
 - update GH projects info
 - update przemyslaw-bak.pl

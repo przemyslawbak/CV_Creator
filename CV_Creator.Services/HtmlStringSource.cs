@@ -274,14 +274,33 @@ namespace CV_Creator.Services
 
         private string CreateSingleTechDisplay(Technology technology)
         {
+            int emptyStarCounter = 3 - technology.Level;
+            int fullStarCounter = technology.Level;
             string filePath = @"file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\stack\" + technology.PictureFile;
             StringBuilder sb = new StringBuilder();
             sb.Append(@"
 <div class='singleTech'>
     <img class='techPic' src='" + filePath + @"' />
-    <div class='techName'>" + technology.Name + @"</div>
+    <div class='techName'>" + technology.Name + @"</div>");
+            sb.Append(AddTechLevelStars(emptyStarCounter, fullStarCounter));
+            sb.Append(@"
 </div>
 ");
+
+            return sb.ToString();
+        }
+
+        private string AddTechLevelStars(int emptyStarCounter, int fullStarCounter)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < fullStarCounter; i++)
+            {
+                sb.Append(@"<img class='techStar' src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\star_full.png' />");
+            }
+            for (int i = 0; i < emptyStarCounter; i++)
+            {
+                sb.Append(@"<img class='techStar' src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\star_empty.png' />");
+            }
 
             return sb.ToString();
         }
@@ -490,6 +509,13 @@ namespace CV_Creator.Services
     height: 50px;
     width: 50px;
     filter: sepia(100%);
+}
+
+.techStar {
+    vertical-align: middle;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
 }
 
 .techName {
