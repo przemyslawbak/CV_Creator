@@ -280,10 +280,10 @@ namespace CV_Creator.Services
             StringBuilder sb = new StringBuilder();
             sb.Append(@"
 <div class='singleTech'>
-    <img class='techPic' src='" + filePath + @"' />
-    <div class='techName'>" + technology.Name + @"</div>");
+    <img class='techPic' src='" + filePath + @"' />");
             sb.Append(AddTechLevelStars(emptyStarCounter, fullStarCounter));
             sb.Append(@"
+    <div class='techName'>" + technology.Name + @"</div>
 </div>
 ");
 
@@ -497,25 +497,19 @@ namespace CV_Creator.Services
 .singleTech {
     font-family: Helvetica;
     height: 60px;
-    width: 270px;
+    width: 315px;
     margin: 5px;
     margin-top: 20px;
     float: left;
 }
 
 .techPic {
+    margin-right: 10px;
     vertical-align: middle;
     display: inline-block;
     height: 50px;
     width: 50px;
     filter: sepia(100%);
-}
-
-.techStar {
-    vertical-align: middle;
-    display: inline-block;
-    height: 20px;
-    width: 20px;
 }
 
 .techName {
@@ -525,8 +519,16 @@ namespace CV_Creator.Services
     margin: 5px;
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: 15px;
+    margin-left: 10px;
     overflow-x: auto;
+}
+
+.techStar {
+    margin-right: 1px;
+    vertical-align: middle;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
 }
 
 /*WORK HISTORY*/

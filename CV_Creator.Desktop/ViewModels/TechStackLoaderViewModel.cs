@@ -18,7 +18,7 @@ namespace CV_Creator.Desktop.ViewModels
     {
         private readonly IWindowManager _winService;
         private readonly ITechRepository _repositoryTech;
-        private readonly int _technologiesQtyToBeSelected = 10;
+        private readonly int _technologiesQtyToBeSelected = 12;
 
         public TechStackLoaderViewModel(ITechRepository repositoryTech, IWindowManager winService)
         {

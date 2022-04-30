@@ -1,6 +1,5 @@
 
 - display 'processing' on saving
-- display tech level in pdf
 - add project completion date?
 - fill up with project data
 - update GH projects info
@@ -8,6 +7,7 @@
 
 ---
 
+OK - display tech level in pdf
 OK - add tech: SQL, EF Core
 OK - include tests in pdf
 OK - include design pattern in pdf
