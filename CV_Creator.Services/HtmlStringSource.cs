@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using CV_Creator.Models;
@@ -176,6 +177,7 @@ namespace CV_Creator.Services
 	<div class='projectComments'><b>About:</b> " + project.Comments + @"</div>");
             sb.Append(GenerateProjectTestAndDesignSection(project.Tests, project.DesignPattern));
             sb.Append(GenerateProjectTechStackSection(project.TechnologiesProjects));
+            sb.Append(GenerateProjectCompletedSection(project.CompletionDate));
             sb.Append(GenerateProjectGithubAndWebsiteInfoSection(project.GitHubUrl, project.WebUrl));
             sb.Append(@"
 	</div>
@@ -184,12 +186,40 @@ namespace CV_Creator.Services
             return sb.ToString();
         }
 
+        private string GenerateProjectCompletedSection(DateTime completionDate)
+        {
+            Dictionary<int, string> months = new Dictionary<int, string>()
+            {
+                { 1, "Jan" },
+                { 2, "Feb" },
+                { 3, "Mar" },
+                { 4, "Apr" },
+                { 5, "May" },
+                { 6, "Jun" },
+                { 7, "Jul" },
+                { 8, "Aug" },
+                { 9, "Sep" },
+                { 10, "Oct" },
+                { 11, "Nov" },
+                { 12, "Dec" },
+            };
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(@" <b>Production:</b> " + months[completionDate.Month] + "." + completionDate.Year);
+
+            sb.Append(@"</div>
+	<div class='projImages'>");
+
+            return sb.ToString();
+        }
+
         private string GenerateProjectTestAndDesignSection(bool tests, string designPattern)
         {
             StringBuilder sb = new StringBuilder();
 
             sb.Append(@"
-	<div class='projectTech'><b>Tests:</b> " + (tests ? "yes" : "no") + " <b>Design pattern:</b> " + designPattern + " </div>");
+	<div class='projectTech'><b>Tests:</b> " + (tests ? "yes" : "no") + " <b>Design pattern:</b> " + designPattern + " ");
 
             return sb.ToString();
         }
@@ -199,7 +229,7 @@ namespace CV_Creator.Services
             StringBuilder sb = new StringBuilder();
 
             sb.Append(@"
-    <div class='projectTech'><b>Stack:</b> ");
+    <b>Stack:</b> ");
 
             TechnologyProject last = technologiesProjects.Last();
             foreach (TechnologyProject tech in technologiesProjects)
@@ -210,9 +240,6 @@ namespace CV_Creator.Services
                     sb.Append(", ");
                 }
             }
-
-            sb.Append(@"</div>
-	<div class='projImages'>");
 
             return sb.ToString();
         }

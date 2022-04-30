@@ -1,12 +1,12 @@
 
 - display 'processing' on saving
-- add project completion date?
 - fill up with project data
 - update GH projects info
 - update przemyslaw-bak.pl
 
 ---
 
+OK - add project completion date?
 OK - display tech level in pdf
 OK - add tech: SQL, EF Core
 OK - include tests in pdf
