@@ -7,6 +7,7 @@
 
 ---
 
+OK - add tech: SQL, EF Core
 OK - include tests in pdf
 OK - include design pattern in pdf
 OK - format project display in pdf
