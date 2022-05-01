@@ -1,11 +1,12 @@
 
-- display 'processing' on saving
 - fill up with project data
 - update GH projects info
 - update przemyslaw-bak.pl
+- tests
 
 ---
 
+OK - display 'processing' on saving
 OK - stack based on proj tech
 OK - add project completion date?
 OK - display tech level in pdf

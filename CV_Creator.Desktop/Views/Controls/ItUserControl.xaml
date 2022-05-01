@@ -185,5 +185,19 @@
             Command="{Binding ClearInputsCommand}"
             IsEnabled="{Binding IsClearButtonEnabled}">
         </Button>
+        <Label
+                  Background="#e0ece0"
+            Width="150"
+            HorizontalContentAlignment="Center"
+                Content="Processing..."
+                FontSize="15"
+				 Grid.Row="2"
+				 Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+            Padding="20"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            Visibility="{Binding ProcessingData, Converter={StaticResource BoolToVis}}"/>
     </Grid>
 </UserControl>

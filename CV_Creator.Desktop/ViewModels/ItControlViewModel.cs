@@ -41,8 +41,8 @@ namespace CV_Creator.Desktop.ViewModels
 
             OpenProjectsLoaderCommand = new AsyncCommand(async () => await OnOpenProjectsLoaderAsync());
             OpenTechLoaderCommand = new AsyncCommand(async () => await OnOpenTechLoaderAsync());
+            ExecuteOperationCommand = new AsyncCommand(async () => await OnExecuteOperation());
             OpenFilePathWindowCommand = new DelegateCommand(OnSaveFilePathWindow);
-            ExecuteOperationCommand = new DelegateCommand(OnExecuteOperation);
             ClearInputsCommand = new DelegateCommand(OnClearInputs);
 
             LoadControlsFromFile();
@@ -57,6 +57,17 @@ namespace CV_Creator.Desktop.ViewModels
         public List<Project> LoadedProjects { get; set; }
         public List<Technology> LoadedTechStack { get; set; }
         public string FileName { get; set; } = _basicFilePath + ".pdf";
+
+        private bool _processingData;
+        public bool ProcessingData
+        {
+            get => _processingData;
+            set
+            {
+                _processingData = value;
+                OnPropertyChanged();
+            }
+        }
 
         private bool _isExecuteButtonEnabled;
         public bool IsExecuteButtonEnabled
@@ -204,18 +215,24 @@ namespace CV_Creator.Desktop.ViewModels
             LoadControlsFromFile();
         }
 
-        private void OnExecuteOperation(object o)
+        private async Task OnExecuteOperation()
         {
+            ProcessingData = true;
+
             byte[] pdfCv = _dataProcessor.ProcessPortfolio(LoadedProjects, LoadedTechStack, CompanyName, PositionApplied);
 
             if (SendOrSave == 1)
             {
-                _fileManager.SaveToDiskAsync(pdfCv, FilePath);
+                await _fileManager.SaveToDiskAsync(pdfCv, FilePath);
             }
             else
             {
                 _emailManager.SendToAddressAsync(pdfCv, EmailAddress);
             }
+
+            await Task.Delay(1000);
+
+            ProcessingData = false;
         }
 
         private void OnSaveFilePathWindow(object o)
