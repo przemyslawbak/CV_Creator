@@ -1,4 +1,5 @@
 
+- bug: freezes on 2nd use
 - fill up with project data
 - update GH projects info
 - update przemyslaw-bak.pl

@@ -54,7 +54,7 @@
                 <MouseBinding Command="{Binding OpenProjectsLoaderCommand}" MouseAction="LeftClick" />
             </TextBox.InputBindings>
         </TextBox>
-        <TextBlock Text="Pick up your projects..."
+        <TextBlock Text="Click to pick up your projects..."
                    IsHitTestVisible="False"
                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
             <TextBlock.Style>
@@ -77,7 +77,7 @@
                 <MouseBinding Command="{Binding OpenTechLoaderCommand}" MouseAction="LeftClick" />
             </TextBox.InputBindings>
         </TextBox>
-        <TextBlock Text="Pick up your tech stack..."
+        <TextBlock Text="Tech stack will e displayed here..."
                    IsHitTestVisible="False"
                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
             <TextBlock.Style>
