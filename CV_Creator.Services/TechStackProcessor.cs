@@ -1,12 +1,13 @@
 ﻿using CV_Creator.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CV_Creator.Services
 {
     public class TechStackProcessor : ITechStackProcessor
     {
+        private readonly int _maxTechStackty = 12;
+
         public List<Technology> SelectTechStack(List<Project> loadedProjects)
         {
             List<Technology> allTech = loadedProjects
@@ -17,6 +18,11 @@ namespace CV_Creator.Services
                 .OrderByDescending(tech => tech.Importance)
                 .ThenByDescending(tech => tech.Level)
                 .ToList();
+
+            if (allTech.Count() > _maxTechStackty)
+            {
+                allTech = allTech.Take(12).ToList();
+            }
 
             return allTech;
         }

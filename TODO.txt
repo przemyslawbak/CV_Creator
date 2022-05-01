@@ -1,5 +1,4 @@
 
-- stack based on proj tech
 - display 'processing' on saving
 - fill up with project data
 - update GH projects info
@@ -7,6 +6,7 @@
 
 ---
 
+OK - stack based on proj tech
 OK - add project completion date?
 OK - display tech level in pdf
 OK - add tech: SQL, EF Core

@@ -227,6 +227,7 @@ namespace CV_Creator.Desktop.ViewModels
         {
             LoadedProjects = await _windowManager.OpenResultWindowAsync(_projectLoaderVMCreator()) as List<Project>;
             LoadedTechStack = _stackProcessor.SelectTechStack(LoadedProjects);
+            TechStackSelected = UpdateTechStackSelected(LoadedTechStack);
 
             ProjectsSelected = string.Empty;
 
@@ -241,6 +242,25 @@ namespace CV_Creator.Desktop.ViewModels
 
                 ProjectsSelected = string.Join(", ", names.ToArray());
             }
+        }
+
+        private string UpdateTechStackSelected(List<Technology> loadedTechStack)
+        {
+            string stack = string.Empty;
+
+            if (loadedTechStack != null)
+            {
+                List<string> names = new List<string>();
+
+                foreach (var tech in loadedTechStack)
+                {
+                    names.Add(tech.Name);
+                }
+
+                stack = string.Join(", ", names.ToArray());
+            }
+
+            return stack;
         }
 
         private async Task OnOpenTechLoaderAsync()
