@@ -1,5 +1,4 @@
 
-- bug: freezes on 2nd use
 - fill up with project data
 - update GH projects info
 - update przemyslaw-bak.pl
@@ -7,6 +6,7 @@
 
 ---
 
+OK - bug: freezes on 2nd use
 OK - display 'processing' on saving
 OK - stack based on proj tech
 OK - add project completion date?

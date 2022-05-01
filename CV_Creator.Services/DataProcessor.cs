@@ -9,16 +9,16 @@ namespace CV_Creator.Services
     {
         private readonly string _name = "Przemyslaw Bak";
         private readonly IHtmlStringSource _htmlSource;
+        private IConverter _converter;
 
         public DataProcessor(IHtmlStringSource htmlSource)
         {
+            _converter = new ThreadSafeConverter(new PdfToolset(new Win32EmbeddedDeployment(new TempFolderDeployment())));
             _htmlSource = htmlSource;
         }
 
         public byte[] ProcessPortfolio(List<Project> loadedProjects, List<Technology> loadedTechStack, string companyName, string positionApplied)
         {
-            IConverter converter = new ThreadSafeConverter(new PdfToolset(new Win32EmbeddedDeployment(new TempFolderDeployment())));
-
             HtmlToPdfDocument doc = new HtmlToPdfDocument()
             {
                 GlobalSettings =
@@ -47,7 +47,7 @@ namespace CV_Creator.Services
                 }
             };
 
-            return converter.Convert(doc);
+            return _converter.Convert(doc);
         }
 
         private WebSettings GetWebSettings()
