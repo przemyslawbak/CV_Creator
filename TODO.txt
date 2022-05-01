@@ -1,4 +1,5 @@
 
+- stack based on proj tech
 - display 'processing' on saving
 - fill up with project data
 - update GH projects info
@@ -46,5 +47,4 @@ OK - company name in the footer
 
 ---FUTURE:
 
-- stack based on proj tech
 - employment history: get data from the file / db

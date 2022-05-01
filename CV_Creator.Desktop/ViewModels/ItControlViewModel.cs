@@ -14,6 +14,7 @@ namespace CV_Creator.Desktop.ViewModels
     {
         private readonly static string _basicFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Przemyslaw_Bak_application");
         private readonly IWindowManager _windowManager;
+        private readonly ITechStackProcessor _stackProcessor;
         private readonly IDataProcessor _dataProcessor;
         private readonly IFileManager _fileManager;
         private readonly IEmailManager _emailManager;
@@ -26,7 +27,8 @@ namespace CV_Creator.Desktop.ViewModels
             Func<IProjectLoaderViewModel> projectLoaderVMCreator,
             Func<ITechStackLoaderViewModel> techLoaderVMCreator,
             IFileManager fileManager,
-            IEmailManager emailManager
+            IEmailManager emailManager,
+            ITechStackProcessor stackProcessor
             )
         {
             _windowManager = windowManager;
@@ -35,6 +37,7 @@ namespace CV_Creator.Desktop.ViewModels
             _techLoaderVMCreator = techLoaderVMCreator;
             _fileManager = fileManager;
             _emailManager = emailManager;
+            _stackProcessor = stackProcessor;
 
             OpenProjectsLoaderCommand = new AsyncCommand(async () => await OnOpenProjectsLoaderAsync());
             OpenTechLoaderCommand = new AsyncCommand(async () => await OnOpenTechLoaderAsync());
@@ -223,6 +226,7 @@ namespace CV_Creator.Desktop.ViewModels
         private async Task OnOpenProjectsLoaderAsync()
         {
             LoadedProjects = await _windowManager.OpenResultWindowAsync(_projectLoaderVMCreator()) as List<Project>;
+            LoadedTechStack = await _stackProcessor.SelectTechStack(LoadedProjects);
 
             ProjectsSelected = string.Empty;
 
@@ -241,6 +245,7 @@ namespace CV_Creator.Desktop.ViewModels
 
         private async Task OnOpenTechLoaderAsync()
         {
+            /*
             LoadedTechStack = await _windowManager.OpenResultWindowAsync(_techLoaderVMCreator()) as List<Technology>;
 
             TechStackSelected = string.Empty;
@@ -256,6 +261,7 @@ namespace CV_Creator.Desktop.ViewModels
 
                 TechStackSelected = string.Join(", ", names.ToArray());
             }
+            */
         }
     }
 }
