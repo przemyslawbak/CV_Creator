@@ -40,8 +40,8 @@ namespace CV_Creator.Desktop.ViewModels
             _stackProcessor = stackProcessor;
 
             OpenProjectsLoaderCommand = new AsyncCommand(async () => await OnOpenProjectsLoaderAsync());
-            OpenTechLoaderCommand = new AsyncCommand(async () => await OnOpenTechLoaderAsync());
-            ExecuteOperationCommand = new AsyncCommand(async () => await OnExecuteOperation());
+            //OpenTechLoaderCommand = new AsyncCommand(async () => await OnOpenTechLoaderAsync());
+            CreatePdfCommand = new AsyncCommand(async () => await OnCreatePdfAsync());
             OpenFilePathWindowCommand = new DelegateCommand(OnSaveFilePathWindow);
             ClearInputsCommand = new DelegateCommand(OnClearInputs);
 
@@ -50,8 +50,8 @@ namespace CV_Creator.Desktop.ViewModels
 
         public ICommand OpenFilePathWindowCommand { get; private set; }
         public ICommand OpenProjectsLoaderCommand { get; private set; }
-        public ICommand OpenTechLoaderCommand { get; private set; }
-        public ICommand ExecuteOperationCommand { get; private set; }
+        //public ICommand OpenTechLoaderCommand { get; private set; }
+        public ICommand CreatePdfCommand { get; private set; }
         public ICommand ClearInputsCommand { get; private set; }
 
         public List<Project> LoadedProjects { get; set; }
@@ -215,7 +215,7 @@ namespace CV_Creator.Desktop.ViewModels
             LoadControlsFromFile();
         }
 
-        private async Task OnExecuteOperation()
+        private async Task OnCreatePdfAsync()
         {
             ProcessingData = true;
 
@@ -278,27 +278,6 @@ namespace CV_Creator.Desktop.ViewModels
             }
 
             return stack;
-        }
-
-        private async Task OnOpenTechLoaderAsync()
-        {//tech stack will be selected of picked up projects
-            /*
-            LoadedTechStack = await _windowManager.OpenResultWindowAsync(_techLoaderVMCreator()) as List<Technology>;
-
-            TechStackSelected = string.Empty;
-
-            if (LoadedTechStack != null)
-            {
-                List<string> names = new List<string>();
-
-                foreach (var tech in LoadedTechStack)
-                {
-                    names.Add(tech.Name);
-                }
-
-                TechStackSelected = string.Join(", ", names.ToArray());
-            }
-            */
         }
     }
 }

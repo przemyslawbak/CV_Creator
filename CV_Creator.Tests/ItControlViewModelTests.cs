@@ -86,7 +86,7 @@ namespace CV_Creator.Tests
         [Fact]
         public void ExecuteOperationCommand_Executed_CallsProcessPortfolioOnce()
         {
-            _viewModel.ExecuteOperationCommand.Execute(null);
+            _viewModel.CreatePdfCommand.Execute(null);
 
             _dataProcessorMock.Verify(mock => mock.ProcessPortfolio(It.IsAny<List<Project>>(), It.IsAny<List<Technology>>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         }
@@ -96,7 +96,7 @@ namespace CV_Creator.Tests
         {
             _viewModel.SendOrSave = 1;
 
-            _viewModel.ExecuteOperationCommand.Execute(null);
+            _viewModel.CreatePdfCommand.Execute(null);
 
             _fileManagerMock.Verify(mock => mock.SaveToDiskAsync(It.IsAny<byte[]>(), It.IsAny<string>()), Times.Once);
         }
@@ -106,7 +106,7 @@ namespace CV_Creator.Tests
         {
             _viewModel.SendOrSave = 2;
 
-            _viewModel.ExecuteOperationCommand.Execute(null);
+            _viewModel.CreatePdfCommand.Execute(null);
 
             _emailManagerMock.Verify(mock => mock.SendToAddressAsync(It.IsAny<byte[]>(), It.IsAny<string>()), Times.Once);
         }
