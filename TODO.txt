@@ -1,11 +1,10 @@
-
 - fill up with project data
 - update GH projects info
-- update przemyslaw-bak.pl
 - tests
 
 ---
-
+NO - update przemyslaw-bak.pl?
+OK - add Docker tech
 OK - bug: freezes on 2nd use
 OK - display 'processing' on saving
 OK - stack based on proj tech
