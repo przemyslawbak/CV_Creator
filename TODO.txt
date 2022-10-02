@@ -1,6 +1,13 @@
 - fill up with project data
 - update GH projects info
 - tests
+- possible paste RODO
+- if pasted rodo, replace original
+- add Azure ech
+- to 4SD add Azure
+- add nUnit tech
+- add nSubstitute tech
+- links to noget libraries? (params logger, window manager)
 
 ---
 NO - update przemyslaw-bak.pl?

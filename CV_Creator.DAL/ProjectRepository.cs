@@ -39,7 +39,7 @@ namespace CV_Creator.DAL
                 .ThenInclude(techproj => techproj.Technology);
             return query.ToList();*/
 
-            return new object; //todo: implement
+            return new object(); //todo: implement
         }
     }
 }

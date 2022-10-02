@@ -16,7 +16,8 @@ namespace CV_Creator.DAL
 
         public Task<List<CheckedProject>> GetAllProjects()
         {
-            throw new System.NotImplementedException();
+            List<CheckedProject> projects = new List<CheckedProject>();
+
         }
     }
 }
