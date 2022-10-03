@@ -6,7 +6,7 @@ namespace CV_Creator.DAL
 {
     public interface IProjectRepository
     {
-        Task<List<CheckedProject>> GetAllCheckedProjectsAsync();
+        List<CheckedProject> GetAllCheckedProjectsAsync();
         object GetProjectsFromChecked(List<CheckedProject> list);
     }
 }

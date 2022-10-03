@@ -16,7 +16,29 @@ namespace CV_Creator.Services
         //todo future: async
         public List<CheckedProject> GetProjectList(List<Technology> tech, List<TechnologyProject> techProj)
         {
-            return new List<CheckedProject>();
+            List<CheckedProject> result = new List<CheckedProject>(File.ReadAllLines(_inputProjectsFile)
+                .Where(row => row.Contains("|"))
+                .Select(row => new CheckedProject()
+                {
+                    ProjectID = int.Parse(row.Split('|')[0]),
+                    Name = row.Split('|')[1],
+                    Comment = row.Split('|')[2],
+                    Checked = false
+                }));
+
+            foreach (var proj in result)
+            {
+                proj.Techs = GetTechNames(proj.ProjectID, techProj, tech);
+            }
+
+            return result;
+        }
+
+        private string GetTechNames(int projectID, List<TechnologyProject> techProj, List<Technology> tech)
+        {
+            IEnumerable<int> nos = techProj.Where(x => x.ProjectID == projectID).Select(x => x.TechnologyID);
+            string[] techNames = tech.Where(x => nos.Any(a => a == x.TechnologyID)).Select(x => x.Name).ToArray();
+            return string.Join(", ", techNames);
         }
 
         //todo future: async

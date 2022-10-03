@@ -28,7 +28,7 @@ namespace CV_Creator.Tests
 
             _sampleProjectChecked = new CheckedProject() { Checked = true };
             _paginationServiceMock.Setup(mock => mock.GetDisplayResults(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<List<CheckedProject>>())).Returns(new List<CheckedProject>() { _sampleProjectChecked });
-            _repositoryMock.Setup(mock => mock.GetAllCheckedProjectsAsync()).ReturnsAsync(new List<CheckedProject>() { });
+            _repositoryMock.Setup(mock => mock.GetAllCheckedProjectsAsync()).Returns(new List<CheckedProject>() { });
 
             _viewModel = new ProjectLoaderViewModel(_repositoryMock.Object, _paginationServiceMock.Object, _winManagerMock.Object, _stringSanitizerMock.Object);
         }
