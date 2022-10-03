@@ -14,10 +14,11 @@ namespace CV_Creator.DAL
             _fileManager = fileManager;
         }
 
-        public Task<List<CheckedProject>> GetAllProjects()
+        public async Task<List<CheckedProject>> GetAllProjects()
         {
-            List<CheckedProject> projects = new List<CheckedProject>();
-
+            List<Technology> tech = await _fileManager.GetTechnologyList();
+            List<TechnologyProject> techProj = await _fileManager.GetTechProjList();
+            return await _fileManager.GetProjectList(tech, techProj);
         }
     }
 }

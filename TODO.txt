@@ -2,14 +2,15 @@
 - update GH projects info
 - tests
 - possible paste RODO
+- loading data from files
 - if pasted rodo, replace original
-- add Azure ech
-- to 4SD add Azure
-- add nUnit tech
-- add nSubstitute tech
-- links to noget libraries? (params logger, window manager)
 
 ---
+OK - links to nuget libraries? (params logger, window manager)
+OK - to 4SD add Azure
+OK - add Azure ech
+OK - add nUnit tech
+OK - add nSubstitute tech
 NO - update przemyslaw-bak.pl?
 OK - add Docker tech
 OK - bug: freezes on 2nd use

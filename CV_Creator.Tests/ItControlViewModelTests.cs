@@ -14,6 +14,7 @@ namespace CV_Creator.Tests
         private readonly Mock<IDataProcessor> _dataProcessorMock;
         private readonly Mock<IFileManager> _fileManagerMock;
         private readonly Mock<IEmailManager> _emailManagerMock;
+        private readonly Mock<ITechStackProcessor> _stackProcessor;
 
         public ItControlViewModelTests()
         {
@@ -21,6 +22,7 @@ namespace CV_Creator.Tests
             _dataProcessorMock = new Mock<IDataProcessor>();
             _fileManagerMock = new Mock<IFileManager>();
             _emailManagerMock = new Mock<IEmailManager>();
+            _stackProcessor = new Mock<ITechStackProcessor>();
 
             _viewModel = new ItControlViewModel(
                 _windowManagerMock.Object,
@@ -28,7 +30,8 @@ namespace CV_Creator.Tests
                 ProjectLoaderViewModel,
                 TechLoaderViewModel,
                 _fileManagerMock.Object,
-                _emailManagerMock.Object);
+                _emailManagerMock.Object,
+                _stackProcessor.Object);
         }
 
         private IProjectLoaderViewModel ProjectLoaderViewModel()
