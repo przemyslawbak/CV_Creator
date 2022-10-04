@@ -1,4 +1,3 @@
-- fix long url display
 - fill up with project data
 - update GH projects info
 - update project comments
@@ -9,6 +8,7 @@
 - tests
 
 ---
+OK - fix long url display
 OK - links to nuget libraries? (params logger, window manager)
 OK - to 4SD add Azure
 OK - add Azure ech

@@ -246,6 +246,7 @@ namespace CV_Creator.Services
 
         private string GenerateProjectGithubAndWebsiteInfoSection(string gitHubUrl, string webUrl)
         {
+            var maxLength = 33;
             StringBuilder sb = new StringBuilder();
 
             if (gitHubUrl != "#")
@@ -261,15 +262,25 @@ namespace CV_Creator.Services
 	<div class='projText'>");
             if (gitHubUrl != "#")
             {
-                sb.Append(@"<div><a class='projectLink' href=" + gitHubUrl + @" '>" + gitHubUrl.Replace("https://", "") + @"</a></div>");
+                sb.Append(@"<div><a class='projectLink' href=" + gitHubUrl + @" '>" + TruncateLongString(gitHubUrl.Replace("https://", "").Replace("http://", ""), maxLength) + @"</a></div>");
             };
             if (webUrl != "#")
             {
-                sb.Append(@"<div><a class='projectLink' href='" + webUrl + @"'>" + webUrl.Replace("https://", "") + @"</a></div>");
+                sb.Append(@"<div><a class='projectLink' href='" + webUrl + @"'>" + TruncateLongString(webUrl.Replace("https://", "").Replace("http://", ""), maxLength) + @"</a></div>");
             };
 
             return sb.ToString();
         }
+
+        private string TruncateLongString(string str, int maxLength)
+        {
+            if (string.IsNullOrEmpty(str)) return str;
+
+            if (str.Length > maxLength) return str.Substring(0, Math.Min(str.Length, maxLength)) + "(...)";
+
+            return str.Substring(0, Math.Min(str.Length, maxLength));
+        }
+
 
         public string GetHtmlCvRodoFooter(string company)
         {
@@ -492,6 +503,7 @@ namespace CV_Creator.Services
     }
 
 .projText {
+    width: 80%;
     font-size: 27px;
     margin-top: 30px;
     margin-left: 10px;
@@ -500,8 +512,14 @@ namespace CV_Creator.Services
 
     .projText div {
         margin-bottom: 10px;
-        display: block;
+        display: inline-block;
     }
+
+        .projText div a {
+            height: 50px;
+            overflow: scroll;
+            word-break: break-all;
+        }
 
 .projectLink {
     text-decoration: none;
