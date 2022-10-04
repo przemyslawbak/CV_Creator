@@ -133,10 +133,10 @@ namespace CV_Creator.Services
         <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\financial.png' />
     </div>
     <div class='interestsText'>
-        <div>Swimming pool and calistenics.</div>
+        <div>Swimming and calistenics.</div>
         <div>Learning German language to move it to the higher level.</div>
-        <div>In my spare time, I listen to lectures on social psychology, anthropology and neurobiology.</div>
-        <div>I am interested in financial markets and their analysis, specilized in WIG20 and DAX futures.</div>
+        <div>Social psychology, anthropology and neurobiology.</div>
+        <div>I am interested in financial markets and analysis.</div>
     </div>
 </div>
 ");
