@@ -1,9 +1,12 @@
+- fix long url display
 - fill up with project data
 - update GH projects info
-- tests
+- update project comments
 - possible paste RODO
 - loading data from files
 - if pasted rodo, replace original
+- update przemyslaw-bak.pl
+- tests
 
 ---
 OK - links to nuget libraries? (params logger, window manager)
