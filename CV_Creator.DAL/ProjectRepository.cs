@@ -29,17 +29,18 @@ namespace CV_Creator.DAL
             return _context.GetAllProjects();
         }
 
-        public object GetProjectsFromChecked(List<CheckedProject> list)
+        public List<Project> GetProjectsFromChecked(List<CheckedProject> list)
         {
-            /*var ids = list.Select(item => item.ProjectID).ToList();
-            IQueryable<Project> query = _context.Projects
+            var ids = list.Select(item => item.ProjectID).ToList();
+
+            /*IQueryable<Project> query = _context.Projects
                 .OrderBy(project => project.CompletionDate)
                 .Where(project => ids.Contains(project.ProjectID))
                 .Include(project => project.TechnologiesProjects)
                 .ThenInclude(techproj => techproj.Technology);
             return query.ToList();*/
 
-            return new object(); //todo: implement
+            return _context.GetCheckedProjects(ids);
         }
     }
 }

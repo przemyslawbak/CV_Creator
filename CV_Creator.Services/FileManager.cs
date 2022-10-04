@@ -14,6 +14,33 @@ namespace CV_Creator.Services
         private readonly string _inputProjectsTechnologiesFile = "_tech_proj.txt";
 
         //todo future: async
+        public List<Project> GetCheckedProjectList(List<Technology> tech, List<TechnologyProject> techProj, List<int> ids)
+        {
+            List<Project> result = new List<Project>(File.ReadAllLines(_inputProjectsFile)
+                .Where(row => row.Contains("|"))
+                .Select(row => new Project()
+                {
+                    ProjectID = int.Parse(row.Split('|')[0]),
+                    Name = row.Split('|')[1],
+                    Comments = row.Split('|')[2],
+                    GitHubUrl = row.Split('|')[3],
+                    WebUrl = row.Split('|')[4],
+                    WorkLogUrl = row.Split('|')[5],
+                    YouTubeUrl = row.Split('|')[6],
+                    BackColor = row.Split('|')[7],
+                    PictureUrl = row.Split('|')[8],
+                    CompletionDate = DateTime.Parse(row.Split('|')[9]),
+                    DesignPattern = row.Split('|')[10],
+                    Tests = bool.Parse(row.Split('|')[11]),
+                    TechnologiesProjects = techProj.Where(t => t.ProjectID == int.Parse(row.Split('|')[0])).ToList()
+                }))
+                .Where(p => ids.Any(i => i == p.ProjectID))
+                .ToList();
+
+            return result;
+        }
+
+        //todo future: async
         public List<CheckedProject> GetProjectList(List<Technology> tech, List<TechnologyProject> techProj)
         {
             List<CheckedProject> result = new List<CheckedProject>(File.ReadAllLines(_inputProjectsFile)
@@ -57,7 +84,7 @@ namespace CV_Creator.Services
         }
 
         //todo future: async
-        public List<TechnologyProject> GetTechProjList()
+        public List<TechnologyProject> GetTechProjList(List<Technology> tech)
         {
             return new List<TechnologyProject>(File.ReadAllLines(_inputProjectsTechnologiesFile)
                 .Where(row => row.Contains("|"))
@@ -65,6 +92,7 @@ namespace CV_Creator.Services
                 {
                     TechnologyID = int.Parse(row.Split('|')[0]),
                     ProjectID = int.Parse(row.Split('|')[1]),
+                    Technology = tech.Where(t => t.TechnologyID == int.Parse(row.Split('|')[0])).FirstOrDefault()
                 }));
         }
 

@@ -17,8 +17,15 @@ namespace CV_Creator.DAL
         public List<CheckedProject> GetAllProjects()
         {
             List<Technology> tech = _fileManager.GetTechnologyList();
-            List<TechnologyProject> techProj = _fileManager.GetTechProjList();
+            List<TechnologyProject> techProj = _fileManager.GetTechProjList(tech);
             return _fileManager.GetProjectList(tech, techProj);
+        }
+
+        public List<Project> GetCheckedProjects(List<int> ids)
+        {
+            List<Technology> tech = _fileManager.GetTechnologyList();
+            List<TechnologyProject> techProj = _fileManager.GetTechProjList(tech);
+            return _fileManager.GetCheckedProjectList(tech, techProj, ids);
         }
     }
 }
