@@ -1,0 +1,62 @@
+- fill up with project data
+- update GH projects info
+- update project comments
+- possible paste RODO
+- loading data from files
+- if pasted rodo, replace original
+- update przemyslaw-bak.pl
+- tests
+
+---
+OK - fix long url display
+OK - links to nuget libraries? (params logger, window manager)
+OK - to 4SD add Azure
+OK - add Azure ech
+OK - add nUnit tech
+OK - add nSubstitute tech
+NO - update przemyslaw-bak.pl?
+OK - add Docker tech
+OK - bug: freezes on 2nd use
+OK - display 'processing' on saving
+OK - stack based on proj tech
+OK - add project completion date?
+OK - display tech level in pdf
+OK - add tech: SQL, EF Core
+OK - include tests in pdf
+OK - include design pattern in pdf
+OK - format project display in pdf
+OK - order stack by importance
+OK - stack lvl x/3
+OK - add tech importance prop
+NO - project name min. height 2 rows?
+OK - project stack names
+OK - bug: 2x pdf in file name
+OK - resize 'about' project
+OK - moved back www
+NO - css for contact details
+OK - remove www?
+OK - bug: project info icon still displayed
+OK - correct HtmlAgilityPack icon and tech name
+OK - remove 'more about on' in projects?
+OK - company name with caps in header
+OK - 'world' brown icon for languages?
+OK - on 'save' set default file name and path
+OK - remove 'maritime freelencer' of the employment history
+OK - update hobbies
+OK - update employment history
+OK - remove / update education
+OK - add tech: moq
+OK - bug: pic missing
+OK - add tech: xunit, prism, autofac, nlog, Html Agility Pack, CefSharp
+NO - github hyperlink in the footer
+OK - limit stack list to main only
+OK - cut and upload icons
+OK - project design pattern prop
+OK - project unit test yes/no prop
+OK - projects + tech only
+NO - file instead of DB?
+OK - company name in the footer
+
+---FUTURE:
+
+- employment history: get data from the file / db

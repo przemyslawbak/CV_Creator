@@ -1,7 +1,6 @@
 ﻿using CV_Creator.Models;
 using CV_Creator.Services;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CV_Creator.DAL
 {
