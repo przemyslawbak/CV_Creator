@@ -1,4 +1,5 @@
 - fill up with project data
+- easy picture replacing
 - update GH projects info
 - update project comments
 - possible paste RODO

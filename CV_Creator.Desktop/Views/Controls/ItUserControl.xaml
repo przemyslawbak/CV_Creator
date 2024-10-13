@@ -27,7 +27,7 @@
         <TextBlock Text="Selected projects:"
                    Style="{StaticResource textBlockLabel}"
                    Grid.Row="0" Grid.Column="0"/>
-        <TextBlock Text="Selected tech stack:"
+        <TextBlock Text="Tech stack from projects:"
                    Style="{StaticResource textBlockLabel}"
                    Grid.Row="1" Grid.Column="0"/>
         <TextBlock Text="Company name:"
@@ -77,7 +77,7 @@
                 <MouseBinding Command="{Binding OpenTechLoaderCommand}" MouseAction="LeftClick" />
             </TextBox.InputBindings>
         </TextBox>
-        <TextBlock Text="Tech stack will e displayed here..."
+        <TextBlock Text="Tech stack will be displayed here..."
                    IsHitTestVisible="False"
                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
             <TextBlock.Style>
