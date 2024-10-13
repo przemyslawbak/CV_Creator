@@ -8,7 +8,7 @@ namespace CV_Creator.Services
     {
         private readonly int _maxTechStackty = 12;
 
-        public List<Technology> SelectTechStack(List<Project> loadedProjects)
+        public List<Technology> SelectTechStack(List<Project> loadedProjects) //null?
         {
             List<Technology> allTech = loadedProjects
                 .Select(proj => proj.TechnologiesProjects)

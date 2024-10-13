@@ -34,7 +34,7 @@ namespace CV_Creator.Desktop.ViewModels
             _displayItemsPerPage = 4;
             CurrentPage = 1;
 
-            Initialization = LoadDataAndInitPropertiesAsync();
+            LoadDataAndInitPropertiesAsync();
 
             NextClickCommand = new DelegateCommand(OnNextClick);
             PrevClickCommand = new DelegateCommand(OnPrevClick);
@@ -133,11 +133,11 @@ namespace CV_Creator.Desktop.ViewModels
             }
         }
 
-        private async Task LoadDataAndInitPropertiesAsync()
+        private void LoadDataAndInitPropertiesAsync()
         {
             LoadingData = true;
             MaxProjectsSelected = _projectsQtyToBeSelected;
-            _loadedAllProjects = await _repositoryProj.GetAllCheckedProjectsAsync();
+            _loadedAllProjects = _repositoryProj.GetAllCheckedProjectsAsync();
             _loadedAllProjects = CleanUpHtml(_loadedAllProjects);
             FilteredProjects = _loadedAllProjects;
             DisplayCollection = GetNewPageCollection();

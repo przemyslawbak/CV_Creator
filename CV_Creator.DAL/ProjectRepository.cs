@@ -8,15 +8,15 @@ namespace CV_Creator.DAL
 {
     public class ProjectRepository : IProjectRepository
     {
-        private readonly ProjectsDbContext _context;
+        private readonly IFileContext _context;
 
-        public ProjectRepository(ProjectsDbContext context)
+        public ProjectRepository(IFileContext context)
         {
             _context = context;
         }
-        public async Task<List<CheckedProject>> GetAllCheckedProjectsAsync()
+        public List<CheckedProject> GetAllCheckedProjectsAsync()
         {
-            return await (from q in _context.Projects.Include(i => i.TechnologiesProjects).ThenInclude(techproj => techproj.Technology)
+            /*return await (from q in _context.Projects.Include(i => i.TechnologiesProjects).ThenInclude(techproj => techproj.Technology)
                           select new CheckedProject
                           {
                               ProjectID = q.ProjectID,
@@ -24,18 +24,23 @@ namespace CV_Creator.DAL
                               Name = q.Name,
                               Comment = q.Comments,
                               Techs = string.Join(", ", q.TechnologiesProjects.Select(sn => sn.Technology.Name).ToArray())
-                          }).ToListAsync();
+                          }).ToListAsync();*/
+
+            return _context.GetAllProjects();
         }
 
-        public object GetProjectsFromChecked(List<CheckedProject> list)
+        public List<Project> GetProjectsFromChecked(List<CheckedProject> list)
         {
             var ids = list.Select(item => item.ProjectID).ToList();
-            IQueryable<Project> query = _context.Projects
+
+            /*IQueryable<Project> query = _context.Projects
                 .OrderBy(project => project.CompletionDate)
                 .Where(project => ids.Contains(project.ProjectID))
                 .Include(project => project.TechnologiesProjects)
                 .ThenInclude(techproj => techproj.Technology);
-            return query.ToList();
+            return query.ToList();*/
+
+            return _context.GetCheckedProjects(ids);
         }
     }
 }

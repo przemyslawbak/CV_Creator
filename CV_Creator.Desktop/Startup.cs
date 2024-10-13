@@ -13,6 +13,9 @@ namespace CV_Creator
         {
             var builder = new ContainerBuilder();
 
+            builder.RegisterType<ProjectFileContext>()
+                .As<IFileContext>();
+
             builder.RegisterType<ProjectRepository>()
                 .As<IProjectRepository>();
 

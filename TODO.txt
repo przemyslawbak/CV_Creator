@@ -1,11 +1,21 @@
-
 - fill up with project data
 - update GH projects info
+- update project comments
+- possible paste RODO
+- loading data from files
+- if pasted rodo, replace original
 - update przemyslaw-bak.pl
 - tests
 
 ---
-
+OK - fix long url display
+OK - links to nuget libraries? (params logger, window manager)
+OK - to 4SD add Azure
+OK - add Azure ech
+OK - add nUnit tech
+OK - add nSubstitute tech
+NO - update przemyslaw-bak.pl?
+OK - add Docker tech
 OK - bug: freezes on 2nd use
 OK - display 'processing' on saving
 OK - stack based on proj tech
