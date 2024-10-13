@@ -57,7 +57,10 @@ namespace CV_Creator.Services
 
         private FooterSettings GetFooterSettings(string companyName)
         {
-            return new FooterSettings() { FontSize = 9, LeftText = "Genereted by: github.com/przemyslawbak/CV_Creator", RightText = "Przemyslaw Bak - Page [page] of [toPage]", UseLineSeparator = true };
+            return new FooterSettings() { 
+                FontSize = 9, 
+                //LeftText = "Genereted by: github.com/przemyslawbak/CV_Creator", 
+                RightText = "Przemyslaw Bak - Page [page] of [toPage]", UseLineSeparator = true };
         }
 
         private string GetCvHtml(List<Project> loadedProjects, string companyName, string positionApplied, List<Technology> loadedTechStack)
