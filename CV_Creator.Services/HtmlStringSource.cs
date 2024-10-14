@@ -92,7 +92,7 @@ namespace CV_Creator.Services
             StringBuilder sb = new StringBuilder();
             sb.Append(@"
 <div class='aboutMainContainer'>
-	<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\pic.jpg'>
+	<img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\pic.jpg'>
 	<div class='personalData'>
 		<div class='name'>" + name + @"</div>
 		<div>" + position + @"</div>
@@ -107,11 +107,11 @@ namespace CV_Creator.Services
 			<div>Wroclaw</div>
 		</div>
 		<div class='sideImages'>
-			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\phone.png' />
-			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\email.png' />
-			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world.png' />
-			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\github.png' />
-			<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\house.png' />
+			<img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\phone.png' />
+			<img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\email.png' />
+			<img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world.png' />
+			<img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\github.png' />
+			<img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\house.png' />
 		</div>
 	</div>
 </div>
@@ -127,10 +127,10 @@ namespace CV_Creator.Services
             sb.Append(@"
 <div class='interestsContainer'>
     <div class='interestsImages'>
-        <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\sport.png' />
-        <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world_brown.png' />
-        <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\book.png' />
-        <img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\financial.png' />
+        <img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\sport.png' />
+        <img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world_brown.png' />
+        <img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\book.png' />
+        <img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\financial.png' />
     </div>
     <div class='interestsText'>
         <div>Swimming and calistenics.</div>
@@ -251,11 +251,11 @@ namespace CV_Creator.Services
 
             if (gitHubUrl != "#")
             {
-                sb.Append(@"<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\github_brown.png' />");
+                sb.Append(@"<img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\github_brown.png' />");
             };
             if (webUrl != "#")
             {
-                sb.Append(@"<img src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world_brown.png' />");
+                sb.Append(@"<img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world_brown.png' />");
             };
             sb.Append(@"
 	</div>
@@ -314,7 +314,7 @@ namespace CV_Creator.Services
         {
             int emptyStarCounter = 3 - technology.Level;
             int fullStarCounter = technology.Level;
-            string filePath = @"file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\stack\" + technology.PictureFile;
+            string filePath = @"file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\stack\" + technology.PictureFile;
             StringBuilder sb = new StringBuilder();
             sb.Append(@"
 <div class='singleTech'>
@@ -333,11 +333,11 @@ namespace CV_Creator.Services
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < fullStarCounter; i++)
             {
-                sb.Append(@"<img class='techStar' src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\star_full.png' />");
+                sb.Append(@"<img class='techStar' src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\star_full.png' />");
             }
             for (int i = 0; i < emptyStarCounter; i++)
             {
-                sb.Append(@"<img class='techStar' src='file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\star_empty.png' />");
+                sb.Append(@"<img class='techStar' src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\star_empty.png' />");
             }
 
             return sb.ToString();

@@ -1,5 +1,7 @@
 - fill up with project data
+- relative file paths
 - easy picture replacing
+- email sending service
 - update GH projects info
 - update project comments
 - possible paste RODO

@@ -52,7 +52,7 @@ namespace CV_Creator.Services
 
         private WebSettings GetWebSettings()
         {
-            return new WebSettings() { UserStyleSheet = @"file:///C:\Users\asus\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\styles.css" };
+            return new WebSettings() { UserStyleSheet = @"file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\styles.css" };
         }
 
         private FooterSettings GetFooterSettings(string companyName)
