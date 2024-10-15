@@ -102,7 +102,7 @@ namespace CV_Creator.Services
 		<div class='sideText'>
 			<div>+48 694 352 899</div>
 			<div>alicja.zalupska@gmail.com</div>
-			<div>przemyslaw-bak.pl</div>
+			<div>https://linkedin.com/in/zalupskaalicja</div>
 			<div>https://github.com/Aliuser11</div>
 			<div>Wroclaw</div>
 		</div>
@@ -646,7 +646,7 @@ namespace CV_Creator.Services
 .interestsText {
     font-size: 27px;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 100px;
     margin-left: 10px;
     display: inline-block;
 }
