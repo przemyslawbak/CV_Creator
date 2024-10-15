@@ -1,4 +1,5 @@
-﻿using CV_Creator.Desktop.Commands;
+﻿using CV_Creator.DAL;
+using CV_Creator.Desktop.Commands;
 using CV_Creator.Models;
 using CV_Creator.Services;
 using System;
@@ -18,8 +19,11 @@ namespace CV_Creator.Desktop.ViewModels
         private readonly IDataProcessor _dataProcessor;
         private readonly IFileManager _fileManager;
         private readonly IEmailManager _emailManager;
+        private readonly IStringSanitizer _stringSanitizer;
         private Func<IProjectLoaderViewModel> _projectLoaderVMCreator;
         private Func<ITechStackLoaderViewModel> _techLoaderVMCreator;
+
+        private readonly IProjectRepository _repositoryProj;
 
         public ItControlViewModel(
             IWindowManager windowManager,
@@ -28,7 +32,9 @@ namespace CV_Creator.Desktop.ViewModels
             Func<ITechStackLoaderViewModel> techLoaderVMCreator,
             IFileManager fileManager,
             IEmailManager emailManager,
-            ITechStackProcessor stackProcessor
+            ITechStackProcessor stackProcessor,
+            IProjectRepository repoProj,
+            IStringSanitizer stringSanitizer
             )
         {
             _windowManager = windowManager;
@@ -38,12 +44,16 @@ namespace CV_Creator.Desktop.ViewModels
             _fileManager = fileManager;
             _emailManager = emailManager;
             _stackProcessor = stackProcessor;
+            _repositoryProj = repoProj;
+            _stringSanitizer = stringSanitizer;
 
             OpenProjectsLoaderCommand = new AsyncCommand(async () => await OnOpenProjectsLoaderAsync());
             //OpenTechLoaderCommand = new AsyncCommand(async () => await OnOpenTechLoaderAsync());
             CreatePdfCommand = new AsyncCommand(async () => await OnCreatePdfAsync());
             OpenFilePathWindowCommand = new DelegateCommand(OnSaveFilePathWindow);
             ClearInputsCommand = new DelegateCommand(OnClearInputs);
+
+            LoadFirstSixProjectsFromFile();
 
             LoadControlsFromFile();
         }
@@ -238,6 +248,23 @@ namespace CV_Creator.Desktop.ViewModels
         private void OnSaveFilePathWindow(object o)
         {
             FilePath = _windowManager.OpenFileDialogWindow(FilePath);
+        }
+
+        private void LoadFirstSixProjectsFromFile()
+        {
+            var first6projects = _repositoryProj.GetAllCheckedProjectsAsync().Take(6).ToList();
+            first6projects = CleanUpHtml(first6projects);
+            //todo: convert into list of Projects
+        }
+
+        private List<CheckedProject> CleanUpHtml(List<CheckedProject> list)
+        {
+            foreach (var item in list)
+            {
+                item.Comment = _stringSanitizer.CleanUpComment(item.Comment);
+            }
+
+            return list;
         }
 
         private async Task OnOpenProjectsLoaderAsync()
