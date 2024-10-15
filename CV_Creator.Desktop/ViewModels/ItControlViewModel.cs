@@ -12,7 +12,7 @@ namespace CV_Creator.Desktop.ViewModels
 {
     public class ItControlViewModel : ViewModelBase
     {
-        private readonly static string _basicFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Przemyslaw_Bak_application");
+        private readonly static string _basicFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Alicja_Zalupska_application");
         private readonly IWindowManager _windowManager;
         private readonly ITechStackProcessor _stackProcessor;
         private readonly IDataProcessor _dataProcessor;
