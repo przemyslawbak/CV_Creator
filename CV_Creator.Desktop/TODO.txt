@@ -1,16 +1,20 @@
-- fill up with project data
+- fill up _projects.txt with project data
+- auto fill up projects on startup
+- possible paste RODO
+- if pasted rodo, replace original
+
+
+FUTURE:
 - relative file paths
 - easy picture replacing
 - email sending service
 - update GH projects info
 - update project comments
-- possible paste RODO
-- loading data from files
-- if pasted rodo, replace original
-- update przemyslaw-bak.pl
+- update przemyslaw-bak.pl to github
 - tests
 
----
+COMPLETED:
+OK - loading data from files
 OK - fix long url display
 OK - links to nuget libraries? (params logger, window manager)
 OK - to 4SD add Azure
