@@ -100,10 +100,10 @@ namespace CV_Creator.Services
 	</div>
 	<div class='sideInfo'>
 		<div class='sideText'>
-			<div>+48 725 875 135</div>
-			<div>przemyslaw.bak@simple-mail.net</div>
+			<div>+48 694 352 899</div>
+			<div>alicja.zalupska@gmail.com</div>
 			<div>przemyslaw-bak.pl</div>
-			<div>github.com/przemyslawbak</div>
+			<div>github.com/Aliuser11</div>
 			<div>Wroclaw</div>
 		</div>
 		<div class='sideImages'>
@@ -130,13 +130,11 @@ namespace CV_Creator.Services
         <img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\sport.png' />
         <img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\world_brown.png' />
         <img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\book.png' />
-        <img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\financial.png' />
     </div>
     <div class='interestsText'>
-        <div>Swimming and calistenics.</div>
-        <div>Learning German language to move it to the higher level.</div>
-        <div>Social psychology, anthropology and neurobiology.</div>
-        <div>I am interested in financial markets and analysis.</div>
+        <div>Swimming, hiking and jogging.</div>
+        <div>English C1.</div>
+        <div>Crime stories, board games.</div>
     </div>
 </div>
 ");
@@ -653,7 +651,7 @@ namespace CV_Creator.Services
 }
 
     .interestsText div {
-        margin-bottom: 20px;
+        margin-bottom: 60px;
         display: block;
     }
 
