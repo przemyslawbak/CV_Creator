@@ -7,7 +7,7 @@ namespace CV_Creator.Services
 {
     public class DataProcessor : IDataProcessor
     {
-        private readonly string _name = "Przemyslaw Bak";
+        private readonly string _name = "Alicja Zalupska";
         private readonly IHtmlStringSource _htmlSource;
         private IConverter _converter;
 
@@ -60,7 +60,7 @@ namespace CV_Creator.Services
             return new FooterSettings() { 
                 FontSize = 9, 
                 //LeftText = "Genereted by: github.com/przemyslawbak/CV_Creator", 
-                RightText = "Przemyslaw Bak - Page [page] of [toPage]", UseLineSeparator = true };
+                RightText = "Alicja Zalupska - Page [page] of [toPage]", UseLineSeparator = true };
         }
 
         private string GetCvHtml(List<Project> loadedProjects, string companyName, string positionApplied, List<Technology> loadedTechStack)
