@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.10" />
     <PackageReference Include="TuesPechkin" Version="2.1.1" />
     <PackageReference Include="TuesPechkin.Wkhtmltox.Win32" Version="0.12.2.1" />
   </ItemGroup>
