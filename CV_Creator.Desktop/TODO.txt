@@ -1,6 +1,4 @@
-
-- do not allow choosen projects list to be updated
-- auto fill up projects on startup
+NEXT:
 - possible paste RODO
 - if pasted rodo, replace original
 
@@ -15,6 +13,8 @@ FUTURE:
 - tests
 
 COMPLETED:
+NO - do not allow choosen projects list to be updated
+OK - auto fill up projects on startup
 OK - fill up _projects.txt with project data
 OK - loading data from files
 OK - fix long url display
