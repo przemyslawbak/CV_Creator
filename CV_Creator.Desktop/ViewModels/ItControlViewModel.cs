@@ -53,9 +53,9 @@ namespace CV_Creator.Desktop.ViewModels
             OpenFilePathWindowCommand = new DelegateCommand(OnSaveFilePathWindow);
             ClearInputsCommand = new DelegateCommand(OnClearInputs);
 
-            LoadFirstSixProjectsFromFile();
-
             LoadControlsFromFile();
+
+            LoadFirstSixProjectsFromFile();
         }
 
         public ICommand OpenFilePathWindowCommand { get; private set; }
@@ -210,7 +210,6 @@ namespace CV_Creator.Desktop.ViewModels
 
         private void LoadControlsFromFile()
         {
-            //TODO: load from file
             SendOrSave = 1;
             ProjectsSelected = string.Empty;
             TechStackSelected = string.Empty;
@@ -254,7 +253,23 @@ namespace CV_Creator.Desktop.ViewModels
         {
             var first6projects = _repositoryProj.GetAllCheckedProjectsAsync().Take(6).ToList();
             first6projects = CleanUpHtml(first6projects);
-            //todo: convert into list of Projects
+            LoadedProjects = _repositoryProj.GetProjectsFromChecked(first6projects).ToList();
+            LoadedTechStack = _stackProcessor.SelectTechStack(LoadedProjects);
+            TechStackSelected = UpdateTechStackSelected(LoadedTechStack);
+
+            ProjectsSelected = string.Empty;
+
+            if (LoadedProjects != null)
+            {
+                List<string> names = new List<string>();
+
+                foreach (var project in LoadedProjects)
+                {
+                    names.Add(project.Name);
+                }
+
+                ProjectsSelected = string.Join(", ", names.ToArray());
+            }
         }
 
         private List<CheckedProject> CleanUpHtml(List<CheckedProject> list)

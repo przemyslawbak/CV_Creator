@@ -1,4 +1,5 @@
-- fill up _projects.txt with project data
+
+- do not allow choosen projects list to be updated
 - auto fill up projects on startup
 - possible paste RODO
 - if pasted rodo, replace original
@@ -14,6 +15,7 @@ FUTURE:
 - tests
 
 COMPLETED:
+OK - fill up _projects.txt with project data
 OK - loading data from files
 OK - fix long url display
 OK - links to nuget libraries? (params logger, window manager)
