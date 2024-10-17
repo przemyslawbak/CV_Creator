@@ -1,6 +1,4 @@
 NEXT:
-- possible paste RODO
-- if pasted rodo, replace original
 
 
 FUTURE:
@@ -13,6 +11,8 @@ FUTURE:
 - tests
 
 COMPLETED:
+OK - possible paste RODO
+OK - if pasted rodo, replace original
 NO - do not allow choosen projects list to be updated
 OK - auto fill up projects on startup
 OK - fill up _projects.txt with project data

@@ -280,16 +280,30 @@ namespace CV_Creator.Services
         }
 
 
-        public string GetHtmlCvRodoFooter(string company)
+        public string GetHtmlCvRodoFooter(string company, string optionalRodo)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(@"
+            if (optionalRodo == string.Empty)
+            {
+                sb.Append(@"
 <div class='footerContainer'>
     <div class='footerText'>
         I agree to the processing, storing and sharing with potential future employer of personal data provided in this document by " + company.ToUpper() + @" for realising the recruitment process pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in agreement with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation).
     </div>
 </div>
 ");
+            }
+            else
+            {
+
+                sb.Append(@"
+<div class='footerContainer'>
+    <div class='footerText'>
+        " + optionalRodo + @"
+    </div>
+</div>
+");
+            }
 
             return sb.ToString();
         }

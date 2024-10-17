@@ -13,7 +13,7 @@ namespace CV_Creator.Services
         string GetHtmlCvEmployment();
         string GetHtmlCvEducation();
         string GetHtmlCvInterests();
-        string GetHtmlCvRodoFooter(string companyName);
+        string GetHtmlCvRodoFooter(string companyName, string optionalRodo);
         string GetHtmlBodyClosed();
         string GetHtmlDocumentClosed();
         string GetHtmlHead();

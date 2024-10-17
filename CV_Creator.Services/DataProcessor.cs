@@ -17,7 +17,7 @@ namespace CV_Creator.Services
             _htmlSource = htmlSource;
         }
 
-        public byte[] ProcessPortfolio(List<Project> loadedProjects, List<Technology> loadedTechStack, string companyName, string positionApplied)
+        public byte[] ProcessPortfolio(List<Project> loadedProjects, List<Technology> loadedTechStack, string companyName, string positionApplied, string optionalRodo)
         {
             HtmlToPdfDocument doc = new HtmlToPdfDocument()
             {
@@ -39,7 +39,7 @@ namespace CV_Creator.Services
                 Objects = {
                     new ObjectSettings
                     {
-                        HtmlText = GetCvHtml(loadedProjects, companyName, positionApplied, loadedTechStack),
+                        HtmlText = GetCvHtml(loadedProjects, companyName, positionApplied, loadedTechStack, optionalRodo),
                         WebSettings = GetWebSettings(),
                         CountPages = true,
                         FooterSettings = GetFooterSettings(companyName)
@@ -63,7 +63,7 @@ namespace CV_Creator.Services
                 RightText = "Alicja Zalupska - Page [page] of [toPage]", UseLineSeparator = true };
         }
 
-        private string GetCvHtml(List<Project> loadedProjects, string companyName, string positionApplied, List<Technology> loadedTechStack)
+        private string GetCvHtml(List<Project> loadedProjects, string companyName, string positionApplied, List<Technology> loadedTechStack, string optionalRodo)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(CreateHtmlDocument());
@@ -75,7 +75,7 @@ namespace CV_Creator.Services
             sb.Append(CreateCvEmploymentHistory());
             sb.Append(CreateCvEducation());
             sb.Append(CreateCvInterests());
-            sb.Append(CreateHtmlFooter(companyName));
+            sb.Append(CreateHtmlFooter(companyName, optionalRodo));
             sb.Append(CreateCloseHtmlBody());
             sb.Append(CreateCloseHtmlDocument());
 
@@ -92,9 +92,9 @@ namespace CV_Creator.Services
             return _htmlSource.GetHtmlBodyClosed();
         }
 
-        private string CreateHtmlFooter(string companyName)
+        private string CreateHtmlFooter(string companyName, string optionalRodo)
         {
-            return _htmlSource.GetHtmlCvRodoFooter(companyName);
+            return  _htmlSource.GetHtmlCvRodoFooter(companyName, optionalRodo);
         }
 
         private string CreateCvInterests()

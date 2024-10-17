@@ -239,7 +239,7 @@ namespace CV_Creator.Desktop.ViewModels
         {
             ProcessingData = true;
 
-            byte[] pdfCv = _dataProcessor.ProcessPortfolio(LoadedProjects, LoadedTechStack, CompanyName, PositionApplied);
+            byte[] pdfCv = _dataProcessor.ProcessPortfolio(LoadedProjects, LoadedTechStack, CompanyName, PositionApplied, OptionalRodo);
 
             if (SendOrSave == 1)
             {
