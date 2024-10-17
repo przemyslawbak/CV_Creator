@@ -104,7 +104,7 @@ namespace CV_Creator.Services
 			<div>alicja.zalupska@gmail.com</div>
 			<div>https://linkedin.com/in/zalupskaalicja</div>
 			<div>https://github.com/Aliuser11</div>
-			<div>Sobotka</div>
+			<div>Sobotka, dolnoslaskie</div>
 		</div>
 		<div class='sideImages'>
 			<img src='file:///C:\Users\przem\Desktop\IT\Projekty\CV_Creator\CV_Creator.Desktop\bin\Debug\images\art\phone.png' />
