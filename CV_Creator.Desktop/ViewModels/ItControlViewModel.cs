@@ -150,6 +150,17 @@ namespace CV_Creator.Desktop.ViewModels
             }
         }
 
+        private string _optionalRodo = string.Empty;
+        public string OptionalRodo
+        {
+            get => _optionalRodo;
+            set
+            {
+                _optionalRodo = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string _filePath;
         public string FilePath
         {

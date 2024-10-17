@@ -5,12 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:conv="clr-namespace:CV_Creator.Desktop.Converters"
              mc:Ignorable="d"
-             d:DesignHeight="550" d:DesignWidth="500">
+             d:Height="650" d:DesignWidth="500">
     <UserControl.Resources>
         <conv:RadioBoolToIntConverter x:Key="radioBoolToIntConverter" />
     </UserControl.Resources>
     <Grid Background="#e0ece0">
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -36,14 +37,18 @@
         <TextBlock Text="Position applied:"
                    Style="{StaticResource textBlockLabel}"
                    Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="Optional new RODO:"
+                   Style="{StaticResource textBlockLabel}"
+                   Grid.Row="4" Grid.Column="0"
+                   Foreground="Red"/>
         <RadioButton Style="{StaticResource radio}"
                 IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=1, Mode=TwoWay}"
                 Content="Save"
-                Grid.Row="4" Grid.Column="0"/>
+                Grid.Row="5" Grid.Column="0"/>
         <RadioButton Style="{StaticResource radio}"
                          IsChecked="{Binding Path=SendOrSave, Converter={StaticResource radioBoolToIntConverter}, ConverterParameter=2, Mode=TwoWay}"
                          Content="Send"
-                         Grid.Row="5" Grid.Column="0"/>
+                         Grid.Row="6" Grid.Column="0"/>
 
         <TextBox Text="{Binding ProjectsSelected, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                  Name="tbSelectedProjects"
@@ -123,9 +128,26 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
+        <TextBox Text="{Binding OptionalRodo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+         Name="tbRodo"
+           Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+           Style="{StaticResource textBox}"/>
+        <TextBlock Text="OPTIONAL RODO text paste here"
+           IsHitTestVisible="False"
+           Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource textBlockPlaceholder}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=tbRodo}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <TextBox Text="{Binding FilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Name="tbFile"
-                   Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+                   Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                    Style="{StaticResource textBox}"
                  IsReadOnly="True">
             <TextBox.InputBindings>
@@ -134,7 +156,7 @@
         </TextBox>
         <TextBlock Text="Select save path..."
                    IsHitTestVisible="False"
-                   Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+                   Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource textBlockPlaceholder}">
                     <Style.Triggers>
@@ -147,11 +169,11 @@
         </TextBlock>
         <TextBox Text="{Binding EmailAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Name="tbEmail"
-                   Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+                   Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
                    Style="{StaticResource textBox}"/>
         <TextBlock Text="Enter email address..."
                    IsHitTestVisible="False"
-                   Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
+                   Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource textBlockPlaceholder}">
                     <Style.Triggers>
@@ -164,7 +186,7 @@
         </TextBlock>
 
         <Button
-            Grid.Row="6"
+            Grid.Row="7"
             Grid.Column="1"
             Content="Create"
             HorizontalAlignment="Center"
@@ -175,7 +197,7 @@
             IsEnabled="{Binding IsExecuteButtonEnabled}">
         </Button>
         <Button
-            Grid.Row="6"
+            Grid.Row="7"
             Grid.Column="2"
             Content="Clear"
             HorizontalAlignment="Center"
