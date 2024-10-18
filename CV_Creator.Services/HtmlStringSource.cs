@@ -56,27 +56,27 @@ namespace CV_Creator.Services
             sb.Append(@"
 <div class='historyContainer'>
     <div class='workHistory'>
-        <div class='workTitle'>Founder, Developer</div>
+        <div class='workTitle'>Junior Developer</div>
         <div class='workPeriod'>
-            01.2020 - 03.2022
+            05.2023 - present
         </div>
         <div class='workDescription'>
             Building in ASP.NET, running and scaling a website offering access to offshore and shipping industry information, along with several accompanying services. Initially, it was an experimental project, but it met with a better reception than I expected. It was closed in March 2022 due to several problems that accumulated together.
         </div>
     </div>
     <div class='workHistory'>
-        <div class='workTitle'>Developer, Freelancer</div>
+        <div class='workTitle'>Manual Tester</div>
         <div class='workPeriod'>
-            04.2017 - present
+            05.2022 - 05.2023
         </div>
         <div class='workDescription'>
             Working on various projects that I used for my own use as well as freelance commercial applications, initially in .NET, later with Angular and Python using machine learning and data presentation.
         </div>
     </div>
     <div class='workHistory'>
-        <div class='workTitle'>Offshore industry freelancer</div>
+        <div class='workTitle'>Office Assistant</div>
         <div class='workPeriod'>
-            06.2011 - present
+            08.2014 - 02.2023
         </div>
         <div class='workDescription'>
             Work in the offshore industry as a Captain, Senior Officer and Dynamic Positioning Systems Operator on specialized ships for wind farm projects, oil / gas installations, scientific and seismic research, rescue and safety standby. Working in large and complex teams in high risk and stress conditions.
