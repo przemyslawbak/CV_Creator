@@ -1,5 +1,7 @@
 NEXT:
-
+- update projects in file
+- update experience
+- update education
 
 FUTURE:
 - relative file paths
