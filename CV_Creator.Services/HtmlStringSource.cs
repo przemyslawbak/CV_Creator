@@ -35,12 +35,21 @@ namespace CV_Creator.Services
             sb.Append(@"
 <div class='historyContainer'>
     <div class='workHistory'>
-        <div class='workTitle'>Gdynia Maritime University</div>
+        <div class='workTitle'>Poznan University of Technology</div>
         <div class='workPeriod'>
-            10.2003 - 06.2007
+            2014
         </div>
         <div class='workDescription'>
-            Studying Navigation, specialization: Marine Transport.
+            Master of Science: majoring in Management and production engineering, specializing in quality management.
+        </div>
+    </div>
+    <div class='workHistory'>
+        <div class='workTitle'>University of Economics in Wroclaw</div>
+        <div class='workPeriod'>
+            2013
+        </div>
+        <div class='workDescription'>
+            Bachelor of Engineering: Engineering and Economics.
         </div>
     </div>
 </div>
@@ -61,7 +70,7 @@ namespace CV_Creator.Services
             05.2023 - present
         </div>
         <div class='workDescription'>
-            Building in ASP.NET, running and scaling a website offering access to offshore and shipping industry information, along with several accompanying services. Initially, it was an experimental project, but it met with a better reception than I expected. It was closed in March 2022 due to several problems that accumulated together.
+            Responsibilities: Rewriting application from Python to C#, Creating ASP.NET microservices, Refactoring monolithic applications to microservices, Data engineering, Unit testing, Work on services for algorithmic data processing.
         </div>
     </div>
     <div class='workHistory'>
@@ -70,7 +79,7 @@ namespace CV_Creator.Services
             05.2022 - 05.2023
         </div>
         <div class='workDescription'>
-            Working on various projects that I used for my own use as well as freelance commercial applications, initially in .NET, later with Angular and Python using machine learning and data presentation.
+            Self-educated junior software tester. My first testing experience I gained at uTest crowd-testing platform. I have completed there a uTest Academy training learning fundaments of testing along with usage of testing tools as SDK Platform Tools, Postman. I also learned how to automate web application tests using Selenium.
         </div>
     </div>
     <div class='workHistory'>
@@ -79,7 +88,7 @@ namespace CV_Creator.Services
             08.2014 - 02.2023
         </div>
         <div class='workDescription'>
-            Work in the offshore industry as a Captain, Senior Officer and Dynamic Positioning Systems Operator on specialized ships for wind farm projects, oil / gas installations, scientific and seismic research, rescue and safety standby. Working in large and complex teams in high risk and stress conditions.
+            Responsibilities: Documentation management and archiving, Cooperation with the accounting office, Cooperation with Customers, Order management and invoicing, Managing receivables and maintaining financial liquidity.
         </div>
     </div>
 </div>
