@@ -1,5 +1,4 @@
 NEXT:
-- update projects in file
 
 FUTURE:
 - relative file paths
@@ -11,6 +10,7 @@ FUTURE:
 - tests
 
 COMPLETED:
+OK - update projects in file
 OK - update experience
 OK - update education
 OK - possible paste RODO
