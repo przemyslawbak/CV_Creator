@@ -1,7 +1,5 @@
 NEXT:
 - update projects in file
-- update experience
-- update education
 
 FUTURE:
 - relative file paths
@@ -13,6 +11,8 @@ FUTURE:
 - tests
 
 COMPLETED:
+OK - update experience
+OK - update education
 OK - possible paste RODO
 OK - if pasted rodo, replace original
 NO - do not allow choosen projects list to be updated

@@ -669,7 +669,7 @@ namespace CV_Creator.Services
 .interestsText {
     font-size: 27px;
     margin-top: 30px;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
     margin-left: 10px;
     display: inline-block;
 }
